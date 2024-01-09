@@ -1,53 +1,57 @@
 const express = require('express');
 const nodemailer = require('nodemailer');
 const jwt = require('jsonwebtoken');
-const User = require('../Database/Login_Schema'); 
-const router= express.Router();
+const User = require('../Database/Login_Schema');
+const Mail = require('nodemailer/lib/mailer');
+const router = express.Router();
+router.post('/mail', async (req, resp) => {
+    const { mail } = req.body;  // Destructure the email from req.body
 
-router.post('/mail', (req, resp) => {
+    try {
+        const user = await User.findOne({ email: mail });
 
+        if (!user) {
+            return resp.status(404).json({ status: true, respMesg: 'User Not Found' });
+        }
 
-    const { email } = req.body;
+        const token = jwt.sign({ userId: user._id }, "qwertyuioplkjhgfddsazxcvbnmlkjhgfdaqwertyuuioplkjhg", { expiresIn: '1h' });
 
-    User.findOne({ email: email })
-        .then(user => {
-            if (!user) {
-                return resp.send({ Status: "User not existed" })
+        const transporter = nodemailer.createTransport({
+            service: 'gmail',
+            auth: {
+                user: 'asmanijash61@gmail.com',
+                pass: 'jgpj ntrp rgop llmb'
             }
+        });
 
-            const token = jwt.sign({ id: user._id }, "jwt_secret_key", { expiresIn: "1d" })
+        const mailOptions = {
+            from: 'asmanijash61@gmail.com',
+            to: mail,
+            subject: 'Welcome to NodeJS App',
+            html: `
+                <div style="padding:10px;border-style: ridge">
+                    <p>You have a new contact request.</p>
+                    <h3>Contact Details</h3>
+                    <ul>
+                    <li>Confirm Password: <a href="http://localhost:3000/confirm/${user._id}/${token}">Click here</a></li>
+                    </ul>
+                </div>
+            `
+        };
 
-            const transporter = nodemailer.createTransport({
-                service: 'gmail',
-                auth: {
-                    user: 'asmanijash61@gmail.com',
-                    pass: 'jgpj ntrp rgop llmb'
-                }
-            })
-
-
-
-            const mailOptions = {
-                from: 'asmanijash61@gmail.com',
-                to: req.body.email,
-                subject: 'Welcome to NodeJS App',
-                text: `http://localhost:3000/confirm/${user._id}/${token}`
+        transporter.sendMail(mailOptions, function (error, info) {
+            if (error) {
+                resp.json({ status: true, respMesg: 'Email Not Sent Successfully' });
+            } else {
+                resp.json({ status: false, respMesg: 'Email Sent Successfully' });
             }
-
-
-            transporter.sendMail(mailOptions, function (error, info) {
-                if (!error) {
-                    resp.json({ status: false, message: 'Email Sent  Successfully' })
-                }
-                else {
-                    resp.json({ status: true, message: 'Email Sent Not Successfully' })
-                }
-
-            });
-        })
-
-
-
+        });
+    } catch (err) {
+        resp.status(500).json({ status: true, respMesg: 'Internal Server Error' });
+    }
 });
+
+
+
 
 module.exports = router;

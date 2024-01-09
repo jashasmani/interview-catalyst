@@ -21,30 +21,30 @@ app.use(cors())
 
 
 // Registration
-// app.post('/register', async (req, resp) => {
-//     try {
-//         const { email, password, confirm_password } = req.body;
+app.post('/register', async (req, resp) => {
+    try {
+        const { email, password, confirm_password } = req.body;
 
-//         console.log(req.body);
-//         if (password !== confirm_password) {
-//             return resp.status(400).json({ message: 'Passwords do not match' });
-//         }
+        console.log(req.body);
+        if (password !== confirm_password) {
+            return resp.status(400).json({ message: 'Passwords do not match' });
+        }
 
-//         const saltRounds = 10;
-//         const hashedPassword = await bcrypt.hash(password, saltRounds);
-//         const hashedConfirmPassword = await bcrypt.hash(confirm_password, saltRounds);
+        const saltRounds = 10;
+        const hashedPassword = await bcrypt.hash(password, saltRounds);
+        const hashedConfirmPassword = await bcrypt.hash(confirm_password, saltRounds);
 
-//         const user = new User({ email, password: hashedPassword, confirm_password: hashedConfirmPassword });
+        const user = new User({ email, password: hashedPassword, confirm_password: hashedConfirmPassword });
 
-//         await user.save();
+        await user.save();
 
-//         resp.status(201).json({ message: 'Registration successful' });
-//     }
-//     catch (e) {
-//         resp.status(500).json({ message: 'Internal Server Error' });
-//         console.error('Registration Error:', e);
-//     }
-// })
+        resp.status(201).json({ message: 'Registration successful' });
+    }
+    catch (e) {
+        resp.status(500).json({ message: 'Internal Server Error' });
+        console.error('Registration Error:', e);
+    }
+})
 
 
 // Login
@@ -77,43 +77,43 @@ app.post('/login', async (req, resp) => {
 
 
 // confirm
-// app.post('/confirm/:_id/:token', async (req, resp) => {
-//     const { _id, token } = req.params;
-//     const { password, confirm_password } = req.body;
+app.post('/confirm/:_id/:token', async (req, resp) => {
+    const { _id, token } = req.params;
+    const { password, confirm_password } = req.body;
 
-//     try {
-//         const saltRounds = 10;
-//         const hashedPassword = await bcrypt.hash(password, saltRounds);
-//         const hashedConfirmPassword = await bcrypt.hash(confirm_password, saltRounds);
+    try {
+        const saltRounds = 10;
+        const hashedPassword = await bcrypt.hash(password, saltRounds);
+        const hashedConfirmPassword = await bcrypt.hash(confirm_password, saltRounds);
 
-//         jwt.verify(token, "jwt_secret_key", async (err, decoded) => {
-//             if (err) {
-//                 return resp.json({ Status: "Error with token" });
-//             }
+        jwt.verify(token, "jwt_secret_key", async (err, decoded) => {
+            if (err) {
+                return resp.json({ Status: "Error with token" });
+            }
 
-//             try {
+            try {
                 
-//                 const user = await User.findById(_id);
-//                 if (!user) {
-//                     return resp.json({ Status: "User not found" });
-//                 }
-
-                
-//                 user.password = hashedPassword;
-//                 user.confirm_password = hashedConfirmPassword;
+                const user = await User.findById(_id);
+                if (!user) {
+                    return resp.json({ Status: "User not found" });
+                }
 
                 
-//                 await user.save();
+                user.password = hashedPassword;
+                user.confirm_password = hashedConfirmPassword;
 
-//                 resp.json({ Status: "Success" });
-//             } catch (error) {
-//                 resp.status(500).send({ Status: error.toString() });
-//             }
-//         });
-//     } catch (err) {
-//         resp.status(500).send({ Status: err.toString() });
-//     }
-// });
+                
+                await user.save();
+
+                resp.json({ Status: "Success" });
+            } catch (error) {
+                resp.status(500).send({ Status: error.toString() });
+            }
+        });
+    } catch (err) {
+        resp.status(500).send({ Status: err.toString() });
+    }
+});
 
 connectDB();
 

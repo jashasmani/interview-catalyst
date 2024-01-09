@@ -6,7 +6,7 @@ import {  useNavigate, useParams } from "react-router-dom";
 
 function Confirm() {
 
-    const { id, token } = useParams();
+    const { id , token } = useParams();
     const navigate = useNavigate()
     const [checkpassword, setCheckPassword] = useState({
         password: '',
@@ -18,22 +18,22 @@ function Confirm() {
 
         setCheckPassword((prevData) => ({
             ...prevData,
-            [name]: [value]
+            [name]: value
         }))
     }
 
-   
-    const onPasswordSubmit = (e) => {
-        e.preventdefault();
-        axios.post(`http://localhost:8000/confirm/${id}/${token}`, {checkpassword})
+    const onPasswordSubmit = async (e) => {
+        e.preventDefault();
+        // console.log(checkpassword);
+        await axios.post(`http://localhost:8000/confirm/${id}/${token}`, checkpassword)
             .then(res => {
                 if (res.data.Status === "Success") {
-                    navigate('/login')
-
+                    navigate('/login');  
                 }
-            }).catch(err => console.log(err))
-
+            })
+            .catch(err => console.log(err));
     }
+    
 
     return (
         <form onSubmit={onPasswordSubmit}>
@@ -80,7 +80,7 @@ function Confirm() {
                     </div>
 
                     <div className="submit next">
-                        {/* onClick={() => navigator('')} */}
+                        
                         <button>Change</button>
                     </div>
 

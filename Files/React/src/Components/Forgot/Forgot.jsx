@@ -1,12 +1,11 @@
 import axios from 'axios';
 import React, { useState } from 'react'
-import { useNavigate } from 'react-router-dom';
 
 function Forgot_pass() {
     const [mail, setMail] = useState("");
     // const [msg, setMsg] = useState("");
 
-    const navigate=useNavigate();
+    
 
     const onPasswordChange = (e) => {
         setMail(e.target.value);
@@ -15,9 +14,11 @@ function Forgot_pass() {
     const onPasswordSubmit = async (e)=> {
         e.preventDefault();
         try {
-            const response = await axios.post('http://localhost:8000/mail',  { email: mail })
+            console.log("hii")
+            const response = await axios.post('http://localhost:8000/mail',  {mail} )
             // .then(response => setMsg(response.data.respMesg));
-            console.log(response.data.message)
+            console.log(response.data.respMesg)
+
         }
         catch (error) {
             console.log(error);
@@ -62,7 +63,7 @@ function Forgot_pass() {
                     </div>
 
                     <div className="submit next">
-                        <button onClick={() => navigate('')}>Send</button>
+                        <button >Send</button>
                     </div>
                 </div>
 
