@@ -73,4 +73,4 @@ function Forgot_pass() {
     )
 }
 
-export default Forgot_pass
+export default Forgot_pass;

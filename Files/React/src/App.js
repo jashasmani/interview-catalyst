@@ -1,7 +1,7 @@
 import './App.css';
 import Forgot from './Components/Forgot/Forgot';
 import Login from './Components/Login/JSX/Login';
-import Home from './Components/Forgot/Home';
+import Home from './Components/Home/Home';
 import Confirm from './Components/Forgot/Confirm';
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
