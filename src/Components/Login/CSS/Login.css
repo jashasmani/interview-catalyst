@@ -89,18 +89,20 @@ i {
 } */
 
 .input input {
-    height: 3rem;
+    height: 3.3rem;
+    background: #eaeaea;
+    border-radius: 2rem;
     width: 25rem;
-    background: transparent;
+    
     border: none;
     outline: none;
     color: #797979;
-    padding: 1.5rem;
+    /* padding: 1.5rem; */
     font-size: 1.2rem;
 }
 
 input:-webkit-autofill:focus {
-    -webkit-box-shadow: 0 0 0  transparent ;
+    -webkit-box-shadow: 0 0 0  #eaeaea ;
 }
 
 .forgot-password {

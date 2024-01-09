@@ -6,7 +6,7 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 
 function Confirm() {
 
-    const {id,token}=useParams();
+    const { id, token } = useParams();
     const navigate = useNavigate()
     const [checkpassword, setCheckPassword] = useState({
         password: '',
@@ -22,21 +22,18 @@ function Confirm() {
         }))
     }
 
-    // axios.defaults.withCredentials = true;
-    const onPasswordSubmit=(e)=>{
+   
+    const onPasswordSubmit = (e) => {
         e.preventdefault();
+        axios.post(`http://localhost:8000/confirm/${id}/${token}`, {checkpassword})
+            .then(res => {
+                if (res.data.Status === "Success") {
+                    navigate('/login')
 
-       
-             axios.get(`http://localhost:8000/confirm/${id}/${token}`, onPasswordChange)
-            .then(res=>{
-                if(res.data.Status==="Success")
-                {
-                    navigate('./login');
                 }
             }).catch(err => console.log(err))
-        }
-       
-    
+
+    }
 
     return (
         <form onSubmit={onPasswordSubmit}>
@@ -47,11 +44,11 @@ function Confirm() {
                     {/* <h3>{msg}</h3> */}
                     {/* <div className="underline"></div> */}
                     <div className="newtons-cradle">
-                            <div className="newtons-cradle__dot"></div>
-                            <div className="newtons-cradle__dot"></div>
-                            <div className="newtons-cradle__dot"></div>
-                            <div className="newtons-cradle__dot"></div>
-                        </div>
+                        <div className="newtons-cradle__dot"></div>
+                        <div className="newtons-cradle__dot"></div>
+                        <div className="newtons-cradle__dot"></div>
+                        <div className="newtons-cradle__dot"></div>
+                    </div>
                 </div>
 
 
@@ -59,7 +56,7 @@ function Confirm() {
 
 
                     <div className="input">
-                    <i className="fa-solid fa-lock"></i>
+                        <i className="fa-solid fa-lock"></i>
                         <input
                             type='password'
                             name='password'
@@ -71,7 +68,7 @@ function Confirm() {
                     </div>
 
                     <div className="input">
-                    <i className="fa-solid fa-lock"></i>
+                        <i className="fa-solid fa-lock"></i>
                         <input
                             type='password'
                             name='confirm_password'
@@ -83,7 +80,8 @@ function Confirm() {
                     </div>
 
                     <div className="submit next">
-                        <button onClick={() => navigator('')}>Change</button>
+                        {/* onClick={() => navigator('')} */}
+                        <button>Change</button>
                     </div>
 
 

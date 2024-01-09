@@ -8,6 +8,7 @@ function Login() {
     const navigate = useNavigate();
 
     const [home, setHome] = useState("Login");
+    // const [singup, setSingup] = useState("");
     // -------------------************************---------------------********************-------------------*****************-----------------************
 
     const [loginData, setLoginData] = useState({
@@ -48,9 +49,9 @@ function Login() {
         })
     }
 
-    
 
-// ******************************-----------------------------------********************************--------------------------**********************
+
+    // ******************************-----------------------------------********************************--------------------------**********************
 
     const [registrationData, setRegistrationData] = useState({
         email: '',
@@ -70,7 +71,7 @@ function Login() {
     }
 
     const handleRegistrationSubmit = async (e) => {
-       
+
         e.preventDefault();
 
         // if (registrationData.password !== registrationData.confirm_password) {
@@ -92,12 +93,14 @@ function Login() {
             password: '',
             confirm_password: ''
         })
+
+        // setSingup("Sign Up Successfully")
     }
 
 
     return (
         <>
-            <form onSubmit={home === "Login" ? handleLoginSubmit : handleRegistrationSubmit} autocomplete="off" >
+            <form onSubmit={home === "Login" ? handleLoginSubmit : handleRegistrationSubmit} autoComplete="off" >
                 <div className="container">
                     <div className="header">
 
@@ -106,12 +109,14 @@ function Login() {
                         </div>
                         <div className="underline"></div>
 
-                        <div className="newtons-cradle">
+                        {/* {home === "Sign Up" ? <div>{singup}</div> : <div></div>} */}
+
+                        {/* <div className="newtons-cradle">
                             <div className="newtons-cradle__dot"></div>
                             <div className="newtons-cradle__dot"></div>
                             <div className="newtons-cradle__dot"></div>
                             <div className="newtons-cradle__dot"></div>
-                        </div>
+                        </div> */}
 
 
                     </div>

@@ -14,7 +14,7 @@ function App() {
           <Route path="/" element={<Login />} />
           <Route path="/forgot-password" element={<Forgot />} />
           <Route path="/home" element={<Home />} />
-          <Route path="/confirm" element={<Confirm />} />
+          <Route path="/confirm/:_id/:token" element={<Confirm />} />
         </Routes>
       </Router>
     </>

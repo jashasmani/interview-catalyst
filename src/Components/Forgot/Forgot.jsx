@@ -23,6 +23,7 @@ function Forgot_pass() {
             console.log(error);
         }
 
+
         setMail("");
     }
 
