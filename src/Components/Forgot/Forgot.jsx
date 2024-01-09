@@ -12,7 +12,7 @@ function Forgot_pass() {
         setMail(e.target.value);
     }
 
-    const onPasswordSubmit = async (e) => {
+    const onPasswordSubmit = async (e)=> {
         e.preventDefault();
         try {
             const response = await axios.post('http://localhost:8000/mail',  { email: mail })
