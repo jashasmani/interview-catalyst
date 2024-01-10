@@ -1,7 +1,8 @@
 import axios from 'axios';
 import React, { useState } from 'react'
 import { useNavigate, useParams } from "react-router-dom";
-
+import './Confirm.css'
+import img_confirm from './confirmation (1).png'
 
 
 function Confirm() {
@@ -43,26 +44,21 @@ function Confirm() {
 
 
     return (
+        <section className='main-confirm'>
         <form onSubmit={onPasswordSubmit}>
-            <div className="container">
-                <div className="header">
-                    <div className="text">Confirm Password</div>
-                    <div className="underline"></div>
-                    {/* <h3>{msg}</h3> */}
-                    {/* <div className="underline"></div> */}
-                    <div className="newtons-cradle">
-                        <div className="newtons-cradle__dot"></div>
-                        <div className="newtons-cradle__dot"></div>
-                        <div className="newtons-cradle__dot"></div>
-                        <div className="newtons-cradle__dot"></div>
+            <div className="container-confirm">
+                
+            <div className="header-confirm">
+                    <img src={img_confirm} alt="" />
+                        <div className="text-confirm">Confirm Password</div>
+                        
                     </div>
-                </div>
 
 
-                <div className="inputs">
+                <div className="inputs-confirm">
 
 
-                    <div className="input">
+                    <div className="input-confirm">
                         <i className="fa-solid fa-lock"></i>
                         <input
                             type='password'
@@ -74,7 +70,7 @@ function Confirm() {
                         />
                     </div>
 
-                    <div className="input">
+                    <div className="input-confirm">
                         <i className="fa-solid fa-lock"></i>
                         <input
                             type='password'
@@ -86,16 +82,16 @@ function Confirm() {
                         />
                     </div>
 
-                    <div className="submit next">
-
-                        <button  >Change</button>
-                    </div>
+                    <div className="submit-confirm">
+                            <button className="button-confirm">Send</button>
+                        </div>
 
 
                 </div>
 
             </div>
         </form>
+    </section>
     )
 }
 

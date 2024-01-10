@@ -1,0 +1,101 @@
+body {
+    overflow: hidden;
+    background: rgb(2, 0, 36);
+    background: radial-gradient(circle, rgba(2, 0, 36, 1) 0%, rgba(9, 9, 121, 1) 35%, rgba(0, 212, 255, 1) 100%);
+    color: aliceblue;
+  }
+  
+  .main-confirm {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+  }
+  
+  
+  .container-confirm {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 30rem;
+    color: black;
+    border-radius: 1rem;
+    overflow-x: hidden;
+    height: auto;
+  
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    background-color: rgb(255, 255, 255, 0.3);
+  }
+  
+  .text-confirm {
+    margin: 1rem;
+    margin-bottom: 0;
+    color: white;
+    font-size: 2rem;
+  }
+  
+  .header-confirm {
+    margin: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center
+  }
+  
+  
+  .inputs-confirm {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+  
+  }
+
+  .input-confirm{
+    display: flex;
+    align-items: center;
+    margin: 1rem;
+    width: 25rem;
+    height: 3rem;
+    background: transparent;
+    border-radius: 1rem;
+    border-bottom: #000066 solid 1.5px;
+  }
+
+  
+.input-confirm input {
+    height: 3rem;
+    background: transparent;
+    width: 25rem;
+
+    border: none;
+    outline: none;
+    color: #797979;
+    padding: 0 1rem;
+    font-size: 1.2rem;
+}
+
+
+.input-confirm:hover {
+    border: #000066 solid .1rem;
+}
+
+  
+  .submit-confirm {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 1em;
+    color: white;
+  }
+  
+  .button-confirm {
+    margin: 2.5rem;
+    color: aliceblue;
+  }
+  

@@ -1,9 +1,9 @@
 import React from 'react';
-import './Home.css';
-
-
+import { Link, useNavigate } from 'react-router-dom';
+import './home.css';
 
 const Home = () => {
+  const navigate = useNavigate();
   return (
     <>
       <header>
@@ -20,19 +20,21 @@ const Home = () => {
             <a href='/Write/'>Write</a>
           </div>
           <div className='navigation'>
-            <a href='/GetStarted/'>Get Started</a>
+            <Link to="/login" className='link'>Get Started</Link>
           </div>
 
 
-          </nav>
-        </header>
-        <div className='container_home'>
-          <div className='wrapper'><h1>Ask , Chat,<br/>Answer , Repeat.</h1></div>
-          <div className='wrapper1'><h2> Ask questions and get real answers from real people.</h2></div>
-          <button className='btn'><span>Start Reading</span></button>
-        </div>
+        </nav>
+      </header>
+      <div className='container'>
+        <div className='wrapper'><h1>Ask , Chat,<br />Answer , Repeat.</h1></div>
+        <div className='wrapper1'><h2> Ask questions and get real answers from real people.</h2></div>
+        <button className='btn' onClick={() => navigate('/login')}>Start Reading</button>
 
+        {/* <Link to="/login" className='link'>Get Started</Link> */}
+      </div>
 
+      {/* <msg/> */}
     </>
   );
 };

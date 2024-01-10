@@ -1,60 +1,91 @@
 body {
     overflow: hidden;
-    background: rgb(2,0,36);
-    background: radial-gradient(circle, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgba(0,212,255,1) 100%); 
-      color: aliceblue;
+    background: rgb(2, 0, 36);
+    background: radial-gradient(circle, rgba(2, 0, 36, 1) 0%, rgba(9, 9, 121, 1) 35%, rgba(0, 212, 255, 1) 100%);
+    color: aliceblue;
 }
 
-.container {
+.main_login {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    
+}
+
+.container1 {
     display: flex;
     flex-direction: column;
-    margin: auto;
-    margin-top: 5rem;
-    
-    
-    
-    width: 30rem;
+    justify-content: center;
+    height: 36rem;
+    overflow: hidden;
+
+
+
+    width: 25rem;
     color: black;
-    padding-bottom: 1.3rem;
     overflow-x: hidden;
-    border-radius: 2rem;
 
     backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      background-color: rgb(255, 255, 255, 0.3);
-  }
-  
-  
+    -webkit-backdrop-filter: blur(10px);
+    background-color: rgb(255, 255, 255, 0.3);
+
+   
+}
+
+
+.container2 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 30rem;
+    color: black;
+    /* padding-bottom: 1.3rem; */
+    overflow-x: hidden;
+    height: 36.15rem;
+
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    background-color: rgb(255, 255, 255, 0.3);
+}
+
+
 
 .header {
     display: flex;
+    align-self: flex-start;
+    margin-left: 4.6rem;
+
     flex-direction: column;
-    align-items: center;
     gap: 0.5rem;
     width: 100%;
     margin-top: 2rem;
 
-    
+
 }
 
 .text {
-    color: #000066;
-    font-size: 2.5rem;
+    color: whitesmoke;
+    font-size: 1.8rem;
     font-weight: 700;
 }
 
-.underline {
-    width: 3.5rem;
-    height: 0.3rem;
-    background: #000066;
-    border-radius: .6rem;
+
+
+.subtitle {
+    color: #202020;
 }
+
+
 
 .inputs {
     margin-top: 3.5rem;
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
+
 }
 
 .input {
@@ -62,56 +93,50 @@ body {
     align-items: center;
     margin: auto;
     width: 25rem;
-    height: 3.5rem;
-    background: #eaeaea;
-    border-radius: 2rem;
+    height: 3rem;
+    background: transparent;
+    /* background: #eaeaea; */
+    border-radius: 1rem;
+    border-bottom: #000066 solid 1.5px;
 }
+
 .fa-solid {
 
-    font-size: 1.8rem;
+    font-size: 1.3rem;
+    padding: 0 1rem;
 }
+
+.fa-envelope {
+    font-size: 1.5rem;
+
+}
+
 .input:hover {
     border: #000066 solid .1rem;
 }
 
 
-
-
-i {
-    border-radius: 2rem;
-    border: #000066 solid 1rem;
-    background-color: #000066;
-    color: #fff;
-
-}
-
-/* 
-.input:hover , i:hover {
-    color: #000066;
-    box-shadow: 0 0 2.5px 2.5px #eaeaea ;
-} */
-
 .input input {
-    height: 3.3rem;
-    background: #eaeaea;
-    border-radius: 2rem;
+    height: 3rem;
+    background: transparent;
     width: 25rem;
-    
+
     border: none;
     outline: none;
     color: #797979;
-    /* padding: 1.5rem; */
+    padding: 0 1rem;
     font-size: 1.2rem;
 }
 
 input:-webkit-autofill:focus {
-    -webkit-box-shadow: 0 0 0  #eaeaea ;
+    -webkit-box-: 0 0 0 #eaeaea;
 }
 
 .forgot-password {
-    padding-left: 3.8rem;
+    justify-content: center;
+    align-items: center;
     margin-top: 1.6rem;
-    color: #797979;
+    color: #131871;
     font-size: 1.2rem;
 }
 
@@ -154,8 +179,8 @@ button {
     font-size: 1.2rem;
     font-weight: 700;
 
-
-    background: transparent;
+    font-size: 1.3rem;
+    background: #000;
 
     border: none;
     outline: none;
@@ -176,68 +201,40 @@ button {
 }
 
 .white {
-    color: #fff;
+    color: blue;
 }
 
 .blue {
-    color: #000066;
+    color: #fff;
 }
 
 
 
-
-/* Small screens (phones, less than 600px) */
-@media (max-width: 600px) {
-    .container {
-        width: 100%;
-        margin-top: 5rem;
-        /* Adjust top margin as needed */
-    }
-
-    .header .text {
-        font-size: 2rem;
-        /* Adjust font size for smaller screens */
-    }
-
-    .inputs {
-        margin-top: 2rem;
-        /* Adjust spacing */
-    }
-
-    .input {
-        width: 100%;
-    }
-
-    .forgot-password {
-        padding-left: 0;
-        /* Remove left padding */
-        margin-top: 1rem;
-        /* Adjust spacing */
-        text-align: center;
-        /* Center the text */
-    }
-
-    .submit-container {
-        flex-direction: column;
-        /* Stack buttons vertically */
-        gap: 1rem;
-        /* Adjust spacing */
-        margin: 2rem auto;
-    }
-}
-
-/* Medium screens (tablets, 600px and up) */
-@media (min-width: 600px) {
-    /* Add styles for tablets here, if needed */
-}
-
-/* Large screens (desktops, 900px and up) */
-@media (min-width: 900px) {
-    /* Add styles for larger screens here, if needed */
-}
+@media screen and (max-width: 925px) {
+  .container1{
+    display: none;
+  }
+  }
 
 
-/* ------------------------------------------------------ */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 .newtons-cradle {
     --uib-size: 50px;

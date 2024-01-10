@@ -1,4 +1,3 @@
-// app.js
 const express = require('express');
 const connectDB = require('../Database/DbConnection');
 const registerRouter = require('./Register');

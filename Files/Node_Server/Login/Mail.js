@@ -5,7 +5,7 @@ const User = require('../Database/Login_Schema');
 const Mail = require('nodemailer/lib/mailer');
 const router = express.Router();
 router.post('/mail', async (req, resp) => {
-    const { mail } = req.body;  // Destructure the email from req.body
+    const { mail } = req.body; 
 
     try {
         const user = await User.findOne({ email: mail });
@@ -30,8 +30,8 @@ router.post('/mail', async (req, resp) => {
             subject: 'Welcome to NodeJS App',
             html: `
                 <div style="padding:10px;border-style: ridge">
-                    <p>You have a new contact request.</p>
-                    <h3>Contact Details</h3>
+                    <p>You have a new request.</p>
+                    <h3>Cofirm Password</h3>
                     <ul>
                     <li>Confirm Password: <a href="http://localhost:3000/confirm/${user._id}/${token}">Click here</a></li>
                     </ul>

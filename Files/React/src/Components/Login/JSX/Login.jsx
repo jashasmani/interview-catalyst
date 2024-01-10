@@ -2,21 +2,23 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import '../CSS/Login.css';
 import axios from 'axios';
+import img from './img.jpg'
 
 function Login() {
 
     // const navigate = useNavigate();
 
     const [home, setHome] = useState("Login");
-    const [rederror, setRedError] = useState("");
-   
-    // const [singup, setSingup] = useState("");
+    // const [rederror, setRedError] = useState("");
+
     // -------------------************************---------------------********************-------------------*****************-----------------************
 
     const [loginData, setLoginData] = useState({
         email: '',
         password: '',
     })
+
+
 
 
     const handleLoginChange = (e) => {
@@ -56,9 +58,9 @@ function Login() {
     // ******************************-----------------------------------********************************--------------------------**********************
 
     const [registrationData, setRegistrationData] = useState({
+        username: '',
         email: '',
         password: '',
-        confirm_password: ''
     })
 
 
@@ -76,11 +78,6 @@ function Login() {
 
         e.preventDefault();
 
-        // if (registrationData.password !== registrationData.confirm_password) {
-        //     // Handle password mismatch error (e.g., show an error message)
-        //     console.log('Password and Confirm Password do not match');
-        //     return;
-        // }
 
         try {
             const response = await axios.post('http://localhost:8000/register', registrationData);
@@ -91,12 +88,12 @@ function Login() {
         }
 
         setRegistrationData({
+            username: '',
             email: '',
             password: '',
-            confirm_password: ''
         })
 
-        // setSingup("Sign Up Successfully")
+
     }
 
 
@@ -121,105 +118,111 @@ function Login() {
     //     }
     // }
 
+
+
     return (
         <>
             <form onSubmit={home === "Login" ? handleLoginSubmit : handleRegistrationSubmit} autoComplete="off" >
-                <div className="container">
-                    <div className="header">
+                <div className='main_login'>
+                    <div className="container1">
 
-                        <div className="text">
-                            {home}
-                        </div>
-                        <div className="underline"></div>
-
-                        {/* {home === "Sign Up" ? <div>{singup}</div> : <div></div>} */}
-
-                        {/* <div className="newtons-cradle">
-                            <div className="newtons-cradle__dot"></div>
-                            <div className="newtons-cradle__dot"></div>
-                            <div className="newtons-cradle__dot"></div>
-                            <div className="newtons-cradle__dot"></div>
-                        </div> */}
-
+                        <img src={img} alt="img"  />
 
                     </div>
-                    <div className="inputs">
+                    <div className="container2">
 
-
-                        <div className="input">
-                            <i className="fa-solid fa-envelope"></i>
-                            <input
-                                type='text'
-                                name='email'
-                                placeholder='Email'
-                                value={home === "Login" ? loginData.email : registrationData.email}
-                                onChange={home === "Login" ? handleLoginChange : handleRegistrationChange}
-                                required
-                            />
+                        <div className="header">
+                            <div className="text">
+                                {home} to your Account
+                            </div>
+                            {/* <div className="underline"></div> */}
+                            {home === "Login" ? <label className='subtitle'>Welcome back, {home} your account </label> :
+                                <label className='subtitle'>{home} your account </label>}
                         </div>
-                            <label className='error'>{rederror}</label>
 
-                        <div className="input">
-                            <input
-                                type='password'
-                                name='password'
-                                placeholder='Password'
-                                value={home === "Login" ? loginData.password : registrationData.password}
-                                onChange={home === "Login" ? handleLoginChange : handleRegistrationChange}
-                                required
-                            />
-                            <i className="fa-solid fa-lock"></i>
-                        </div>
-                            <label className='error'>{rederror}</label>
+                        <div className="inputs">
 
-                        {home === "Login" ? <div></div> :
+                            {home === "Login" ? <div></div> :
+
+                                <div className="input">
+                                    <i class="fa-solid fa-user"></i>
+                                    <input
+                                        type='text'
+                                        name='username'
+                                        placeholder='Username'
+                                        value={registrationData.username}
+                                        onChange={handleRegistrationChange}
+                                        required
+                                        
+                                    />
+
+                                </div>
+                            }
+                            {/* <label className='error'>{rederror}</label> */}
 
                             <div className="input">
+                                <i className="fa-solid fa-envelope"></i>
+                                <input
+                                    type='email'
+                                    name='email'
+                                    placeholder='Email'
+                                    value={home === "Login" ? loginData.email : registrationData.email}
+                                    onChange={home === "Login" ? handleLoginChange : handleRegistrationChange}
+                                    required
+                                    
+                                />
+                            </div>
+                            {/* <label className='error'>{rederror}</label> */}
+
+                            <div className="input">
+                                <i className="fa-solid fa-lock"></i>
                                 <input
                                     type='password'
-                                    name='confirm_password'
-                                    placeholder='Confirm Password'
-                                    value={loginData.confirm_password}
-                                    onChange={handleRegistrationChange}
+                                    name='password'
+                                    placeholder='Password'
+                                    value={home === "Login" ? loginData.password : registrationData.password}
+                                    onChange={home === "Login" ? handleLoginChange : handleRegistrationChange}
                                     required
+                                    
                                 />
-                                <i className="fa-solid fa-lock"></i>
+                            </div>
+                            {/* <label className='error'>{rederror}</label> */}
+
+
+                        </div>
+
+
+
+
+                        {home === "Sign Up" ? <div></div> :
+
+                            <div className="forgot-password">Forgot Password? <Link to="/forgot-password" className='link'>Click here</Link></div>
+                        }
+
+
+                        <div className="submit-container">
+                            <div
+                                className={home === "Login" ? "submit next" : "submit"}
+                                onClick={() => setHome("Sign Up")}>
+
+                                <button className={home === "Sign Up" ? "white" : "blue"}>Sign Up</button>
 
                             </div>
-                        }
-                    </div>
 
 
+                            <div
+                                className={home === "Sign Up" ? "submit next" : "submit"}
+                                onClick={() => setHome("Login")}>
 
-
-                    {home === "Sign Up" ? <div></div> :
-
-                        <div className="forgot-password">Forgot Password? <Link to="/forgot-password" className='link'>Click here</Link></div>
-                    }
-
-
-                    <div className="submit-container">
-                        <div
-                            className={home === "Login" ? "submit next" : "submit"}
-                            onClick={() => setHome("Sign Up")}>
-
-                            <button className={home === "Sign Up" ? "white" : "blue"}>Sign Up</button>
-
+                                <button
+                                    // onClick={showError}
+                                    className={home === "Login" ? "white" : "blue"}>
+                                    Login
+                                </button>
+                            </div>
                         </div>
 
-
-                        <div
-                            className={home === "Sign Up" ? "submit next" : "submit"}
-                            onClick={() => setHome("Login")}>
-
-                            <button
-                                // onClick={showError}
-                                className={home === "Login" ? "white" : "blue"}>
-                                Login
-                            </button>
-                        </div>
                     </div>
-
                 </div>
             </form>
 

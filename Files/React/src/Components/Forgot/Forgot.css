@@ -1,0 +1,88 @@
+body {
+  overflow: hidden;
+  background: rgb(2, 0, 36);
+  background: radial-gradient(circle, rgba(2, 0, 36, 1) 0%, rgba(9, 9, 121, 1) 35%, rgba(0, 212, 255, 1) 100%);
+  color: aliceblue;
+}
+
+.main-forgot {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+
+
+.container-forgot {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 30rem;
+  color: black;
+  border-radius: 1rem;
+  overflow-x: hidden;
+  height: auto;
+
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  background-color: rgb(255, 255, 255, 0.3);
+}
+
+.text-forgot {
+  margin: 1rem;
+  margin-bottom: 0;
+  color: white;
+  font-size: 2rem;
+}
+
+.header-forgot {
+  margin: 2rem;
+  /* margin-bottom: 1rem; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center
+}
+
+.msg-forgot {
+
+  color: #202020;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin:.5rem
+}
+
+.msg-forgat-center {
+  margin: 1rem;
+  font-size: .1rem;
+}
+
+.inputs-forgot {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+}
+
+.submit-forgot {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 2.5rem;
+  color: white;
+}
+
+.button-send {
+  margin: 2.5rem;
+  color: aliceblue;
+}
+
+.back {
+  font-size: 1.2rem;
+}

@@ -23,18 +23,16 @@ app.use(cors())
 // Registration
 app.post('/register', async (req, resp) => {
     try {
-        const { email, password, confirm_password } = req.body;
+        const { username,email, password  } = req.body;
 
         console.log(req.body);
-        if (password !== confirm_password) {
-            return resp.status(400).json({ message: 'Passwords do not match' });
-        }
+       
 
         const saltRounds = 10;
         const hashedPassword = await bcrypt.hash(password, saltRounds);
-        const hashedConfirmPassword = await bcrypt.hash(confirm_password, saltRounds);
+        
 
-        const user = new User({ email, password: hashedPassword, confirm_password: hashedConfirmPassword });
+        const user = new User({  username, email, password: hashedPassword });
 
         await user.save();
 
