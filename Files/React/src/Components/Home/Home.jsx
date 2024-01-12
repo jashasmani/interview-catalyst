@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import './home.css';
+import AllQuestion from '../Message/JSX/AllQuestion'
 
 const Home = () => {
   const navigate = useNavigate();
@@ -31,9 +32,9 @@ const Home = () => {
         <div className='wrapper1'><h2> Ask questions and get real answers from real people.</h2></div>
         <button className='btn' onClick={() => navigate('/login')}>Start Reading</button>
 
-      </div>
 
-      {/* <msg/> */}
+      <AllQuestion/>
+      </div>
     </>
   );
 };

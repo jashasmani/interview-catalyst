@@ -1,7 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import './CSS/Message.css';
-// import { Avatar } from "@mui/material/Avatar";
+import '../CSS/Message.css';
 // import AllQuestion from "./AllQuestion";
 
 function Msg() {
