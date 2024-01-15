@@ -10,6 +10,8 @@ async function getUserData(req, res) {
         const user = await User.findOne({ email });
 
 
+       
+
         const passwordMatch = await bcrypt.compare(password, user.password);
 
 

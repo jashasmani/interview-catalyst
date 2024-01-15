@@ -6,7 +6,13 @@ import like from "../Image/like_empty.png";
 import likefilled from "../Image/like_filled.png";
 import comment from "../Image/comment.png";
 
+
+
 function AddQuestion() {
+
+  
+
+
   const [isLiked, setIsLiked] = useState(false);
 
   function fillLike(e) {
