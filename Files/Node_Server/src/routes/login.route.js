@@ -1,6 +1,6 @@
 const express = require('express');
-const cheackConfirm = require('../controllers/User-Login-Controllers/Confrim_Password.controllers');
-const getUserData = require('../controllers/User-Login-Controllers/Login.controllers');
+const cheackConfirm = require('../controllers/User-Login-Controllers/Confrim_Password.controller');
+const getUserData = require('../controllers/User-Login-Controllers/Login.controller');
 const getRegisterData = require('../controllers/User-Login-Controllers/Register.controller')
 const getForgotPassword = require('../controllers/User-Login-Controllers/Forgot_Password.controller')
 
