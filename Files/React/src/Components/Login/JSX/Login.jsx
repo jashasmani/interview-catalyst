@@ -48,7 +48,7 @@ function Login() {
 
         } catch (error) {
 
-            setResponse('Login failed. Please check your credentials.');
+            setResponse('Login failed. \nPlease check your credentials.');
             console.error('Login error', error)
 
         }
@@ -93,7 +93,7 @@ function Login() {
         } catch (error) {
 
             console.error('Sign Up error', error)
-            setResponse('Sign Up failed. /n Please check your credentials.');
+            setResponse('Sign Up failed. \n Please check your credentials.');
 
         }
 

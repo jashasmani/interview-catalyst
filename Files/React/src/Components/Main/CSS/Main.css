@@ -7,13 +7,13 @@
   body {
     background-color: #c5c6c7;
   }
-  .top-write {
+  .top-main {
     padding-top: 20px;
     display: flex;
     justify-content: space-between;
   }
   
-  .search-write {
+  .search-main {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -28,10 +28,10 @@
     border-style: solid;
   }
   
-  .image-write {
+  .image-main {
     z-index: 1;
   }
-  .btn-write {
+  .btn-main {
     align-items: center;
     display: flex;
     gap: 5px;
@@ -39,23 +39,23 @@
     font-size: 20px;
   }
   
-  .side-write {
+  .side-main {
     display: flex;
     align-items: center;
     gap: 15px;
     padding-right: 4rem;
   }
   
-  .notification-write {
+  .notification-main {
     display: flex;
   }
   
-  .account-write {
+  .account-main {
     display: flex;
     padding-left: 10px;
   }
   
-  .center-write {
+  .center-main {
     width: 65%;
     margin-top: 130px;
     flex-direction: column;
@@ -75,7 +75,7 @@
   
   /* Your existing styles */
   
-  .tabs-write {
+  .tabs-main {
       background: #d9e5f9;
       font-family: "Raleway", sans-serif;
       width: 1000px;
@@ -83,13 +83,13 @@
       margin: 20px auto;
     }
     
-    .tabs-write .tab-header {
+    .tabs-main .tab-header {
       background: #f5f5f5;
       padding: 10px;
       display: flex;
     }
     
-    .tabs-write .tab-header > div {
+    .tabs-main .tab-header > div {
       flex: 1;
       text-align: center;
       padding: 10px;
@@ -98,17 +98,17 @@
       color: #888;
     }
     
-    .tabs-write .tab-header > div.active {
+    .tabs-main .tab-header > div.active {
       color: #387be2;
     }
     
-    .tabs-write .tab-indicator {
+    .tabs-main .tab-indicator {
       height: 3px; 
       background: #387be2;
       transition: transform 0.3s ease; 
     }
     
-    .tabs-write .tab-body {
+    .tabs-main .tab-body {
       padding: 10px;
       background: #f5f5f5;
       border-top: 1px solid #ddd;
@@ -118,36 +118,36 @@
       flex-direction: column;
     }
     
-    /* .tabs-write .tab-body > div {
+    /* .tabs-main .tab-body > div {
       flex: 1;
       opacity: 0;
       transform: translateY(-10px);
       transition: opacity 0.3s ease, transform 0.3s ease; 
     }
     
-    .tabs-write .tab-body > div.active {
+    .tabs-main .tab-body > div.active {
       opacity: 1;
       transform: translateY(0);
     } */
-    .tabs-write .tab-body > div {
+    .tabs-main .tab-body > div {
       flex: 1;
       opacity: 0;
       transform: translateY(-10px);
       transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
     }
     
-    .tabs-write .tab-body > div.active {
+    .tabs-main .tab-body > div.active {
       opacity: 1;
       transform: translateY(0);
     }
     
     
-    .tabs-write .tab-body h1 {
+    .tabs-main .tab-body h1 {
       color: #222;
       margin-bottom: 10px;
     }
     
-    .tabs-write .tab-body p {
+    .tabs-main .tab-body p {
       color: #555;
       font-size: 15px;
     }

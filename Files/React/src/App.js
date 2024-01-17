@@ -19,12 +19,13 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/forgot-password" element={<Forgot />} />
+          <Route path="/confirm/:id/:token" element={<Confirm />} />
+
           <Route path="/message" element={<Msg />} />
           <Route path="/allquestion" element={<AllQuestion />} />
           <Route path="/write" element={<Write />} />
           <Route path="/input" element={<Input />} />
           <Route path="/main" element={<Main />} />
-          <Route path="/confirm/:id/:token" element={<Confirm />} />
         </Routes>
       </Router>
     </>

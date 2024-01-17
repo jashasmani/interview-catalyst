@@ -2,6 +2,8 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    overflow: hidden;
+    /* z-index: 2; */
 }
 
 .modal-wrapper {
@@ -92,14 +94,18 @@ color: #21415e;
     background-color: #6aa9f7;
     color: #fff;
     margin: 0.2rem;
-    width: 8rem;
+    margin-top: 2rem;
+    height: 2rem;
+    width: 6rem;
 }
 
 .btn-write-in-cancel {
     
     color: #fff;
     margin: 0.2rem;
-    width: 8rem;
+    margin-top: 2rem;
+    width: 6rem;
+    height: 2rem;
 }
 
 

@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, { useState } from 'react';
-import ReactDOM from 'react-dom'
+// import ReactDOM from 'react-dom'
 
 const CustomModal = ({ closeModal }) => {
 
@@ -19,6 +19,7 @@ const CustomModal = ({ closeModal }) => {
 
         }))
     }
+
     console.log(questions)
 
 
@@ -45,10 +46,8 @@ const CustomModal = ({ closeModal }) => {
         closeModal();
     }
 
-
-
-
-    return (
+    return( 
+    // ReactDOM.createPortal(
         <>
             <div className="modal-wrapper" onClick={closeModal}> </div>
 
@@ -88,6 +87,7 @@ const CustomModal = ({ closeModal }) => {
             </div>
 
         </>
+        // ,document.querySelector(".selfParentNode")
     );
 };
 

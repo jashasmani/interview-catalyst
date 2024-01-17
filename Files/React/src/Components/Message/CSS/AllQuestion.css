@@ -15,7 +15,7 @@
   padding: 2rem;
   padding: 0 5rem;
 }
-
+.load{color: black;}
 .top-addQuestion {
   display: flex;
   flex-direction: row;

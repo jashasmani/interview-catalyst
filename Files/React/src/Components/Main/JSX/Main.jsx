@@ -1,86 +1,149 @@
 import React, { useEffect, useState, useRef } from "react";
 import "../CSS/Main.css";
-// import search from "../images/search.png";
-// import notification from "../images/notification-bell.png";
+import search from "../PNG/search.png";
+import notification from "../PNG/notification-bell.png";
 import writing from "../PNG/writing.png";
-// import account from "../images/account.png";
+import account from "../PNG/account.png";
 import AllQuestion from '../../Message/JSX/AllQuestion'
+import CustomModal from '../../Write/Input';
+import '../../Write/Write.css';
+import { Link } from 'react-router-dom';
+import axios from "axios";
 
 function WritePage() {
+
+
   const [activeTab, setActiveTab] = useState("For You");
-  
-  const [contentHeight, setContentHeight] = useState(0);
+  const [questionData, setQuestionData] = useState([]);
+
+
+  // const [contentHeight, setContentHeight] = useState(0);
   const contentRef = useRef(null);
+
+
+  // -------------------------------------------
+
+  const [model, setmodel] = useState(false);
+
+  const changeModal = () => setmodel(false);
+
+  // -------------------------------------------------
+
+  useEffect(() => {
+
+    const fetchData = async () => {
+
+      console.log('Fetching data...');
+
+      try {
+        const res = await axios.get('http://localhost:8000/user/question');
+        const newData = res.data;
+        setQuestionData(newData);
+      }
+      catch (error) {
+        console.log(error);
+      }
+    }
+    fetchData();
+
+  }, [])
+
+  
 
   const handleTabClick = (tab) => {
     setActiveTab(tab);
   };
 
-  useEffect(() => {
-    // Update content height whenever content changes
-    if (contentRef.current) {
-      setContentHeight(contentRef.current.clientHeight);
-    }
-  }, [activeTab]);
+
+
+  // useEffect(() => {
+  //   // Update content height whenever content changes
+  //   if (contentRef.current) {
+  //     setContentHeight(contentRef.current.clientHeight);
+  //   }
+
+
+
+  // }, [activeTab]);
 
   return (
-    <div className="main-write">
-      <div className="top-write">
+    <div className="main-main">
+      <div className="top-main">
         {/* Your existing code for header */}
-        <div className="logo-write"></div>
-        <div className="search-write">
-          {/* <img src={search} className="image-write" /> */}
+        <div className="logo-main"></div>
+        <div className="search-main">
+          <img src={search} className="image-main" alt="" />
           <input type="search" placeholder="Search.." id="search" required />
         </div>
-        <div className="side-write">
-          <div className="btn-write">
-            <img src={writing} />
-            Write
+
+
+        <div className="side-main">
+          <div className="btn-main">
+            <Link
+              className="btn-write"
+              onClick={() => setmodel(true)}>
+              <img src={writing} alt="" />
+              Write
+            </Link>
+            {model && <CustomModal closeModal={changeModal} />}
           </div>
-          <div className="notification-write">
-            {/* <img src={notification} /> */}
+
+
+          <div className="notification-main">
+            <img src={notification} alt="" />
           </div>
-          <div className="account-write">
-            {/* <img src={account} /> */}
+          <div className="account-main">
+            <img src={account} alt="" />
           </div>
         </div>
       </div>
-     
-        <div className="tabs-write">
-          <div className="tab-header">
-            <div
-              className={activeTab === "For You" ? "active" : ""}
-              onClick={() => handleTabClick("For You")}
-            >
-              For You
-            </div>
-            <div
-              className={activeTab === "Following" ? "active" : ""}
-              onClick={() => handleTabClick("Following")}
-            >
-              Following
-            </div>
+
+      <div className="tabs-main">
+        <div className="tab-header">
+          <div
+            className={activeTab === "For You" ? "active" : ""}
+            onClick={() => handleTabClick("For You")}
+          >
+            For You
           </div>
-          <div className="tab-indicator"></div>
-          <div className="tab-body" ref={contentRef}>
-            <div className={activeTab === "For You" ? "active" : ""}>
-              <h1>For You</h1>
-              {/* Your content for 'For You' tab */}
-              <p>
-                <AllQuestion />
-                <AllQuestion />
-              </p>
-            </div>
-            <div className={activeTab === "Following" ? "active" : ""}>
-              <h1>Following</h1>
-              {/* Your content for 'Following' tab */}
-              <p>
-                <AllQuestion />
-              </p>
-            </div>
+          <div
+            className={activeTab === "Following" ? "active" : ""}
+            onClick={() => handleTabClick("Following")}
+          >
+            Following
           </div>
         </div>
-      
+        <div className="tab-indicator"></div>
+        <div className="tab-body" ref={contentRef}>
+          <div className={activeTab === "For You" ? "active" : ""}>
+            <h1>For You</h1>
+           
+            {/* <p> */}
+
+
+           
+           
+            {/* <AllQuestion key={index} currentValue={questionData[currentIndex]} /> */}
+
+            {questionData.length > 0 && (
+        <div>
+          {questionData.map((value, index) => (
+            <AllQuestion key={index} currentValue={value} />
+          ))}
+        </div>
+      )}
+
+
+            {/* </p> */}
+          </div>
+          <div className={activeTab === "Following" ? "active" : ""}>
+            <h1>Following</h1>
+           
+
+          </div>
+        </div>
+      </div>
+
     </div>
   );
 }

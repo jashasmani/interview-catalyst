@@ -1,22 +1,21 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 // import { Link } from "react-router-dom";
 // import "../CSS/AddQuestion.css";
 import "../CSS/AllQuestion.css";
 import like from "../Image/like_empty.png";
 import likefilled from "../Image/like_filled.png";
 import comment from "../Image/comment.png";
+import axios from "axios";
 
 
-
-function AddQuestion() {
-
-  
+function AddQuestion({ currentValue }) {
 
 
   const [isLiked, setIsLiked] = useState(false);
 
   function fillLike(e) {
     console.log("img changed");
+
     if (!isLiked) {
       setIsLiked(true);
       e.target.setAttribute("src", { likefilled });
@@ -28,6 +27,7 @@ function AddQuestion() {
 
   }
 
+  
   return (
     <div className="main-addQuestion">
       <div className="top-addQuestion">
@@ -35,19 +35,22 @@ function AddQuestion() {
         <div className="name">Dhairya Bhatt</div>
       </div>
       <div className="question">
-        What is middleware in Node.js and how is it used? <hr />
+
+
+        {currentValue.question}  
+        <hr />
+
       </div>
       <div className="answer">
-        &#8594; In Node.js, middleware is a function that takes in the request
-        and response objects, as well as the next middleware function in the
-        application's request-response cycle. It can be employed to alter the
-        request or response objects, as well as to execute various tasks such as
-        logging, authentication, and error handling.
-      </div>
+        &#8594; 
+        {currentValue.answer}
+       </div>
       <div className="responses">
         <div className="likes">
           {/* <img src={like} alt=""  onClick={fillLike} /> */}
-          <img src={isLiked ? likefilled : like} onClick={fillLike} />
+          <img src={isLiked ? likefilled : like}
+            onClick={fillLike}
+            alt="" />
         </div>
         <div className="comments">
           <img src={comment} alt="" />
@@ -71,9 +74,9 @@ avatars.forEach(a => {
   const green = Math.pow(charCodeGreen, 7) % 200;
   const blue = (red + green) % 200;
 
-  // a.style.background = rgb(${ red }, ${ green }, ${ blue });
+  a.style.background = `rgb(${red}, ${green}, ${blue})`;
 
 
-  console.log(charCodeRed);
-  console.log(charCodeGreen);
+  // console.log(charCodeRed);
+  // console.log(charCodeGreen);
 })
