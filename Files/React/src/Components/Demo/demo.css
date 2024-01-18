@@ -1,0 +1,36 @@
+/* body{
+    background-color:blueviolet ;
+}
+.container-1{
+    border: .1rem solid black;
+    display: flex;
+    flex-direction: row;
+    margin: 2rem;
+    margin-left: 25rem;
+    margin-right: 25rem;
+    align-items: center;
+    justify-content: center;
+}
+
+.b1{
+    background-color:azure ;
+    width: 5rem;
+    height: 2rem;
+    margin: 2rem;
+}
+
+.c1{
+    margin: 2rem;   
+}
+
+.main-1{
+    border: .1rem solid black;
+    display: flex;
+    flex-direction: column;
+    margin: 2rem;
+    margin-top: 10rem;
+    margin-left: 25rem;
+    margin-right: 25rem;
+    align-items: center;
+    justify-content: center;
+} */

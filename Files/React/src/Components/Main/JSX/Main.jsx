@@ -150,7 +150,7 @@ function WritePage() {
         <div className="tab-indicator"></div>
         <div className="tab-body" ref={contentRef}>
           <div className={activeTab === "For You" ? "active" : ""}>
-            <h1>For You</h1>
+            <h3>New Arrivals...</h3>
 
             {/* <p> */}
 

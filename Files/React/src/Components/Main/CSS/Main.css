@@ -5,7 +5,7 @@
   }
   
   body {
-    background-color: #c5c6c7;
+    background-color: #76a2ce;
   }
   .top-main {
     padding-top: 20px;
@@ -110,7 +110,7 @@
     
     .tabs-main .tab-body {
       padding: 10px;
-      background: #f5f5f5;
+      background: #ece8e8;
       border-top: 1px solid #ddd;
       overflow: hidden;
       flex: 1;

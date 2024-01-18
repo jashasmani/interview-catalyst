@@ -1,11 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 // import { Link } from "react-router-dom";
 // import "../CSS/AddQuestion.css";
 import "../CSS/AllQuestion.css";
 import like from "../Image/like_empty.png";
 import likefilled from "../Image/like_filled.png";
 import comment from "../Image/comment.png";
-import axios from "axios";
 
 
 function AddQuestion({ currentValue }) {
@@ -27,36 +26,53 @@ function AddQuestion({ currentValue }) {
 
   }
 
-  
+
   return (
-    <div className="main-addQuestion">
-      <div className="top-addQuestion">
-        <div className="avatar" data-label="DB"></div>
-        <div className="name">Dhairya Bhatt</div>
-      </div>
-      <div className="question">
+    <>
 
+      <div className="top-title">
 
-        {currentValue.question}  
-        <hr />
-
-      </div>
-      <div className="answer">
-        &#8594; 
-        {currentValue.answer}
-       </div>
-      <div className="responses">
-        <div className="likes">
-          {/* <img src={like} alt=""  onClick={fillLike} /> */}
-          <img src={isLiked ? likefilled : like}
-            onClick={fillLike}
-            alt="" />
+        <div className="left-side">
+          <div className="avatar" data-label="UN"></div>
+          <div className="name">
+            User Name
+            <div className="time-title"><i class="fa-regular fa-clock"></i> 3 min ago</div>
+          </div>
         </div>
-        <div className="comments">
-          <img src={comment} alt="" />
+
+        <div className="right-side">
+          <div className="answer-title"><div className="answer-count">35</div> Answer</div>
+          <div className="votes-title"><div className="votes-count">21</div>Votes</div>
+          <div className="favourite-title"><div className="favourite-count">89</div>Favourite</div>
+        </div>
+
+      </div>
+
+
+      <div className="main-addQuestion">
+        <div className="question">
+          {currentValue.question}
+          
+          
+        </div>
+          <hr className="question-hr"/>
+        <div className="answer">
+          {/* &#8594; */}
+          {currentValue.answer}
+        </div>
+        <div className="responses">
+          <div className="likes">
+            {/* <img src={like} alt=""  onClick={fillLike} /> */}
+            <img src={isLiked ? likefilled : like}
+              onClick={fillLike}
+              alt="" />
+          </div>
+          <div className="comments">
+            <img src={comment} alt="" />
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }
 
