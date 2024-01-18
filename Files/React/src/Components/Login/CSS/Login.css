@@ -101,7 +101,7 @@ body {
     margin: auto;
     width: 25rem;
     height: 3rem;
-    background: transparent;
+    /* background: transparent; */
     /* background: #eaeaea; */
     border-radius: 1rem;
     border-bottom: #000066 solid 1.5px;
@@ -130,14 +130,16 @@ body {
 
     border: none;
     outline: none;
+    
+    
     color: #797979;
     padding: 0 1rem;
     font-size: 1.2rem;
 }
 
-input:-webkit-autofill:focus {
+/* input:-webkit-autofill:focus {
     -webkit-box-: 0 0 0 #eaeaea;
-}
+} */
 
 .forgot-password {
     justify-content: center;

@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useState } from 'react';
 import CustomModal from './Input';
 import './Write.css';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const Write = () => {
   const [model, setmodel] = useState(false);
@@ -27,8 +27,8 @@ const Write = () => {
         onClick={() => setmodel(true)}>
         Open
       </Link>
-        {model && <CustomModal closeModal={changeModal} />}
-      
+      {model && <CustomModal closeModal={changeModal} />}
+
     </>
   );
 };

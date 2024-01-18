@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import '../CSS/Login.css';
 import axios from 'axios';
 import img from './img.jpg'
@@ -10,11 +10,12 @@ function Login() {
 
     const [home, setHome] = useState("Login");
     const [response, setResponse] = useState("");
+    const navigate = useNavigate();
 
 
     // -------------------************************---------------------********************-------------------*****************-----------------************
 
-    const clearData=()=>{
+    const clearData = () => {
         setResponse("");
     }
 
@@ -43,8 +44,9 @@ function Login() {
         try {
 
             const res = await axios.post('http://localhost:8000/user/login', loginData);
-            console.log(res.data.message)
+            console.log(res.data.message);
             setResponse(res.data.message);
+            navigate('/main');
 
         } catch (error) {
 
@@ -56,6 +58,9 @@ function Login() {
             email: '',
             password: ''
         })
+
+
+
     }
 
 
@@ -130,8 +135,8 @@ function Login() {
 
                         <div className="inputs">
 
-                        {home === "Login" ? <label className='subtitle-response'> {response}  </label> :
-                            <label className='subtitle-response'>{response} </label>}
+                            {home === "Login" ? <label className='subtitle-response'> {response}  </label> :
+                                <label className='subtitle-response'>{response} </label>}
 
 
                             {home === "Login" ? <div></div> :
@@ -155,9 +160,9 @@ function Login() {
                             <div className="input">
                                 <i className="fa-solid fa-envelope"></i>
                                 <input
-                                    type='email'
+                                    type={home === "Login" ? "text" : "email"}
                                     name='email'
-                                    placeholder='Email'
+                                    placeholder={home === "Login" ? "Email or Username" : "Email"}
                                     value={home === "Login" ? loginData.email : registrationData.email}
                                     onChange={home === "Login" ? handleLoginChange : handleRegistrationChange}
                                     required
@@ -175,7 +180,6 @@ function Login() {
                                     value={home === "Login" ? loginData.password : registrationData.password}
                                     onChange={home === "Login" ? handleLoginChange : handleRegistrationChange}
                                     required
-
                                 />
                             </div>
                             {/* <label className='error'>{rederror}</label> */}
@@ -200,7 +204,7 @@ function Login() {
                                 <button
                                     className={home === "Sign Up" ? "white" : "blue"}
                                     onClick={clearData}>
-                                        Sign Up</button>
+                                    Sign Up</button>
 
                             </div>
 

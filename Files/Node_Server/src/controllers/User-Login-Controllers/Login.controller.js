@@ -7,10 +7,14 @@ async function getUserData(req, res) {
     try {
         const { email, password } = req.body;
 
-        const user = await User.findOne({ email });
+        const user = await User.findOne({
+            $or: [
+                { email: email },
+                { username: email }
+            ]});
 
 
-       
+            console.log(req.body)
 
         const passwordMatch = await bcrypt.compare(password, user.password);
 
@@ -21,7 +25,7 @@ async function getUserData(req, res) {
         else {
             res.status(401).json({ message: 'Invalid credentials' });
         }
-        
+
     } catch (error) {
         res.status(500).json({ message: 'Internal server error' });
     }

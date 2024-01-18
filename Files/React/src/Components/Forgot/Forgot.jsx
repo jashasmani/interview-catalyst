@@ -67,7 +67,6 @@ function Forgot_pass() {
                             <button className="button-send">Send</button>
                             <div className='back'>
                                 <Link to='/login' className='back-back'>
-                                    {/* <i class="fa-solid fa-arrow-left "></i> */}
                                     Back to Login</Link>
                             </div>
                         </div>

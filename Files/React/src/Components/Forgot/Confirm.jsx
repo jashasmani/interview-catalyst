@@ -45,53 +45,56 @@ function Confirm() {
 
     return (
         <section className='main-confirm'>
-        <form onSubmit={onPasswordSubmit}>
-            <div className="container-confirm">
-                
-            <div className="header-confirm">
-                    <img src={img_confirm} alt="" />
+            <form onSubmit={onPasswordSubmit}>
+                <div className="container-confirm">
+
+                    <div className="header-confirm">
+                        <img src={img_confirm} alt="" />
                         <div className="text-confirm">Confirm Password</div>
-                        
+
                     </div>
 
 
-                <div className="inputs-confirm">
+                    <div className="inputs-confirm">
 
 
-                    <div className="input-confirm">
-                        <i className="fa-solid fa-lock"></i>
-                        <input
-                            type='password'
-                            name='password'
-                            placeholder='Password'
-                            value={checkpassword.password}
-                            onChange={onPasswordChange}
-                            required
-                        />
-                    </div>
+                        <div className="input-confirm">
+                            <i className="fa-solid fa-lock"></i>
+                            <input
+                                type='password'
+                                name='password'
+                                placeholder='Password'
+                                value={checkpassword.password}
+                                onChange={onPasswordChange}
+                                required
+                            />
+                        </div>
 
-                    <div className="input-confirm">
-                        <i className="fa-solid fa-lock"></i>
-                        <input
-                            type='password'
-                            name='confirm_password'
-                            placeholder='Confirm Password'
-                            value={checkpassword.confirm_password}
-                            onChange={onPasswordChange}
-                            required
-                        />
-                    </div>
+                        <div className="input-confirm">
+                            <i className="fa-solid fa-lock"></i>
+                            <input
+                                type='password'
+                                name='confirm_password'
+                                placeholder='Confirm Password'
+                                value={checkpassword.confirm_password}
+                                onChange={onPasswordChange}
+                                required
+                            />
+                        </div>
 
-                    <div className="submit-confirm">
-                            <button className="button-confirm">Send</button>
+                        <div className="submit-confirm">
+                            <button
+                                className="button-confirm">
+                                Send
+                            </button>
                         </div>
 
 
-                </div>
+                    </div>
 
-            </div>
-        </form>
-    </section>
+                </div>
+            </form>
+        </section>
     )
 }
 
