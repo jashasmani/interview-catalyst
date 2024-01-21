@@ -1,0 +1,168 @@
+.nav-profile {
+  padding: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #142f43;
+  align-items: center;
+  /* height: %; */
+}
+
+.name-profile {
+  font-family: "Roboto";
+  font-size: 2.5rem;
+  color: white;
+  margin-left: 2rem;
+}
+
+.search-write {
+  display: flex;
+  align-items: center;
+  height: 2.5rem;
+  width: 15rem;
+  margin-left: -5rem;
+  background-color: white;
+  box-shadow: 0 0 0.5rem #ddd;
+  border-radius: 0.5rem;
+}
+
+#search {
+  border: none;
+  height: 2.5rem;
+  font-size: 1rem;
+  padding: 0 1rem;
+  width: 14rem;
+}
+
+.btn-profile {
+  margin-right: 2rem;
+}
+
+.btn-prof {
+  color: white;
+  background-color: white;
+  border-radius: 0.5rem;
+  height: 2.5rem;
+  width: 7rem;
+  color: black;
+  font-size: 1rem;
+}
+
+.container-profile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.overlap-profile {
+  height: 18rem;
+  background: linear-gradient(to bottom, #9ecdf4, #044a7c);
+  width: 100%;
+}
+
+.user-profile img {
+  background: white;
+  width: 12rem;
+  height: 12rem;
+  border: 5px solid #2872aa;
+  border-radius: 50%;
+  position: absolute;
+  transform: translate(-50%);
+  top: 17rem;
+  left: 20%;
+}
+
+.top-profile {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.info-profile {
+  margin-top: 1rem;
+  margin-left: 28rem;
+  font-family: "Poppins";
+}
+
+
+
+.profile-name{
+    margin-top: 0.5rem;
+    
+}
+.profile-icon{
+    margin-top: 0.2rem;
+    margin-right: 0.8rem;
+
+}
+
+.location {
+  display: flex;
+  flex-direction: row;
+}
+.web {
+  display: flex;
+  flex-direction: row;
+}
+
+
+
+
+
+
+@media screen and (max-width: 1100px) {
+  .name-profile {
+    font-size: 1.5rem;
+  }
+
+  .search-write {
+    height: 2rem;
+    width: 15rem;
+  }
+
+  #search {
+    height: 2.5rem;
+    font-size: 1rem;
+    padding: 0 1rem;
+    width: 30rem;
+  }
+
+  .btn-prof {
+    height: 2.5rem;
+    width: 7rem;
+    border-radius: 0.5rem;
+  }
+
+  .user-profile img {
+    width: 12rem;
+    height: 12rem;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .name-profile {
+    font-size: 1.1rem;
+  }
+
+  .search-write {
+    height: 1.8rem;
+    width: 12rem;
+  }
+
+  #search {
+    height: 2.5rem;
+    font-size: 1rem;
+    padding: 0 0.5rem;
+  }
+
+  .btn-prof {
+    height: 1.8rem;
+    margin: 0.2rem 0;
+    width: 7rem;
+    border-radius: 0.5rem;
+  }
+  .user-profile img {
+    width: 12rem;
+    height: 12rem;
+  }
+}

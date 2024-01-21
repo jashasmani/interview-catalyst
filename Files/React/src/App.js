@@ -10,6 +10,7 @@ import Input from './Components/Write/Input';
 import Main from './Components/Main/JSX/Main';
 import Admin_Main from './Components/Admin/JSX/Admin_Main';
 import Confirm from './Components/Forgot/Confirm';
+import  Profile  from './Components/Profile/profile/Profile';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 import Log1 from './Components/Demo/Demo1'
@@ -32,6 +33,7 @@ function App() {
           <Route path="/write" element={<Write />} />
           <Route path="/input" element={<Input />} />
           <Route path="/main" element={<Main />} />
+          <Route path="/profile" element={<Profile />} />
           <Route path="/admin" element={<Admin_Main />} />
 
           

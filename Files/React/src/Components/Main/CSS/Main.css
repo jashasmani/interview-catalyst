@@ -8,13 +8,11 @@ body {
   background-color: #001524;
 }
 
-
-
 .top-main {
   padding: 0.5rem;
   display: flex;
   justify-content: space-between;
-  background-color: #142F43;
+  background-color: #142f43;
   align-items: center;
 }
 
@@ -25,8 +23,8 @@ body {
 }
 
 .image-main {
-  color: #3559E0;
-  margin: 0 .5rem;
+  color: #3559e0;
+  margin: 0 0.5rem;
 }
 
 .image-side {
@@ -36,11 +34,10 @@ body {
 .search-main {
   display: flex;
   align-items: center;
-  /* justify-content: center;  */
   height: 2.5rem;
   width: 30rem;
   background-color: white;
-  box-shadow: 0 0 .5rem #ddd;
+  box-shadow: 0 0 0.5rem #ddd;
   border-radius: 0.5rem;
 }
 
@@ -55,7 +52,6 @@ body {
 #search:focus {
   outline: none;
 }
-
 
 .btn-main {
   align-items: center;
@@ -81,9 +77,6 @@ body {
   padding-left: 10px;
 }
 
-
-
-
 ::-webkit-scrollbar {
   width: 10px;
 }
@@ -95,5 +88,3 @@ body {
 ::-webkit-scrollbar-thumb:hover {
   background: #535151;
 }
-
-
