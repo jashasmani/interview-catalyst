@@ -3,8 +3,8 @@ const connectDB = require('./DbConnection');
 const loginRouter = require('./routes/login.route');
 const questionRouter = require('./routes/question.route');
 const profileRouter = require('./routes/profile.route');
+const commentRouter = require('./routes/comments.route');
 const cors = require('cors');
-const bodyParser = require('body-parser');
 
 const app = express();
 const port = 8080;
@@ -16,6 +16,7 @@ app.use(cors())
 app.use('/user',loginRouter);
 app.use('/user',questionRouter);
 app.use('/user',profileRouter);
+app.use('/user',commentRouter);
 
 connectDB();
 

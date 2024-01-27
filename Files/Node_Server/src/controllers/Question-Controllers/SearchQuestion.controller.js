@@ -13,7 +13,7 @@ async function  searchQuestion(req,res){
             }
         )
 
-        console.log(search_question)
+        // console.log(search_question)
         res.json(search_question);
 
     }

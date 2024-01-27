@@ -1,20 +1,16 @@
 import React, { useState, useEffect } from "react";
 import "../../Message/CSS/AllQuestion.css";
-import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
-import FavoriteIcon from "@mui/icons-material/Favorite";
-import CommentIcon from "@mui/icons-material/Comment";
 import QueryBuilderIcon from "@mui/icons-material/QueryBuilder";
-import VerifiedIcon from "@mui/icons-material/Verified";
-import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
-import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
+import MoreVertIcon from '@mui/icons-material/MoreVert';
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
+import VerifiedIcon from "@mui/icons-material/Verified";
+import Comment from "../../Comments/Comment";
 import axios from "axios";
 
 function AddQuestion({ currentValue }) {
-  const [isLiked, setIsLiked] = useState(false);
-  const [isDown, setIsDown] = useState(false);
+  
   const [profileImage, setProfileImage] = useState("");
-  const [addcomment, setAddComment] = useState(false);
+
   const [currentTime, setCurrentTime] = useState(
     new Date().toLocaleString("en-US", { timeZone: "Asia/Kolkata" })
   );
@@ -29,48 +25,17 @@ function AddQuestion({ currentValue }) {
     return () => clearInterval(intervalId);
   }, []);
 
-  const fillLike = (e) => {
-    if (!isLiked) {
-      setIsLiked(true);
-    }
-    if (isLiked) {
-      setIsLiked(false);
-    }
-  };
-
-  const showComment = (e) => {
-    if (!isDown) {
-      setIsDown(true);
-    }
-    if (isDown) {
-      setIsDown(false);
-    }
-  };
-
-  const addComment = (e) => {
-    e.preventDefault();
-    if (!addcomment) {
-      setIsDown(true);
-      setAddComment(true);
-    }
-    if (addcomment) {
-      setIsDown(false);
-      setAddComment(false);
-    }
-  };
-
+  
   const [min, setMin] = useState("");
   const [hours, setHours] = useState("");
   const [days, setDays] = useState("");
   const [years, setYears] = useState("");
   useEffect(() => {
     const fetchData = async () => {
-      console.log("Fetching data...profile in question");
-
       try {
-        const res = await axios.post("http://localhost:8080/user/getprofile", {
-          cusername: currentValue.username,
-        });
+        const res = await axios.get(
+          `http://localhost:8080/user/getprofile?cusername=${currentValue.username}`
+        );
         const newData = res.data.profile;
         setProfileImage(newData.image);
       } catch (error) {
@@ -127,7 +92,9 @@ function AddQuestion({ currentValue }) {
 
                 {min > 60
                   ? hours > 24
-                    ? `${days} day ago`
+                    ? years > 365
+                      ? `${days} years ago`
+                      : `${days} day ago`
                     : `${hours} hours ago`
                   : `${min} min ago`}
               </div>
@@ -138,11 +105,14 @@ function AddQuestion({ currentValue }) {
             <div className="answer-title">
               <div className="answer-count">35</div> Answer
             </div>
-            <div className="votes-title">
+            {/* <div className="votes-title">
               <div className="votes-count">21</div>Votes
-            </div>
+            </div> */}
             <div className="favourite-title">
               <div className="favourite-count">89</div>Favourite
+            </div>
+            <div className="favourite-title">
+              <div className="favourite-count" onClick=''><MoreVertIcon style={{fontSize:'2rem'}}/></div>
             </div>
           </div>
         </div>
@@ -160,50 +130,15 @@ function AddQuestion({ currentValue }) {
             {/* &#8594; */}
             {currentValue.answer}
           </div>
-          <div className="responses">
-            <div className="icon-left">
-              <div className="likes" onClick={fillLike}>
-                {/* <img src={like} alt=""  onClick={fillLike} /> */}
-                {isLiked ? (
-                  <FavoriteIcon style={{ color: "red" }} />
-                ) : (
-                  <FavoriteBorderIcon />
-                )}
-              </div>
-              <div className="comments" onClick={addComment}>
-                <CommentIcon />
-              </div>
-            </div>
-            <div className="icon-right">
-              <div className="up-down" onClick={showComment}>
-                {isDown ? <KeyboardArrowDownIcon /> : <KeyboardArrowUpIcon />}
-              </div>
-            </div>
-          </div>
-        </div>
 
-        {isDown ? (
-          <div className="main-comment">
-            <label className="comment-title">Comments</label>
-            {addcomment ? (
-              <div className="main-comment-in">
-                {/* <label className="comment-title">Comment</label> */}
-                <textarea
-                  className="input-comment"
-                  type="text"
-                  placeholder="Add Your Comment.."
-                />
-                <div className="button-comment-div">
-                  <button className="button-comment">Add</button>
-                </div>
-              </div>
-            ) : (
-              <div></div>
-            )}
-          </div>
-        ) : (
-          <div></div>
-        )}
+         
+
+          <Comment
+            // addcomment={addcomment}
+            // isDown={isDown}
+            currentValue={currentValue}
+          />
+        </div>
       </section>
     </>
   );

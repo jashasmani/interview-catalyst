@@ -2,14 +2,15 @@ const express = require("express");
 const Profile = require("../../models/profile.model");
 
 async function getProfile(req, res) {
-  const { cusername } = req.body;
-  // console.log("GetProfile");
-  // console.log(req.body);
+  const { cusername } = req.query;
+ 
 
   try {
-    const profile = await Profile.findOne({ username: cusername });
+    const profile = await Profile.findOne({ username: cusername }).exec();
 
-    // console.log(profile);
+    // console.log('profile',profile)
+    // console.log('profile',cusername)
+  
     if (!profile) {
       return res.status(404).json({ message: "Profile not found" });
     }
@@ -20,7 +21,7 @@ async function getProfile(req, res) {
     console.error("Profile Get Error:", e);
   }
 
-  // console.log("GetProfile done");
+  
 }
 
 module.exports = getProfile;

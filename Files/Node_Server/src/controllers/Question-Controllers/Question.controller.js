@@ -6,7 +6,7 @@ async function insertQuestion(req, res) {
 
     try {
         const { questions, username } = req.body;
-        console.log(req.body)
+        // console.log(req.body)
         const currentTimeInIndia = new Date().toLocaleString('en-US', { timeZone: 'Asia/Kolkata' });
 
         if (username != '') {

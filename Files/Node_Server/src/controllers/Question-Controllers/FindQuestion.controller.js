@@ -28,11 +28,10 @@ async function findQuestion(req, res) {
                     return res.status(401).json({ result: "user not found" });
                 }
     
-                // console.log('User found:', user);
-                // console.log("token");
+               
                 
                 const question = await Question.find({}).sort({ timestamp: -1 });;
-                console.log(question);
+                // console.log(question);
                 res.json({ question: question, cusername: user.username });
 
             }

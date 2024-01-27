@@ -47,7 +47,7 @@ function WritePage() {
 
   useEffect(() => {
     const fetchData = async () => {
-      console.log("Fetching data...");
+     
 
       try {
         const res = await axios.get("http://localhost:8080/user/question", {
@@ -57,7 +57,7 @@ function WritePage() {
         });
         const newData = res.data.question;
         setCUsername(res.data.cusername);
-        console.log(newData);
+        // console.log(newData);
         setQuestionData(newData);
       } catch (error) {
         console.log(error);

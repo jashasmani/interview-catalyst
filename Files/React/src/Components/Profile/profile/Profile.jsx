@@ -43,13 +43,12 @@ const Profile = () => {
       console.log("Fetching data...111");
 
       try {
-        const res = await axios.post("http://localhost:8080/user/getprofile", {
-          cusername,
-        });
+        const res = await axios.get(`http://localhost:8080/user/getprofile?cusername=${cusername}`);
         const newData = res.data.profile;
+        console.log(newData)
         setProfile(newData);
       } catch (error) {
-        console.log(error);
+        //  console.log(error);
       }
     };
 
@@ -100,19 +99,15 @@ const Profile = () => {
         <div className="profileRight">
           <div className="profileRightTop">
             <div className="profileCover">
-              <img className="profileCoverImg" src={Back} alt="" />
+              <img className="profileCoverImg" src={Back} alt="back" />
               
-              {profile.image ? (
+              {profile.image!=null ? (
                 <img
                 className="profileUserImg"
                 src={profile.image}
                 alt="profile"
               />
               ) : (
-                // <img
-                //   src="https://blogs.timesofindia.indiatimes.com/wp-content/uploads/2015/12/mark-zuckerberg.jpg"
-                //   alt="Profile"
-                // />
                 <AccountCircleIcon className="profileUserImg" style={{fontSize:'14rem'}}/>
               )}
               <div className="profileInfo">
