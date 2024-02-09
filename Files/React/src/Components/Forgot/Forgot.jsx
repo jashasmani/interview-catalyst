@@ -18,7 +18,7 @@ function Forgot_pass() {
         e.preventDefault();
         try {
             console.log("starting point in JSX")
-            const res = await axios.post('http://localhost:8080/user/forgot-password', { mail })
+            const res = await axios.post('http://localhost:5000/user/forgot-password', { mail })
             console.log("JSX  2")
             console.log(res.data.message)
             setResponseMsg(res.data.message)

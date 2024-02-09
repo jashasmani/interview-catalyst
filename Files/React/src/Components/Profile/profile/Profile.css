@@ -197,10 +197,12 @@
   position: absolute;
   left: 0;
   right: 0;
-  margin-left: 15rem;
+  margin-left: 11rem;
   top: 9rem;
   border: 3px solid white;
 }
+
+
 
 .profileInfo {
   display: flex;

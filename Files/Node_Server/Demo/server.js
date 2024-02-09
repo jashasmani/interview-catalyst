@@ -5,7 +5,7 @@ const jwt = require('jsonwebtoken');
 const nodemailer = require('nodemailer');
 
 const app = express();
-const port = 3001;
+const port = 5000;
 
 app.use(bodyParser.json());
 app.use(cors());

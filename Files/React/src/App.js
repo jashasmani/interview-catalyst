@@ -39,8 +39,8 @@ function App() {
           <Route path="/admin" element={<Admin_Main />} />
 
           
-          {/* <Route path="/log1" element={<Log1 />} /> */}
-          {/* <Route path="/home1" element={<Home1 />} /> */}
+          {/* <Route path="/log1" element={<Log1 />} /> 
+          <Route path="/home1" element={<Home1 />} /> */}
 
           
         </Routes>

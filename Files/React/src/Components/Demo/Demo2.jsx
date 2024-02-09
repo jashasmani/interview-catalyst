@@ -11,7 +11,7 @@ const Home = () => {
     const token = localStorage.getItem("token")
     try {
       const response = await axios.post(
-        "http://localhost:3001/api/buy",
+        "http://localhost:5000/api/buy",
         {},
         {
           headers: {
@@ -32,7 +32,7 @@ const Home = () => {
     const token = localStorage.getItem("token")
     try {
       const response = await axios.post(
-        "http://localhost:3001/api/return",
+        "http://localhost:5000/api/return",
         {},
         {
           headers: {

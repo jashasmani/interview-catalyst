@@ -26,7 +26,7 @@ function Confirm() {
     const onPasswordSubmit = async (e) => {
         e.preventDefault();
         // console.log(checkpassword);
-        await axios.post(`http://localhost:8080/user/confirm/${id}/${token}`, checkpassword)
+        await axios.post(`http://localhost:5000/user/confirm/${id}/${token}`, checkpassword)
             .then(res => {
                 if (res.data.Status === "Success") {
                     navigate('/signin');

@@ -46,31 +46,35 @@ function WritePage() {
   // -------------------------------------------------
 
   useEffect(() => {
-    const fetchData = async () => {
-     
-
+    const fetchQuestion = async () => {
       try {
-        const res = await axios.get("http://localhost:8080/user/question", {
+        const res = await axios.get("http://localhost:5000/user/question", {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
           },
         });
         const newData = res.data.question;
         setCUsername(res.data.cusername);
-        // console.log(newData);
+        // console.log("new",newData);
         setQuestionData(newData);
       } catch (error) {
         console.log(error);
       }
     };
-    fetchData();
+
+    fetchQuestion();
+
+
+    
   }, [model]);
+
+
 
   const onSearch = async (e) => {
     const searchData = e.target.value;
     if (searchData) {
       const res = await axios.get(
-        `http://localhost:8080/user/search/${searchData}`
+        `http://localhost:5000/user/search/${searchData}`
       );
       const newData = res.data;
 
@@ -79,7 +83,7 @@ function WritePage() {
       }
     } else {
       try {
-        const res = await axios.get("http://localhost:8080/user/question", {
+        const res = await axios.get("http://localhost:5000/user/question", {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
           },
@@ -97,7 +101,6 @@ function WritePage() {
     <div className="main-main">
       <nav className="top-main">
         <div className="logo-main">
-          
           <h3 className="logo-text">Interview Catalyst</h3>
           {/* <h3 className="logo-username">{cusename}</h3> */}
         </div>

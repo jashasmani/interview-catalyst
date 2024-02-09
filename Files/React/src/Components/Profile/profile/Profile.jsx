@@ -7,8 +7,7 @@ import EditProfile from "../EditProfile/EditProfile";
 import axios from "axios";
 import AddQuestion from "../../Message/JSX/AllQuestion";
 import Back from "./back-image.jpg";
-import AccountCircleIcon from '@mui/icons-material/AccountCircle';
-
+import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 
 const Profile = () => {
   const [isEditModalOpen, setEditModalOpen] = useState(false);
@@ -25,7 +24,7 @@ const Profile = () => {
       console.log("Fetching login...");
 
       try {
-        const res = await axios.get("http://localhost:8080/user/login", {
+        const res = await axios.get("http://localhost:5000/user/login", {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
           },
@@ -43,25 +42,26 @@ const Profile = () => {
       console.log("Fetching data...111");
 
       try {
-        const res = await axios.get(`http://localhost:8080/user/getprofile?cusername=${cusername}`);
+        const res = await axios.get(
+          `http://localhost:5000/user/getprofile?cusername=${cusername}`
+        );
         const newData = res.data.profile;
-        console.log(newData)
+        console.log(newData);
         setProfile(newData);
       } catch (error) {
         //  console.log(error);
       }
     };
 
-    
     fetchData();
-  }, [cusername,isEditModalOpen]);
+  }, [cusername, isEditModalOpen]);
 
   useEffect(() => {
     const fetchData = async () => {
       // console.log("Fetching question...");
 
       try {
-        const res = await axios.get("http://localhost:8080/user/question", {
+        const res = await axios.get("http://localhost:5000/user/question", {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
           },
@@ -100,25 +100,40 @@ const Profile = () => {
           <div className="profileRightTop">
             <div className="profileCover">
               <img className="profileCoverImg" src={Back} alt="back" />
-              
-              {profile.image!=null ? (
+
+              {profile.image !== "" ? (
                 <img
-                className="profileUserImg"
-                src={profile.image}
-                alt="profile"
-              />
+                  className="profileUserImg"
+                  src={profile.image}
+                  alt="profile"
+                />
               ) : (
-                <AccountCircleIcon className="profileUserImg" style={{fontSize:'14rem'}}/>
+                <AccountCircleIcon
+                  className="profileUserImg"
+                  style={{ fontSize: "14rem", border: "none" }}
+                />
               )}
               <div className="profileInfo">
                 <h4 className="profileInfoName"> {profile.name}</h4>
                 <span className="profileInfoDesc">
-                  <SchoolIcon className="profile-icon" />
-                  {profile.college_name}
+                  {profile.college_name !== "" ? (
+                    <div>
+                      <SchoolIcon className="profile-icon" />
+                      {profile.college_name}
+                    </div>
+                  ) : (
+                    ""
+                  )}
                 </span>
                 <span className="profileInfoDesc">
-                  <AssessmentIcon className="profile-icon" />
-                  {profile.bio}
+                  {profile.bio !== "" ? (
+                    <div>
+                      <AssessmentIcon className="profile-icon" />
+                      {profile.bio}
+                    </div>
+                  ) : (
+                    ""
+                  )}
                 </span>
               </div>
             </div>
@@ -138,6 +153,7 @@ const Profile = () => {
           <EditProfile
             closeModal={() => setEditModalOpen(false)}
             cusername={cusername}
+            profile={profile}
           />
         )}
       </section>

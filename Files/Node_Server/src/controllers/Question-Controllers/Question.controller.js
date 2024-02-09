@@ -5,7 +5,7 @@ async function insertQuestion(req, res) {
 
 
     try {
-        const { questions, username } = req.body;
+        const { question, username } = req.body;
         // console.log(req.body)
         const currentTimeInIndia = new Date().toLocaleString('en-US', { timeZone: 'Asia/Kolkata' });
 
@@ -14,16 +14,15 @@ async function insertQuestion(req, res) {
 
             const question_main = new Question({
                 username: username,
-                question: questions.question,
-                answer: questions.answer,
+                question: question,
                 timestamp: currentTimeInIndia
             });
 
             await question_main.save();
+            res.status(201).json({ message: 'Question add successful' ,question_main});
         }
+        
 
-
-        res.status(201).json({ message: 'Question add successful' });
     }
     catch (e) {
         res.status(500).json({ message: 'Internal Server Error' });

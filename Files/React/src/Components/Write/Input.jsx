@@ -1,93 +1,85 @@
-import axios from 'axios';
-import React, { useState } from 'react';
+import axios from "axios";
+import React, { useState } from "react";
 
-const CustomModal = ({ closeModal,username }) => {
+const CustomModal = ({ closeModal, username }) => {
+  const [question, setQuestion] = useState("");
+  const [answers, setAnswers] = useState("");
 
-    const [questions, setQuestions] = useState({
-        question: '',
-        answer: ''
-    });
+  const handleQuestion = (e) => {
+    setQuestion(e.target.value);
+  };
+  const handleAnswers = (e) => {
+    setAnswers(e.target.value);
+  };
 
-    
+  const callCloseModal = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await axios.post("http://localhost:5000/user/question", {
+        question,
+        username,
+      });
 
-
-    const getquestion = (e) => {
-
-        const { name, value } = e.target;
-        setQuestions((prevData) => ({
-            ...prevData,
-            [name]: value
-
-        }))
-    };
-
-
-
-    const callCloseModal = async (e) => {
-
-        e.preventDefault();
+      if (response.data.question_main._id !== "" && answers !== "") {
         try {
-            const response = await axios.post('http://localhost:8080/user/question', {questions,username})
-
-            console.log(response.data);
-
-
+          await axios.post("http://localhost:5000/user/commentsubmit", {
+            cusername: username,
+            commentData: answers,
+            question_id: response.data.question_main._id,
+          });
+        } catch (error) {
+          console.log(error);
         }
-        catch (error) {
-            console.log(error)
-        }
-
-        setQuestions({
-            question: '',
-            answer: ''
-        })
-
-        closeModal();
+      }
+    } catch (error) {
+      console.log(error);
     }
 
-    return( 
-        <>
-            <div className="modal-wrapper" onClick={closeModal}> </div>
+    closeModal();
+  };
 
-            <div className="modal-container">
-                <div>{username}</div>
-                <div className='title-write'>
-                    <label >Create Post</label>
-                </div>
-                <div className='inputfield'>
-                    <textarea
-                        type="text"
-                        rows="3"
-                        name='question'
-                        value={questions.question}
-                        onChange={getquestion}
-                        placeholder="What's on your mind?"
-                        className='question-write'
-                        required />
-                    <textarea
-                        type="text"
-                        rows="9"
-                        name='answer'
-                        value={questions.answer}
-                        onChange={getquestion}
-                        placeholder="Compose your answer here..."
-                        className='answer-write' />
-                </div>
-                <div className='two-buttons'>
+  return (
+    <>
+      <div className="modal-wrapper" onClick={closeModal}></div>
 
-                    <button onClick={closeModal} className="btn-write-in-cancel">
-                        Cancel
-                    </button>
+      <div className="modal-container">
+        <div>{username}</div>
+        <div className="title-write">
+          <label>Create Post</label>
+        </div>
+        <div className="inputfield">
+          <textarea
+            type="text"
+            rows="3"
+            name="question"
+            value={question}
+            onChange={handleQuestion}
+            placeholder="What's on your mind?"
+            className="question-write"
+            required
+          />
+          <textarea
+            type="text"
+            rows="9"
+            name="answer"
+            value={answers}
+            onChange={handleAnswers}
+            placeholder="Compose your answer here..."
+            className="answer-write"
+          />
+        </div>
+        <div className="two-buttons">
+          <button onClick={closeModal} className="btn-write-in-cancel">
+            Cancel
+          </button>
 
-                    <button onClick={callCloseModal} className="btn-write-in">
-                        Send
-                    </button>
-                </div>
-            </div>
-
-        </>
-       
-    );
+          <button onClick={callCloseModal} className="btn-write-in">
+            Send
+          </button>
+        </div>
+      </div>
+    </>
+  );
 };
 
 export default CustomModal;

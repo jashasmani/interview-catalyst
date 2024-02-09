@@ -19,7 +19,7 @@ function WritePage() {
       console.log("Fetching data...");
 
       try {
-        const res = await axios.get("http://localhost:8080/user/question", {
+        const res = await axios.get("http://localhost:5000/user/question", {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
           },
@@ -40,7 +40,7 @@ function WritePage() {
 
     if (searchData) {
       const res = await axios.get(
-        `http://localhost:8080/user/search/${searchData}`
+        `http://localhost:5000/user/search/${searchData}`
       );
       const newData = res.data;
 
@@ -49,7 +49,7 @@ function WritePage() {
       }
     } else {
       try {
-        const res = await axios.get("http://localhost:8080/user/question", {
+        const res = await axios.get("http://localhost:5000/user/question", {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
           },

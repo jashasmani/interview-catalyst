@@ -1,19 +1,35 @@
 import React, { useState, useEffect } from "react";
 import "../../Message/CSS/AllQuestion.css";
 import QueryBuilderIcon from "@mui/icons-material/QueryBuilder";
-import MoreVertIcon from '@mui/icons-material/MoreVert';
+import MoreVertIcon from "@mui/icons-material/MoreVert";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import VerifiedIcon from "@mui/icons-material/Verified";
 import Comment from "../../Comments/Comment";
 import axios from "axios";
 
 function AddQuestion({ currentValue }) {
-  
   const [profileImage, setProfileImage] = useState("");
 
-  const [currentTime, setCurrentTime] = useState(
+  const [min, setMin] = useState("");
+  const [hours, setHours] = useState("");
+  const [days, setDays] = useState("");
+  const [years, setYears] = useState("");
+  const [, setCurrentTime] = useState(
     new Date().toLocaleString("en-US", { timeZone: "Asia/Kolkata" })
   );
+
+  useEffect(() => {
+    const fetchAnswer = async () => {
+      try {
+        await axios.get(
+          `http://localhost:5000/user/getcomment?question_id=${currentValue._id}`
+        );
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchAnswer();
+  }, [currentValue._id]);
 
   useEffect(() => {
     const intervalId = setInterval(() => {
@@ -25,16 +41,11 @@ function AddQuestion({ currentValue }) {
     return () => clearInterval(intervalId);
   }, []);
 
-  
-  const [min, setMin] = useState("");
-  const [hours, setHours] = useState("");
-  const [days, setDays] = useState("");
-  const [years, setYears] = useState("");
   useEffect(() => {
     const fetchData = async () => {
       try {
         const res = await axios.get(
-          `http://localhost:8080/user/getprofile?cusername=${currentValue.username}`
+          `http://localhost:5000/user/getprofile?cusername=${currentValue.username}`
         );
         const newData = res.data.profile;
         setProfileImage(newData.image);
@@ -69,21 +80,15 @@ function AddQuestion({ currentValue }) {
       <section style={{ margin: "0 2rem" }}>
         <div className="top-title">
           <div className="left-side">
-            <div
-              className="avatar"
-              // data-label="UN"
-            >
+            
+            {/* <div className="avatar">
               {profileImage ? (
-                <img
-                  // className="profileUserImg"
-                  src={profileImage}
-                  alt="profile"
-                />
+                <img src={profileImage} alt="profile" />
               ) : (
                 <AccountCircleIcon style={{ fontSize: "3rem" }} />
               )}
-            </div>
-            <div className="name">
+            </div> */}
+            {/* <div className="name">
               <div className="name-title-question">{currentValue.username}</div>
               <div className="time-title">
                 <QueryBuilderIcon
@@ -96,48 +101,47 @@ function AddQuestion({ currentValue }) {
                       ? `${days} years ago`
                       : `${days} day ago`
                     : `${hours} hours ago`
+                  : min < 1
+                  ? "Just Now"
                   : `${min} min ago`}
-              </div>
+              </div> */}
             </div>
           </div>
 
           <div className="right-side">
-            <div className="answer-title">
+            {/*  <div className="answer-title">
               <div className="answer-count">35</div> Answer
             </div>
-            {/* <div className="votes-title">
+            <div className="votes-title">
               <div className="votes-count">21</div>Votes
-            </div> */}
+            </div> 
             <div className="favourite-title">
               <div className="favourite-count">89</div>Favourite
-            </div>
+            </div>*/}
             <div className="favourite-title">
-              <div className="favourite-count" 
-              // onClick=''
-              ><MoreVertIcon style={{fontSize:'2rem'}}/></div>
+              <div
+                className="favourite-count"
+                // onClick=''
+              >
+                <MoreVertIcon style={{ fontSize: "2rem" }} />
+              </div>
             </div>
           </div>
-        </div>
+        {/* </div> */}
 
         <div className="main-addQuestion">
-          <div className="verified">
+          {/* <div className="verified">
             Verified{" "}
-            <VerifiedIcon
+           <VerifiedIcon
               style={{ fontSize: "0.9rem", color: "rgb(17, 255, 4)" }}
-            />
-          </div>
+            /> 
+          </div>*/}
           <div className="question">{currentValue.question}</div>
-          <hr className="question-hr" />
-          <div className="answer">
-            {/* &#8594; */}
-            {currentValue.answer}
-          </div>
-
-         
+          {/* <hr className="question-hr" /> */}
+          {/* <div className="answer">{currentValue.answer}</div> */}
 
           <Comment
-            // addcomment={addcomment}
-            // isDown={isDown}
+            questionId={currentValue._id}
             currentValue={currentValue}
             img={profileImage}
           />

@@ -2,13 +2,13 @@ import React, { useState, useRef, useEffect } from "react";
 import "./EditProfile.css";
 import axios from "axios";
 
-import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 
-const EditProfile = ({ closeModal, cusername }) => {
-  const [name, setName] = useState("");
-  const [collegename, setCollegeName] = useState("");
-  const [bio, setBio] = useState("");
-  const [image, setImage] = useState("");
+const EditProfile = ({ closeModal, cusername, profile }) => {
+  const [name, setName] = useState(profile.name);
+  const [collegename, setCollegeName] = useState(profile.college_name);
+  const [bio, setBio] = useState(profile.bio);
+  const [image, setImage] = useState(profile.image);
   const modalRef = useRef(null);
   const inputRef = useRef(null);
 
@@ -35,19 +35,19 @@ const EditProfile = ({ closeModal, cusername }) => {
 
   const sendProfile = async () => {
     // if (image) {
-      try {
-        const res = await axios.post("http://localhost:8080/user/profile", {
-          cusername,
-          name,
-          collegename,
-          bio,
-          image,
-        });
-        console.log(res);
-        closeModal();
-      } catch (e) {
-        console.log("error", e);
-      }
+    try {
+      const res = await axios.post("http://localhost:5000/user/profile", {
+        cusername,
+        name,
+        collegename,
+        bio,
+        image,
+      });
+      console.log(res);
+      closeModal();
+    } catch (e) {
+      console.log("error", e);
+    }
     // }
   };
 
@@ -97,15 +97,10 @@ const EditProfile = ({ closeModal, cusername }) => {
           </div>
           <div className="container-mng">
             <div className="profile-pic">
-              {/* src="https://blogs.timesofindia.indiatimes.com/wp-content/uploads/2015/12/mark-zuckerberg.jpg" */}
-              {image ? (
-                <img src={image} alt="Profile" />
+              {image !== "" ? (
+                <img src={image} alt="Profile" style={{width:'7rem',height:'7rem'}}/>
               ) : (
-                // <img
-                //   src="https://blogs.timesofindia.indiatimes.com/wp-content/uploads/2015/12/mark-zuckerberg.jpg"
-                //   alt="Profile"
-                // />
-                <AccountCircleIcon style={{fontSize:'10rem'}}/>
+                <AccountCircleIcon style={{ fontSize: "10rem" }} />
               )}
 
               <div className="btn-row" onClick={handleImageClick}>
