@@ -3,17 +3,21 @@ import axios from "axios";
 
 const Answer = ({ comment }) => {
   const [checkGrant, setCheckGrant] = useState("");
+  const [username, setUsername] = useState("");
   const [highlightedText, setHighlightedText] = useState([]);
 
   useEffect(() => {
     const fetchComments = async () => {
       try {
+        // console.log(comment.comment)
         const res = await axios.get(
           `http://localhost:5000/admin/geteditedanswerbyid?comment_id=${comment._id}`
         );
 
         const data1 = res.data.editcomment_data;
+        console.log(data1.edit_answer);
         setCheckGrant(data1.grant);
+        setUsername(data1.cusername);
 
         const sentences1 = comment.comment.split(/\.|\?|\!/);
         const sentences2 = data1.edit_answer.split(/\.|\?|\!/);
@@ -53,14 +57,9 @@ const Answer = ({ comment }) => {
   return (
     <>
       <div className="answer">
-        {checkGrant === "true"
-          ? highlightedText
-          // : comment.edited_comment === "none"
-          // ? 
-          :comment.comment
-          // : comment.edited_comment
-          }
+        {checkGrant === "true" ? highlightedText : comment.comment}
       </div>
+      <div>{username}</div>
     </>
   );
 };

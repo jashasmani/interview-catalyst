@@ -25,7 +25,6 @@ const Comment = ({
   const [restComment1, setRestComment] = useState([]);
   const [isEditAnsModalOpen, setEditAnsModalOpen] = useState(false);
   const [selectedCommentId, setSelectedCommentId] = useState(null);
-  
 
   useEffect(() => {
     const fetchComments = async () => {
@@ -71,7 +70,7 @@ const Comment = ({
         cusername: cusername,
         question_id: currentValue._id,
         commentData,
-        edited_comment:'none',
+        edited_comment: "none",
       });
       console.log(res.data);
       setNextCommentData(res.data.question_comment);
@@ -141,12 +140,11 @@ const Comment = ({
   };
 
   const openEditAnsModal = (commentId) => {
+    // console.log("BorderColorIcon. :", commentId);
+    // console.log("First comment:", firstComment1._id);
     setSelectedCommentId(commentId);
     setEditAnsModalOpen(true);
   };
-
-  
-
 
   return (
     <>
@@ -195,7 +193,7 @@ const Comment = ({
         />
       )}
 
-      <Answerdata comment={firstComment1}/>
+      <Answerdata comment={firstComment1} />
 
       <div className="responses">
         <div className="icon-left">
@@ -258,7 +256,7 @@ const Comment = ({
                     </div>
 
                     {/* <div className="answer">{comment.comment}</div> */}
-                    <Answerdata comment={comment}/>
+                    <Answerdata comment={comment} />
                     {isEditAnsModalOpen && (
                       <EditAnswer
                         closeModal={() => {

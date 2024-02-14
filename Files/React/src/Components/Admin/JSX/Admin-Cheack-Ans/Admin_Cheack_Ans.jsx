@@ -29,7 +29,8 @@ function Adminn_Cheack_Ans({ data,setRefereshData }) {
         const res = await axios.get(
           `http://localhost:5000/user/GetCommentById?comment_id=${data.comment_id}`
         );
-        setCommentValue(res.data.comment_data.comment);
+        const dataone=res.data.comment_data
+        setCommentValue(dataone.edited_comment==='none'?dataone.comment:dataone.edited_comment);
       } catch (error) {
         console.log(error);
       }
@@ -84,7 +85,7 @@ function Adminn_Cheack_Ans({ data,setRefereshData }) {
         comment_id:data.comment_id,
       });
       setRefereshData(true);
-      console.log("123456")
+      // console.log("123456")
     } catch (error) {
       console.log(error);
     }

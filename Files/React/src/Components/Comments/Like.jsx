@@ -78,7 +78,6 @@ const Like = ({ currentValue, cid, countLikeTotal }) => {
 
   useEffect(() => {
     const fetchData = async () => {
-      // console.log("Fetching login...");
 
       try {
         const res = await axios.get("http://localhost:5000/user/login", {

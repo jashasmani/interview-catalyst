@@ -26,6 +26,7 @@ const CustomModal = ({ closeModal, username }) => {
             cusername: username,
             commentData: answers,
             question_id: response.data.question_main._id,
+            edited_comment: "none",
           });
         } catch (error) {
           console.log(error);

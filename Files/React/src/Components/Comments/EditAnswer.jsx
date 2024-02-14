@@ -103,10 +103,6 @@ const CustomModal = ({ setShowAlert, closeModal, cid, questionData }) => {
           />
         </div>
 
-        <div>
-          {/* <p>Highlighted Added Text:</p> */}
-          {/* <span>{renderHighlightedText()}</span> */}
-        </div>
         <div className="two-buttons">
           <button onClick={closeModal} className="btn-write-in-cancel">
             Cancel
