@@ -9,16 +9,16 @@ const cheackEditRoute = require("./routes/cheackEditAnswer.route");
 require('dotenv').config();
 
 const cors = require("cors");
-// const configcors = {
-//   origin: "*",
-//   credential: true,
-//   method: ["GET", "POST", "PUT", "DELETE"],
-// };
+const configcors = {
+  origin: "*",
+  credential: true,
+  method: ["GET", "POST", "PUT", "DELETE"],
+};
 
 const app = express();
 const port = process.env.PORT ;
 
-// app.options("", cors(configcors));
+app.options("", cors(configcors));
 app.use(cors());
 
 app.use(express.json({ limit: "50mb" }));
