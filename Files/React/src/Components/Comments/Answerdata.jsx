@@ -13,7 +13,7 @@ const Answer = ({ comment }) => {
           `http://localhost:5000/admin/geteditedanswerbyid?comment_id=${comment._id}`
         );
 
-        const data1 = res.data.editcomment_data;;
+        const data1 = res.data.editcomment_data;
         setCheckGrant(data1.grant);
         setUsername(data1.cusername);
 
