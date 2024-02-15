@@ -5,7 +5,7 @@
       { "src": "/admin/(.*)", "dest": "/admin/index.js" }
     ],
     "env": {
-      "PORT": 3000
+      "PORT": "3000"
     }
   }
   
