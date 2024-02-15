@@ -6,6 +6,7 @@ const profileRouter = require("./routes/profile.route");
 const commentRouter = require("./routes/comments.route");
 const likeRouter = require("./routes/like.route");
 const cheackEditRoute = require("./routes/cheackEditAnswer.route");
+require('dotenv').config();
 
 const cors = require("cors");
 // const configcors = {
@@ -15,7 +16,7 @@ const cors = require("cors");
 // };
 
 const app = express();
-const port = 2000;
+const port = process.env.PORT ;
 
 // app.options("", cors(configcors));
 app.use(cors());
