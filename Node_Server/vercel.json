@@ -3,7 +3,7 @@
     "version": 2,
     "routes": [
         {
-            "src": "/(.*)",
+            "src": "/user",
             "dest": "/",
             "methods": ["GET", "POST", "PATCH", "DELETE", "OPTIONS"]
         }
