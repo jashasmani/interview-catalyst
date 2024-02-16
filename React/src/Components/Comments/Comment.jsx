@@ -18,7 +18,6 @@ const Comment = ({
 }) => {
   const [commentData, setCommentData] = useState("");
   const [nextCommentData, setNextCommentData] = useState([]);
-  const [nextCommentData2, setNextCommentData2] = useState([]);
   const [addcommentData, setAddCommentData] = useState(false);
   const [cusername, setCUsername] = useState(false);
   const [getCommentusername, setGetCommentUsername] = useState([]);
@@ -27,10 +26,9 @@ const Comment = ({
   const [isEditAnsModalOpen, setEditAnsModalOpen] = useState(false);
   const [selectedCommentId, setSelectedCommentId] = useState(null);
   // const [likecount, setLikeCountUpdate] = useState(false);
-  const [likeData, setLikeData] = useState(1);
   
 
-  useEffect(() => {
+  // useEffect(() => {
     const fetchComments = async () => {
       try {
         const res = await axios.get(
@@ -53,9 +51,13 @@ const Comment = ({
       }
     };
 
-    fetchComments();
+    useEffect(() => {
+      fetchComments();
+    }, [nextCommentData]);
+  
+    // fetchComments();
     
-  }, [questionId,likeData]);
+  // }, [questionId,likeData]);
 
   // const sortedComments = useMemo(() => {
   //   return nextCommentData.sort((a, b) => b.likeCount - a.likeCount);
@@ -214,7 +216,6 @@ const Comment = ({
             nextCommentData={nextCommentData}
             cid={firstComment1._id}
             countLikeTotal={firstComment1.likeCount}
-            setLikeCountUpdate={setLikeData}
             updateCommentData={() => {fetchComments();}}
           />
           <div className="comments" onClick={addComment}>
@@ -292,7 +293,7 @@ const Comment = ({
                       nextCommentData={nextCommentData}
                       cid={comment._id}
                       countLikeTotal={comment.likeCount}
-                      setLikeCountUpdate={setLikeData}
+                      updateCommentData={() => {fetchComments();}}
                     />
                     {/* {count()} */}
                   </div>

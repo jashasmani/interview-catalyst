@@ -7,7 +7,7 @@ const Like = ({ currentValue, cid, countLikeTotal, updateCommentData }) => {
   const [isValueLiked, setIsValueLiked] = useState(false);
   const [calculateLike, setCalculateLike] = useState([]);
   const [cusername, setCUsername] = useState("");
-  const [likeCount, setLikeCount] = useState(0);
+  const [likeCount, setLikeCount] = useState(countLikeTotal);
 
   useEffect(() => {
     const fetchLikes = async () => {
@@ -56,18 +56,17 @@ const Like = ({ currentValue, cid, countLikeTotal, updateCommentData }) => {
       
       // setTimeout(() => {
         setIsValueLiked(!isValueLiked);
-        // setLikeCount((prevLikeCount) =>
-        //   isValueLiked
-        //     ? prevLikeCount <= 0
-        //       ? 0
-        //       : prevLikeCount - 1
-        //     : prevLikeCount + 1
-        // );
+        setLikeCount((prevLikeCount) =>
+          isValueLiked
+            ? prevLikeCount <= 0
+              ? 0
+              : prevLikeCount - 1
+            : prevLikeCount + 1
+        );
         likechange(isValueLiked ? likeCount - 1 : likeCount + 1);
+        updateCommentData();
       // }, 2000);
-      // setLikeCountUpdate((prevLikeCount) =>
-      //   isValueLiked ? prevLikeCount - 1 : prevLikeCount + 1
-      // );
+      
     } catch (error) {
       console.error("Error submitting like:", error);
     }
