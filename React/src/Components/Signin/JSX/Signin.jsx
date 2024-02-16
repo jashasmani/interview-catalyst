@@ -132,7 +132,7 @@ function Signin() {
                 <label className="subtitle-response">{response} </label>
               )}
 
-              {home === "Sign In" ? (
+              {home === "Sign in" ? (
                 <div></div>
               ) : (
                 <div className="input">

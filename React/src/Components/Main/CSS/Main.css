@@ -102,6 +102,7 @@ body {
 .sidebar-item {
   padding: 1rem;
   margin: 0 1rem;
+  font-family: 'Poppins';
   cursor: pointer;
   &:hover {
     background-color: #142f43;

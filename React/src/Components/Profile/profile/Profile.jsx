@@ -9,6 +9,7 @@ import AddQuestion from "../../Message/JSX/AllQuestion";
 import Back from "./back-image.jpg";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 
+
 const Profile = () => {
   const [isEditModalOpen, setEditModalOpen] = useState(false);
   const [cusername, setCUsername] = useState("");
@@ -98,9 +99,10 @@ const Profile = () => {
       <section className="profile-all">
         <div className="profileRight">
           <div className="profileRightTop">
+            
             <div className="profileCover">
               <img className="profileCoverImg" src={Back} alt="back" />
-
+              
               {profile.image !== "" ? (
                 <img
                   className="profileUserImg"

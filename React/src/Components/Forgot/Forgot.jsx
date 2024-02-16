@@ -41,8 +41,8 @@ function Forgot_pass() {
                         <img src={img} alt="" />
                         <div className="text-forgot">Forgot Password?</div>
                         <div className="msg-forgot" >
-                            <label className="msg-forgot-center">Enter your email and we'll send you a link</label>
-                            <label className="msg-forgot-center">to reset your password.</label>
+                            <label className="msg-forgot-center">Enter your email & we'll send you a link to reset your password.</label>
+                            {/* <label className="msg-forgot-center"></label> */}
 
                         </div>
                     </div>
@@ -54,6 +54,7 @@ function Forgot_pass() {
                         <div className="input">
                             <i className="fa-solid fa-envelope"></i>
                             <input
+                            className='input-forgot'
                                 type='email'
                                 name='email'
                                 placeholder='Enter Email'

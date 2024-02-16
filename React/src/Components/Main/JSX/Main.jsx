@@ -12,6 +12,7 @@ import axios from "axios";
 import Alert from "@mui/material/Alert";
 import CheckIcon from "@mui/icons-material/Check";
 
+
 function WritePage() {
   const [questionData, setQuestionData] = useState([]);
   const [showAlert, setShowAlert] = useState(false);
@@ -116,7 +117,9 @@ function WritePage() {
         </div>
 
         <div className="side-main">
+        {/* <Hamburger/> */}
           <div className="btn-main">
+            
             <Link className="btn-write" onClick={() => setmodel(true)}>
               <EditNoteIcon style={{ fontSize: "2.2rem" }} />
             </Link>
