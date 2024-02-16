@@ -17,8 +17,8 @@ const Answer = ({ comment }) => {
         setCheckGrant(data1.grant);
         setUsername(data1.cusername);
 
-        const sentences1 = comment.comment.split(/\.|\?|\!/);
-        const sentences2 = data1.edit_answer.split(/\.|\?|\!/);
+        const sentences1 = comment.comment.split(/\.|\?|!/);
+        const sentences2 = data1.edit_answer.split(/\.|\?|!/);
 
         const highlightedSentences = sentences2.map((sentence, index) => {
           const words1 = sentences1[index]
@@ -55,7 +55,10 @@ const Answer = ({ comment }) => {
   return (
     <>
       <div className="answer">
-        {checkGrant === "true" ? highlightedText : comment.comment}
+        {
+          checkGrant==='true'  ? highlightedText :
+          comment.comment
+        }
       </div>
       {username ? (
         <div className="edited-by">

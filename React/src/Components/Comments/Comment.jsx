@@ -1,5 +1,5 @@
 import axios from "axios";
-import { React, useState, useEffect } from "react";
+import { React, useState, useEffect,useMemo } from "react";
 import SendIcon from "@mui/icons-material/Send";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
@@ -18,6 +18,7 @@ const Comment = ({
 }) => {
   const [commentData, setCommentData] = useState("");
   const [nextCommentData, setNextCommentData] = useState([]);
+  const [nextCommentData2, setNextCommentData2] = useState([]);
   const [addcommentData, setAddCommentData] = useState(false);
   const [cusername, setCUsername] = useState(false);
   const [getCommentusername, setGetCommentUsername] = useState([]);
@@ -25,6 +26,9 @@ const Comment = ({
   const [restComment1, setRestComment] = useState([]);
   const [isEditAnsModalOpen, setEditAnsModalOpen] = useState(false);
   const [selectedCommentId, setSelectedCommentId] = useState(null);
+  // const [likecount, setLikeCountUpdate] = useState(false);
+  const [likeData, setLikeData] = useState(1);
+  
 
   useEffect(() => {
     const fetchComments = async () => {
@@ -34,25 +38,33 @@ const Comment = ({
         );
         const sortData = res.data.question_comment;
 
+        
         const sortedComments = sortData.sort(
           (a, b) => b.likeCount - a.likeCount
         );
-        setNextCommentData(sortedComments);
-        const [firstComment, ...restComment] = sortedComments;
-        setRestComment(restComment);
-        setFirstComment(firstComment);
-        // console.log(firstComment)
-        const usernames = res.data.question_comment.map(
-          (comment) => comment.username
-        );
-        setProfileImage(usernames);
+        console.log(sortedComments);
+        setFirstComment(sortedComments.length > 0 ? sortedComments[0] : null);
+        setRestComment(sortedComments.slice(1));
+
+        const usernames = res.data.question_comment.map((comment) => comment.username);
+        // setProfileImage(usernames);
       } catch (error) {
         console.log(error);
       }
     };
 
     fetchComments();
-  }, [questionId, nextCommentData]);
+    
+  }, [questionId,likeData]);
+
+  // const sortedComments = useMemo(() => {
+  //   return nextCommentData.sort((a, b) => b.likeCount - a.likeCount);
+  // }, [nextCommentData]);
+
+  // const usernames = useMemo(() => {
+  //   return nextCommentData.map((comment) => comment.username);
+  // }, [nextCommentData]);
+  
 
   const addComment = () => {
     setAddCommentData(!addcommentData);
@@ -86,7 +98,7 @@ const Comment = ({
 
   useEffect(() => {
     const fetchData = async () => {
-      console.log("Fetching login...");
+      // console.log("Fetching login...");
 
       try {
         const res = await axios.get("http://localhost:5000/user/login", {
@@ -108,22 +120,22 @@ const Comment = ({
     textarea.style.height = textarea.scrollHeight + "px";
   }
 
-  const setProfileImage = async (usernames) => {
-    try {
-      const profiles = [];
-      for (const username of usernames) {
-        const res = await axios.get(
-          `http://localhost:5000/user/getprofile?cusername=${username}`
-        );
-        const newData = res.data.profile;
-        profiles.push(newData);
-      }
-      // console.log(profiles);
-      setGetCommentUsername(profiles);
-    } catch (error) {
-      console.error(error);
-    }
-  };
+  // const setProfileImage = async (usernames) => {
+  //   try {
+  //     const profiles = [];
+  //     for (const username of usernames) {
+  //       const res = await axios.get(
+  //         `http://localhost:5000/user/getprofile?cusername=${username}`
+  //       );
+  //       const newData = res.data.profile;
+  //       profiles.push(newData);
+  //     }
+  //     // console.log(profiles);
+  //     setGetCommentUsername(profiles);
+  //   } catch (error) {
+  //     console.error(error);
+  //   }
+  // };
 
   const calculateTimeDifference = (timestamp) => {
     const timeDifference = new Date() - new Date(timestamp);
@@ -193,7 +205,7 @@ const Comment = ({
         />
       )}
 
-      <Answerdata comment={firstComment1} />
+      <Answerdata comment={firstComment1}  />
 
       <div className="responses">
         <div className="icon-left">
@@ -202,6 +214,8 @@ const Comment = ({
             nextCommentData={nextCommentData}
             cid={firstComment1._id}
             countLikeTotal={firstComment1.likeCount}
+            setLikeCountUpdate={setLikeData}
+            updateCommentData={() => {fetchComments();}}
           />
           <div className="comments" onClick={addComment}>
             <KeyboardArrowDownIcon style={{ cursor: "pointer" }} />
@@ -256,7 +270,7 @@ const Comment = ({
                     </div>
 
                     {/* <div className="answer">{comment.comment}</div> */}
-                    <Answerdata comment={comment} />
+                    <Answerdata comment={comment}  />
                     {isEditAnsModalOpen && (
                       <EditAnswer
                         closeModal={() => {
@@ -278,6 +292,7 @@ const Comment = ({
                       nextCommentData={nextCommentData}
                       cid={comment._id}
                       countLikeTotal={comment.likeCount}
+                      setLikeCountUpdate={setLikeData}
                     />
                     {/* {count()} */}
                   </div>
