@@ -2,7 +2,7 @@ import './App.css';
 import React from 'react';
 import Forgot from './Components/Forgot/Forgot';
 import Signin from './Components/Signin/JSX/Signin';
-// import Home from './Components/Home/Home';
+import Home from './Components/Home/Home';
 import AllQuestion from './Components/Message/JSX/AllQuestion';
 import Write from './Components/Write/Write';
 import Input from './Components/Write/Input';
@@ -25,7 +25,7 @@ function App() {
     <>
       <Router>
         <Routes>
-          {/* <Route path="/" element={<Home />} /> */}
+          { <Route path="/" element={<Home />} /> }
           <Route path="/signin" element={<Signin />} />
           <Route path="/forgot-password" element={<Forgot />} />
           <Route path="/confirm/:id/:token" element={<Confirm />} />

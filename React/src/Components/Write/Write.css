@@ -78,20 +78,39 @@
 }
 
 .btn-write-in {
-  background-color: #6aa9f7;
+  background-color: #000080;
   color: #fff;
   margin: 0.2rem;
   margin-top: 2rem;
   height: 2rem;
   width: 6rem;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 1.3rem;
+  border-radius: 0.5rem;
+  border: none;
+  outline: none;
 }
 
 .btn-write-in-cancel {
-  color: #fff;
+  
   margin: 0.2rem;
   margin-top: 2rem;
+  color: #000080;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 6rem;
   height: 2rem;
+  border-radius: 3rem;
+  font-weight: 700;
+  font-size: 1.3rem;
+  /* background: #4682B4; */
+  border: none;
+  outline: none;
+  /* color: #fff; */
+  border-radius: 0.5rem;
 }
 
 .two-buttons {
