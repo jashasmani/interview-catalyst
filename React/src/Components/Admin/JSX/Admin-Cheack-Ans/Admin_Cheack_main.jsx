@@ -13,7 +13,7 @@ function AdminCheackMain() {
     const fetchAnswer = async () => {
       try {
         const res = await axios.get(
-          `http://localhost:5000/admin/findEditedAnswer`
+          `https://interview-catalyst.onrender.com/admin/findEditedAnswer`
         );
         // console.log(res.data.edit_answer_id);
         setFindEditedAnswerData(res.data.edit_answer_id);

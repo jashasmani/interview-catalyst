@@ -11,7 +11,7 @@ const Home = () => {
     const token = localStorage.getItem("token")
     try {
       const response = await axios.post(
-        "http://localhost:5000/api/buy",
+        "https://interview-catalyst.onrender.com/api/buy",
         {},
         {
           headers: {
@@ -32,7 +32,7 @@ const Home = () => {
     const token = localStorage.getItem("token")
     try {
       const response = await axios.post(
-        "http://localhost:5000/api/return",
+        "https://interview-catalyst.onrender.com/api/return",
         {},
         {
           headers: {

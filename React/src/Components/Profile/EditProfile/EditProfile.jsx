@@ -36,7 +36,7 @@ const EditProfile = ({ closeModal, cusername, profile }) => {
   const sendProfile = async () => {
     // if (image) {
     try {
-      const res = await axios.post("http://localhost:5000/user/profile", {
+      const res = await axios.post("https://interview-catalyst.onrender.com/user/profile", {
         cusername,
         name,
         collegename,

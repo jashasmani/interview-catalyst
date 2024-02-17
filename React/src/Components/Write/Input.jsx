@@ -15,14 +15,14 @@ const CustomModal = ({ closeModal, username }) => {
   const callCloseModal = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post("http://localhost:5000/user/question", {
+      const response = await axios.post("https://interview-catalyst.onrender.com/user/question", {
         question,
         username,
       });
 
       if (response.data.question_main._id !== "" && answers !== "") {
         try {
-          await axios.post("http://localhost:5000/user/commentsubmit", {
+          await axios.post("https://interview-catalyst.onrender.com/user/commentsubmit", {
             cusername: username,
             commentData: answers,
             question_id: response.data.question_main._id,
