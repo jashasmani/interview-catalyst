@@ -12,7 +12,6 @@ import axios from "axios";
 import Alert from "@mui/material/Alert";
 import CheckIcon from "@mui/icons-material/Check";
 
-
 function WritePage() {
   const [questionData, setQuestionData] = useState([]);
   const [showAlert, setShowAlert] = useState(false);
@@ -49,23 +48,22 @@ function WritePage() {
 
   // -------------------------------------------------
 
+  const fetchQuestion = async () => {
+    try {
+      const res = await axios.get("http://localhost:5000/user/question", {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      });
+      const newData = res.data.question;
+      setCUsername(res.data.cusername);
+      // console.log("new",newData);
+      setQuestionData(newData);
+    } catch (error) {
+      console.log(error);
+    }
+  };
   useEffect(() => {
-    const fetchQuestion = async () => {
-      try {
-        const res = await axios.get("http://localhost:5000/user/question", {
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem("token")}`,
-          },
-        });
-        const newData = res.data.question;
-        setCUsername(res.data.cusername);
-        // console.log("new",newData);
-        setQuestionData(newData);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-
     fetchQuestion();
   }, [model]);
 
@@ -117,9 +115,8 @@ function WritePage() {
         </div>
 
         <div className="side-main">
-        {/* <Hamburger/> */}
+          {/* <Hamburger/> */}
           <div className="btn-main">
-            
             <Link className="btn-write" onClick={() => setmodel(true)}>
               <EditNoteIcon style={{ fontSize: "2.2rem" }} />
             </Link>
@@ -139,17 +136,17 @@ function WritePage() {
         </div>
       </nav>
       {showAlert && (
-              <div >
-                <Alert
-                  icon={<CheckIcon fontSize="inherit" />}
-                  severity="success"
-                  onClose={() => setShowAlert(false)}
-                  className="success-message-container"
-                >
-                 Edit Request Successful
-                </Alert>
-              </div>
-            )}  
+        <div>
+          <Alert
+            icon={<CheckIcon fontSize="inherit" />}
+            severity="success"
+            onClose={() => setShowAlert(false)}
+            className="success-message-container"
+          >
+            Edit Request Successful
+          </Alert>
+        </div>
+      )}
       <div className="container-question">
         <div className="sidebar">
           <div className="sidebar-item" onClick={() => toggleDropdown("item1")}>
@@ -297,9 +294,7 @@ function WritePage() {
                   <div className="dot-spinner__dot"></div>
                 </div>
               </div>
-              
             </div>
-           
           ) : (
             <div className="not-available">
               <h1>No Results Found... </h1>

@@ -18,7 +18,7 @@ const Answer = ({ comment }) => {
         setUsername(data1.cusername);
 
         const sentences1 = comment.comment.split(/\.|\?|!/);
-        const sentences2 = data1.edit_answer.split(/\.|\?|!/);
+        const sentences2 = comment.edited_comment.split(/\.|\?|!/);
 
         const highlightedSentences = sentences2.map((sentence, index) => {
           const words1 = sentences1[index]

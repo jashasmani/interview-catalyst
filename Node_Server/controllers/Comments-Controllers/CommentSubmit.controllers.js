@@ -19,19 +19,20 @@ async function commentsubmit(req, res) {
 
       await comments.save();
     }
-
+    
     const question_comment = await Comments.find({
       $or: [{ question_id: question_id }],
     });
-
+    
     if (!commentData) {
       const comment_id = await Comments.findOne({ _id: question_id });
-
+      
       comment_id.likeCount = likeCount;
-
+      
       await comment_id.save();
+     
     }
-
+    
     res
       .status(201)
       .json({ message: "Comment add successful", question_comment });

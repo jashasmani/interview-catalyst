@@ -42,7 +42,7 @@ const Like = ({ currentValue, cid, countLikeTotal, updateCommentData }) => {
     };
 
     fetchLikes();
-  }, [currentValue._id, cusername, cid, calculateLike]);
+  }, [currentValue._id, cusername, cid, likeCount,calculateLike]);
 
   // ---------------------------------------------------------------------------------------------------
   const change = async (e) => {
@@ -53,20 +53,20 @@ const Like = ({ currentValue, cid, countLikeTotal, updateCommentData }) => {
         like: !isValueLiked,
         cusername,
       });
-      
+
       // setTimeout(() => {
-        setIsValueLiked(!isValueLiked);
-        setLikeCount((prevLikeCount) =>
-          isValueLiked
-            ? prevLikeCount <= 0
-              ? 0
-              : prevLikeCount - 1
-            : prevLikeCount + 1
-        );
-        likechange(isValueLiked ? likeCount - 1 : likeCount + 1);
-        updateCommentData();
+      setIsValueLiked(!isValueLiked);
+      // setLikeCount(isValueLiked ? likeCount - 1 : likeCount + 1);
+      setLikeCount((prevLikeCount) =>
+        isValueLiked
+          ? prevLikeCount <= 0
+            ? 0
+            : prevLikeCount - 1
+          : prevLikeCount + 1
+      );
+      likechange(isValueLiked ? likeCount - 1 : likeCount + 1);
+      updateCommentData();
       // }, 2000);
-      
     } catch (error) {
       console.error("Error submitting like:", error);
     }
@@ -74,11 +74,11 @@ const Like = ({ currentValue, cid, countLikeTotal, updateCommentData }) => {
 
   const likechange = async (newLikeCount) => {
     try {
-      await axios.post("http://localhost:5000/user/commentsubmit", {
+      const res = await axios.post("http://localhost:5000/user/commentsubmit", {
         question_id: cid,
         likeCount: newLikeCount,
       });
-      // console.log(res.data);
+      // console.log("12", res.data);
     } catch (error) {
       console.log(error);
     }
@@ -103,11 +103,12 @@ const Like = ({ currentValue, cid, countLikeTotal, updateCommentData }) => {
     <>
       <div className="likes" onClick={change}>
         {isValueLiked ? (
-          <ThumbUpOffAltIcon style={{ cursor: "pointer" }} />
-          ) : (
           <ThumbUpAltIcon style={{ color: "#40A2E3", cursor: "pointer" }} />
+        ) : (
+          <ThumbUpOffAltIcon style={{ cursor: "pointer" }} />
         )}
-        <div className="likecount">{countLikeTotal}</div>
+        <div className="likecount">{likeCount}</div>
+        {/* <div className="likecount">{countLikeTotal}</div> */}
       </div>
     </>
   );

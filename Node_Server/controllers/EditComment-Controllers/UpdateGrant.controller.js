@@ -28,7 +28,9 @@ async function updateGrant(req, res) {
             $set: { edited_comment: edited_answer },
           }
           );
-          await EditAnswers.deleteMany({grant:"true"});
+          // await EditAnswers.deleteMany({grant:"true"});
+          await EditAnswers.deleteMany({ comment_id: comment_id, grant: "true" });
+
         }
         else{
           await Comments.updateOne(
@@ -39,7 +41,8 @@ async function updateGrant(req, res) {
               },
             }
             );
-            await EditAnswers.deleteMany({grant:"true"});
+            // await EditAnswers.deleteMany({grant:"true"});
+            await EditAnswers.deleteMany({ comment_id: comment_id, grant: "true" });
           }
 
 

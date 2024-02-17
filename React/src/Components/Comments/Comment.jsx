@@ -1,5 +1,5 @@
 import axios from "axios";
-import { React, useState, useEffect,useMemo } from "react";
+import { React, useState, useEffect, useMemo } from "react";
 import SendIcon from "@mui/icons-material/Send";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
@@ -26,47 +26,32 @@ const Comment = ({
   const [isEditAnsModalOpen, setEditAnsModalOpen] = useState(false);
   const [selectedCommentId, setSelectedCommentId] = useState(null);
   // const [likecount, setLikeCountUpdate] = useState(false);
-  
 
   // useEffect(() => {
-    const fetchComments = async () => {
-      try {
-        const res = await axios.get(
-          `http://localhost:5000/user/getcomment?question_id=${questionId}`
-        );
-        const sortData = res.data.question_comment;
+  const fetchComments = async () => {
+    try {
+      const res = await axios.get(
+        `http://localhost:5000/user/getcomment?question_id=${questionId}`
+      );
+      const sortData = res.data.question_comment;
 
-        
-        const sortedComments = sortData.sort(
-          (a, b) => b.likeCount - a.likeCount
-        );
-        console.log(sortedComments);
-        setFirstComment(sortedComments.length > 0 ? sortedComments[0] : null);
-        setRestComment(sortedComments.slice(1));
+      const sortedComments = sortData.sort((a, b) => b.likeCount - a.likeCount);
+      console.log(sortedComments);
+      setFirstComment(sortedComments.length > 0 ? sortedComments[0] : null);
+      setRestComment(sortedComments.slice(1));
 
-        const usernames = res.data.question_comment.map((comment) => comment.username);
-        // setProfileImage(usernames);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-
-    useEffect(() => {
-      fetchComments();
-    }, [nextCommentData]);
+      const usernames = res.data.question_comment.map(
+        (comment) => comment.username
+      );
+      // setProfileImage(usernames);
+    } catch (error) {
+      console.log(error);
+    }
+  };
   
-    // fetchComments();
-    
-  // }, [questionId,likeData]);
-
-  // const sortedComments = useMemo(() => {
-  //   return nextCommentData.sort((a, b) => b.likeCount - a.likeCount);
-  // }, [nextCommentData]);
-
-  // const usernames = useMemo(() => {
-  //   return nextCommentData.map((comment) => comment.username);
-  // }, [nextCommentData]);
-  
+  useEffect(() => {
+    fetchComments();
+  }, []);
 
   const addComment = () => {
     setAddCommentData(!addcommentData);
@@ -207,7 +192,7 @@ const Comment = ({
         />
       )}
 
-      <Answerdata comment={firstComment1}  />
+      <Answerdata comment={firstComment1} />
 
       <div className="responses">
         <div className="icon-left">
@@ -216,7 +201,9 @@ const Comment = ({
             nextCommentData={nextCommentData}
             cid={firstComment1._id}
             countLikeTotal={firstComment1.likeCount}
-            updateCommentData={() => {fetchComments();}}
+            updateCommentData={() => {
+              fetchComments();
+            }}
           />
           <div className="comments" onClick={addComment}>
             <KeyboardArrowDownIcon style={{ cursor: "pointer" }} />
@@ -271,7 +258,7 @@ const Comment = ({
                     </div>
 
                     {/* <div className="answer">{comment.comment}</div> */}
-                    <Answerdata comment={comment}  />
+                    <Answerdata comment={comment} />
                     {isEditAnsModalOpen && (
                       <EditAnswer
                         closeModal={() => {
@@ -293,7 +280,9 @@ const Comment = ({
                       nextCommentData={nextCommentData}
                       cid={comment._id}
                       countLikeTotal={comment.likeCount}
-                      updateCommentData={() => {fetchComments();}}
+                      updateCommentData={() => {
+                        fetchComments();
+                      }}
                     />
                     {/* {count()} */}
                   </div>
