@@ -10,7 +10,7 @@ const Answer = ({ comment }) => {
     const fetchComments = async () => {
       try {
         const res = await axios.get(
-          `https://interview-catalyst.onrender.com/admin/geteditedanswerbyid?comment_id=${comment._id}`
+          `http://localhost:5000/admin/geteditedanswerbyid?comment_id=${comment._id}`
         );
 
         const data1 = res.data.editcomment_data;
@@ -60,17 +60,7 @@ const Answer = ({ comment }) => {
           comment.comment
         }
       </div>
-      {username ? (
-        <div className="edited-by">
-          <span style={{ color: "#FFED00", marginLeft: "0.5rem" }}>
-            {" "}
-            {username}
-          </span>
-          <span>Edited by</span>
-        </div>
-      ) : (
-        ""
-      )}
+      
     </>
   );
 };

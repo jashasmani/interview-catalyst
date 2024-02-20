@@ -1,5 +1,5 @@
 import axios from "axios";
-import { React, useState, useEffect, useMemo } from "react";
+import { React, useState, useEffect } from "react";
 import SendIcon from "@mui/icons-material/Send";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
@@ -8,6 +8,10 @@ import QueryBuilderIcon from "@mui/icons-material/QueryBuilder";
 import Like from "./Like";
 import EditAnswer from "./EditAnswer";
 import Answerdata from "./Answerdata";
+import Dropdown from "./Dropdown";
+import Default  from "./one";
+import SideAvtar from "../SideAvtar/SideAvtar";
+import { FluentProvider, webLightTheme } from '@fluentui/react-components';
 
 const Comment = ({
   questionId,
@@ -25,13 +29,12 @@ const Comment = ({
   const [restComment1, setRestComment] = useState([]);
   const [isEditAnsModalOpen, setEditAnsModalOpen] = useState(false);
   const [selectedCommentId, setSelectedCommentId] = useState(null);
-  // const [likecount, setLikeCountUpdate] = useState(false);
 
   // useEffect(() => {
   const fetchComments = async () => {
     try {
       const res = await axios.get(
-        `https://interview-catalyst.onrender.com/user/getcomment?question_id=${questionId}`
+        `http://localhost:5000/user/getcomment?question_id=${questionId}`
       );
       const sortData = res.data.question_comment;
 
@@ -48,10 +51,29 @@ const Comment = ({
       console.log(error);
     }
   };
-  
+
   useEffect(() => {
     fetchComments();
   }, []);
+
+  const [child1Height, setChild1Height] = useState(0);
+  useEffect(() => {
+    const child1 = document.getElementById("set-row-data");
+    const child2 = document.getElementById("edited-avtar");
+
+    if (child1 && child2) {
+      setChild1Height(child1.clientHeight);
+    }
+  });
+
+  // const [leftHeight, setLeftHeight] = useState(0);
+
+  // useEffect(() => {
+  //   const leftDiv = document.getElementById('set-row-data');
+  //   if (leftDiv) {
+  //     setLeftHeight(leftDiv.clientHeight);
+  //   }
+  // });
 
   const addComment = () => {
     setAddCommentData(!addcommentData);
@@ -65,7 +87,7 @@ const Comment = ({
 
   const change = async () => {
     try {
-      const res = await axios.post("https://interview-catalyst.onrender.com/user/commentsubmit", {
+      const res = await axios.post("http://localhost:5000/user/commentsubmit", {
         cusername: cusername,
         question_id: currentValue._id,
         commentData,
@@ -88,7 +110,7 @@ const Comment = ({
       // console.log("Fetching login...");
 
       try {
-        const res = await axios.get("https://interview-catalyst.onrender.com/user/login", {
+        const res = await axios.get("http://localhost:5000/user/login", {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
           },
@@ -112,7 +134,7 @@ const Comment = ({
   //     const profiles = [];
   //     for (const username of usernames) {
   //       const res = await axios.get(
-  //         `https://interview-catalyst.onrender.com/user/getprofile?cusername=${username}`
+  //         `http://localhost:5000/user/getprofile?cusername=${username}`
   //       );
   //       const newData = res.data.profile;
   //       profiles.push(newData);
@@ -147,68 +169,105 @@ const Comment = ({
 
   return (
     <>
-      <div className="comment-comment-top">
-        <div className="comment-userimage">
-          <div className="avatar">
-            {getCommentusername[0] && getCommentusername[0].image !== null ? (
-              <img src={getCommentusername[0].image} alt="profile" />
-            ) : (
-              <AccountCircleIcon style={{ fontSize: "3rem" }} />
-            )}
-          </div>
-        </div>
-        <div className="comment-time">
-          <div className="comment-username">{firstComment1.username}</div>
+      <div className="comment-3">
+        <div className="comment-comment-2">
+          {/* <div className="fix"> */}
+          <div className="comment-comment-top">
+            <div className="manage-space">
+              <div className="contro-distance">
+                <div className="contro-distance2">
+                  <div className="comment-userimage">
+                    <div className="avatar">
+                      {getCommentusername[0] &&
+                      getCommentusername[0].image !== null ? (
+                        <img src={getCommentusername[0].image} alt="profile" />
+                      ) : (
+                        <AccountCircleIcon style={{ fontSize: "3rem" }} />
+                      )}
+                    </div>
+                  </div>
+                  <div className="comment-time">
+                    <div className="comment-username">
+                      {firstComment1.username}
+                    </div>
 
-          <div className="time-title">
-            <QueryBuilderIcon
-              style={{ fontSize: "0.7rem", marginRight: "5px" }}
-            />
-            <div className="comment-username-time">
-              {calculateTimeDifference(firstComment1.timestamp)}
+                    <div className="time-title">
+                      <QueryBuilderIcon
+                        style={{ fontSize: "0.7rem", marginRight: "5px" }}
+                      />
+                      <div className="comment-username-time">
+                        {calculateTimeDifference(firstComment1.timestamp)}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div className="contro-name">
+                  <FluentProvider theme={webLightTheme}>
+                  <Default />
+                  </FluentProvider>
+                  
+                </div>
+              </div>
+
+              <div className="fix">
+                <div
+                  className="set-row-data"
+                  id="set-row-data"
+                  style={{ flex: 1 }}
+                >
+                  <div className="question-que" style={{ marginLeft: "1rem" }}>
+                    <p> Ans :</p>
+                    <div
+                      className="comments"
+                      onClick={() => openEditAnsModal(firstComment1._id)}
+                    >
+                      <BorderColorIcon
+                        style={{ marginRight: "0rem", cursor: "pointer" }}
+                      />
+                    </div>
+                  </div>
+                  {isEditAnsModalOpen && (
+                    <EditAnswer
+                      closeModal={() => {
+                        setSelectedCommentId(null);
+                        setEditAnsModalOpen(false);
+                      }}
+                      questionData={questionData}
+                      cid={selectedCommentId}
+                      setShowAlert={setShowAlert}
+                    />
+                  )}
+
+                  <Answerdata comment={firstComment1} />
+                </div>
+                <div className="edited-avtar" id="edited-avtar">
+                  {/* <Dropdown /> */}
+                  {/* <SideAvtar />
+                  <SideAvtar />*/}
+                  {/* <SideAvtar />  */}
+                  {/* <Dropdown/> */}
+                </div>
+              </div>
+              <div className="responses">
+                <div className="icon-left">
+                  <Like
+                    currentValue={currentValue}
+                    nextCommentData={nextCommentData}
+                    cid={firstComment1._id}
+                    countLikeTotal={firstComment1.likeCount}
+                    updateCommentData={() => {
+                      fetchComments();
+                    }}
+                  />
+                  <div className="comments" onClick={addComment}>
+                    <KeyboardArrowDownIcon style={{ cursor: "pointer" }} />
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-
-      <div className="question-que" style={{ marginLeft: "1rem" }}>
-        <p> Ans :</p>
-        <div
-          className="comments"
-          onClick={() => openEditAnsModal(firstComment1._id)}
-        >
-          <BorderColorIcon style={{ marginRight: "3rem", cursor: "pointer" }} />
-        </div>
-      </div>
-      {isEditAnsModalOpen && (
-        <EditAnswer
-          closeModal={() => {
-            setSelectedCommentId(null);
-            setEditAnsModalOpen(false);
-          }}
-          questionData={questionData}
-          cid={selectedCommentId}
-          setShowAlert={setShowAlert}
-        />
-      )}
-
-      <Answerdata comment={firstComment1} />
-
-      <div className="responses">
-        <div className="icon-left">
-          <Like
-            currentValue={currentValue}
-            nextCommentData={nextCommentData}
-            cid={firstComment1._id}
-            countLikeTotal={firstComment1.likeCount}
-            updateCommentData={() => {
-              fetchComments();
-            }}
-          />
-          <div className="comments" onClick={addComment}>
-            <KeyboardArrowDownIcon style={{ cursor: "pointer" }} />
-          </div>
-        </div>
+        {/* <div className="edited-avtar"><SideAvtar/></div> */}
       </div>
 
       {addcommentData ? (
@@ -219,73 +278,96 @@ const Comment = ({
                 <hr style={{ height: "1px", margin: "0 1rem" }} />
                 <div className="comment-3">
                   <div className="comment-comment-2">
-                    <div className="comment-comment-top">
-                      <div className="comment-userimage">
-                        <div className="avatar">
-                          {getCommentusername[index + 1] &&
-                          getCommentusername[index + 1].image !== null ? (
-                            <img
-                              src={getCommentusername[index + 1].image}
-                              alt="profile"
+                    {/* <div> */}
+                    <div className="fix">
+                      <div className="set-row-data" id="set-row-data">
+                        <div className="comment-comment-top">
+                          <div className="contro-distance">
+                            <div className="comment-userimage">
+                              <div className="avatar">
+                                {getCommentusername[index + 1] &&
+                                getCommentusername[index + 1].image !== null ? (
+                                  <img
+                                    src={getCommentusername[index + 1].image}
+                                    alt="profile"
+                                  />
+                                ) : (
+                                  <AccountCircleIcon
+                                    style={{ fontSize: "3rem" }}
+                                  />
+                                )}
+                              </div>
+                            </div>
+                            <div className="comment-time">
+                              <div className="comment-username">
+                                {comment.username}
+                              </div>
+                              <div className="comment-username-time">
+                                {calculateTimeDifference(comment.timestamp)}
+                              </div>
+                            </div>
+                          </div>
+                          <div className="contro-name">
+                            {/* <Dropdown /> */}
+                          </div>
+                        </div>
+                        <div
+                          className="question-que"
+                          style={{ marginLeft: "1rem" }}
+                        >
+                          <p> Ans :</p>
+                          <div
+                            className="comments"
+                            onClick={() => openEditAnsModal(comment._id)}
+                          >
+                            <BorderColorIcon
+                              style={{ marginRight: "0rem", cursor: "pointer" }}
                             />
-                          ) : (
-                            <AccountCircleIcon style={{ fontSize: "3rem" }} />
-                          )}
+                          </div>
                         </div>
+
+                        <Answerdata comment={comment} />
+                        {isEditAnsModalOpen && (
+                          <EditAnswer
+                            closeModal={() => {
+                              setSelectedCommentId(null);
+                              setEditAnsModalOpen(false);
+                            }}
+                            questionData={questionData}
+                            cid={selectedCommentId}
+                            setShowAlert={setShowAlert}
+                          />
+                        )}
                       </div>
-                      <div className="comment-time">
-                        <div className="comment-username">
-                          {comment.username}
-                        </div>
-                        <div className="comment-username-time">
-                          {calculateTimeDifference(comment.timestamp)}
-                        </div>
+                      <div className="edited-avtar" id="edited-avtar">
+                        <SideAvtar />
+                        <SideAvtar />
+                        <SideAvtar />
                       </div>
                     </div>
-                    <div
-                      className="question-que"
-                      style={{ marginLeft: "1rem" }}
-                    >
-                      <p> Ans :</p>
-                      <div
-                        className="comments"
-                        onClick={() => openEditAnsModal(comment._id)}
-                      >
-                        <BorderColorIcon
-                          style={{ marginRight: "3rem", cursor: "pointer" }}
+
+                    <div className="responses">
+                      <div className="icon-left">
+                        <Like
+                          currentValue={currentValue}
+                          nextCommentData={nextCommentData}
+                          cid={comment._id}
+                          countLikeTotal={comment.likeCount}
+                          updateCommentData={() => {
+                            fetchComments();
+                          }}
                         />
                       </div>
                     </div>
-
-                    {/* <div className="answer">{comment.comment}</div> */}
-                    <Answerdata comment={comment} />
-                    {isEditAnsModalOpen && (
-                      <EditAnswer
-                        closeModal={() => {
-                          setSelectedCommentId(null);
-                          setEditAnsModalOpen(false);
-                        }}
-                        questionData={questionData}
-                        cid={selectedCommentId}
-                        setShowAlert={setShowAlert}
-                      />
-                    )}
                   </div>
-                </div>
-
-                <div className="responses">
-                  <div className="icon-left">
-                    <Like
-                      currentValue={currentValue}
-                      nextCommentData={nextCommentData}
-                      cid={comment._id}
-                      countLikeTotal={comment.likeCount}
-                      updateCommentData={() => {
-                        fetchComments();
-                      }}
-                    />
-                    {/* {count()} */}
-                  </div>
+                  {/* <div className="edited-avtar">
+                    <SideAvtar />
+                    <SideAvtar />
+                    <SideAvtar />
+                    <SideAvtar />
+                    <SideAvtar />
+                    <SideAvtar />
+                  </div> */}
                 </div>
               </div>
             ))}

@@ -126,7 +126,7 @@
 .question-que {
   font-family: "Manrope", sans-serif;
   font-size: 22px;
-  padding-left:  1rem;
+  padding-left: 1rem;
   color: white;
   display: flex;
   flex-direction: row;
@@ -141,6 +141,7 @@
   font-family: "Arimo", sans-serif;
   font-size: 1.4rem;
   margin: 1rem 3rem;
+  margin-right: 0rem;
   color: #cfc0c0;
 }
 
@@ -254,17 +255,42 @@
 }
 
 .comment-comment-2 {
-  padding: 0.5rem 1rem;
-  padding-left: 0rem;
+  padding: 0.5rem 0rem;
   width: 100%;
 }
 
 .comment-comment-top {
   display: flex;
   margin: 1rem 0 0 1rem;
+  justify-content: space-between;
+}
+
+.contro-distance {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.contro-name{
+  display: flex;
+}
+.fix{
+  display: flex;
+  flex-direction: row;
+}
+.set-row-data{
+  height: auto;
+  width: fit-content;
+}
+.edited-avtar{
+  width: 5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow-y: scroll;
+  overflow-x: hidden;
 }
 .comment-username {
-  /* margin-bottom: 0.5rem; */
   font-size: 1.3rem;
   font-weight: 700;
 }
@@ -306,9 +332,21 @@
   /* padding: 10px; */
 }
 
-.edited-by{
+.edited-by {
   display: flex;
   flex-direction: row-reverse;
-  margin-right:3rem ;
+  /* margin-right: 3rem; */
   font-size: 1.2rem;
+}
+
+.ant-avatar-group{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* margin-right:10rem ; */
+}
+
+.contro-distance2{
+  display: flex;
+  flex-direction: row;
 }

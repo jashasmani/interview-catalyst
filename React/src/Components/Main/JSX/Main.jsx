@@ -50,7 +50,7 @@ function WritePage() {
 
   const fetchQuestion = async () => {
     try {
-      const res = await axios.get("https://interview-catalyst.onrender.com/user/question", {
+      const res = await axios.get("http://localhost:5000/user/question", {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}`,
         },
@@ -71,7 +71,7 @@ function WritePage() {
     const searchData = e.target.value;
     if (searchData) {
       const res = await axios.get(
-        `https://interview-catalyst.onrender.com/user/search/${searchData}`
+        `http://localhost:5000/user/search/${searchData}`
       );
       const newData = res.data;
 
@@ -80,7 +80,7 @@ function WritePage() {
       }
     } else {
       try {
-        const res = await axios.get("https://interview-catalyst.onrender.com/user/question", {
+        const res = await axios.get("http://localhost:5000/user/question", {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
           },

@@ -12,7 +12,7 @@ function Adminn_Cheack_Ans({ data, setRefereshData }) {
     const fetchAnswer = async () => {
       try {
         const res = await axios.get(
-          `https://interview-catalyst.onrender.com/user/questionbyid?question_id=${data.question_id}`
+          `http://localhost:5000/user/questionbyid?question_id=${data.question_id}`
         );
         // console.log(res.data);
         setQuestionValue(res.data.question_value.question);
@@ -27,7 +27,7 @@ function Adminn_Cheack_Ans({ data, setRefereshData }) {
     const fetchComments = async () => {
       try {
         const res = await axios.get(
-          `https://interview-catalyst.onrender.com/user/GetCommentById?comment_id=${data.comment_id}`
+          `http://localhost:5000/user/GetCommentById?comment_id=${data.comment_id}`
         );
         const dataone = res.data.comment_data;
         setCommentValue(
@@ -100,7 +100,7 @@ function Adminn_Cheack_Ans({ data, setRefereshData }) {
     const fetchAnswer = async () => {
       try {
         const res = await axios.get(
-          `https://interview-catalyst.onrender.com/admin/findEditedAnswer`
+          `http://localhost:5000/admin/findEditedAnswer`
         );
         console.log(res.data.edit_answer_id);
         // setQuestionID(res.data.edit_answer_id);
@@ -114,7 +114,7 @@ function Adminn_Cheack_Ans({ data, setRefereshData }) {
   const cheackGrant = async (value, id) => {
     try {
       // const res =
-      await axios.post(`https://interview-catalyst.onrender.com/admin/updategrant`, {
+      await axios.post(`http://localhost:5000/admin/updategrant`, {
         _id: id,
         grant: value,
         edited_answer: data.edit_answer,
