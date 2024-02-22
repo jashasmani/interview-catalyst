@@ -1,7 +1,7 @@
 .profile-all {
-  overflow-y: scroll;
   height: 100vh;
   padding-bottom: 10rem;
+  width: 100%;
 }
 .nav-profile {
   padding: 0.5rem;
@@ -185,8 +185,11 @@
 
 .profileCoverImg {
   width: 100%;
-  height: 250px;
-  object-fit: cover;
+  max-width: 100%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-image: url("./plainimage.jpg");
+  height: 480px;
 }
 
 .profileUserImg {
@@ -198,49 +201,62 @@
   left: 0;
   right: 0;
   margin-left: 11rem;
-  top: 9rem;
+  top: 23rem;
   border: 3px solid white;
 }
-
-
 
 .profileInfo {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 2rem;
+  padding-top: 8rem;
+  top: 6rem;
+
+  /* position: absolute; */
+  /* top: 6rem;
+  left: 37rem; */
+}
+
+.profInfoDesc {
+  flex-direction: column;
+  align-items: flex-start;
+  display: flex;
+  width: 343px;
 }
 
 .profileInfoName {
   font-size: 3rem;
   margin: 0.1rem 0;
+
+  /* position: absolute;
+  top: -15rem; */
 }
 
 .profileInfoDesc {
   font-size: 1.5rem;
   margin: 0.1rem 0;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
 }
 
-
-@media screen and (min-width:768px) and (max-width:992px) {
-
-  .search-main{
+@media screen and (min-width: 768px) and (max-width: 992px) {
+  .search-main {
     width: 20rem;
   }
-  .logo-text{
+  .logo-text {
     font-size: 1.5rem;
   }
-  .search-write{
+  .search-write {
     width: 8rem;
   }
-  
 }
 
-@media screen and (min-width:481px) and (max-width:768px) {
-  .search-main{
+@media screen and (min-width: 481px) and (max-width: 768px) {
+  .search-main {
     width: 8rem;
   }
-  .sidebar{
+  .sidebar {
     display: none;
   }
 }

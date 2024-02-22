@@ -6,9 +6,9 @@ import AssessmentIcon from "@mui/icons-material/Assessment";
 import EditProfile from "../EditProfile/EditProfile";
 import axios from "axios";
 import AddQuestion from "../../Message/JSX/AllQuestion";
-import Back from "./back-image.jpg";
+import backimg from "../profile/plainimage.jpg";
+// import Back from '../profile/backimage.png'
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
-
 
 const Profile = () => {
   const [isEditModalOpen, setEditModalOpen] = useState(false);
@@ -96,13 +96,46 @@ const Profile = () => {
           <button className="btn-prof">Edit Profile</button>
         </div>
       </nav>
-      <section className="profile-all">
+      <div className="profile-all">
         <div className="profileRight">
           <div className="profileRightTop">
-            
             <div className="profileCover">
-              <img className="profileCoverImg" src={Back} alt="back" />
-              
+              {/* <img className="profileCoverImg" src={backimg} alt="back" /> */}
+              <div className="profileCoverImg">
+                <div className="profileInfo">
+                  <h4 className="profileInfoName">
+                    {/* {profile.name} */}
+                    Dhairya Bhatt
+                  </h4>
+
+                  <div className="profInfoDesc">
+                  <span className="profileInfoDesc">
+                    {profile.college_name !== "" ? (
+                      <div>
+                        <SchoolIcon className="profile-icon" />
+                        {/* {profile.college_name} */}
+                        DDU
+                      </div>
+                    ) : (
+                      ""
+                    )}
+                  </span>
+                  <span className="profileInfoDesc">
+                    {profile.bio !== "" ? (
+                      <div>
+                        <AssessmentIcon className="profile-icon" />
+                        {/* {profile.bio} */}
+                        Web Developer
+                      </div>
+                    ) : (
+                      ""
+                    )}
+                  </span>
+                  </div>
+                 
+                </div>
+              </div>
+
               {profile.image !== "" ? (
                 <img
                   className="profileUserImg"
@@ -115,29 +148,6 @@ const Profile = () => {
                   style={{ fontSize: "14rem", border: "none" }}
                 />
               )}
-              <div className="profileInfo">
-                <h4 className="profileInfoName"> {profile.name}</h4>
-                <span className="profileInfoDesc">
-                  {profile.college_name !== "" ? (
-                    <div>
-                      <SchoolIcon className="profile-icon" />
-                      {profile.college_name}
-                    </div>
-                  ) : (
-                    ""
-                  )}
-                </span>
-                <span className="profileInfoDesc">
-                  {profile.bio !== "" ? (
-                    <div>
-                      <AssessmentIcon className="profile-icon" />
-                      {profile.bio}
-                    </div>
-                  ) : (
-                    ""
-                  )}
-                </span>
-              </div>
             </div>
           </div>
         </div>
@@ -158,7 +168,7 @@ const Profile = () => {
             profile={profile}
           />
         )}
-      </section>
+      </div>
     </>
   );
 };
