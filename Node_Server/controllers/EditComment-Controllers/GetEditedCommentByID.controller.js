@@ -5,12 +5,11 @@ async function GetEditCommentById(req, res) {
   try {
     const { comment_id } = req.query;
     console.log(req.query);
-    const editcomment_data = await EditAnswer.findOne({
+    const editcomment_data = await EditAnswer.find({
       comment_id: comment_id,
-      
     });
 
-    console.log(editcomment_data)
+    console.log(editcomment_data);
     res
       .status(201)
       .json({ message: "EditComment Get by ID successful", editcomment_data });

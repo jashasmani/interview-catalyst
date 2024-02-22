@@ -19,7 +19,7 @@ const Answer = ({ comment }) => {
         setCheckGrant(data1.grant);
         setUsername(data1.cusername);
 
-        console.log(comment.edited_comment);
+        // console.log(comment.edited_comment);
         // Function to split sentences properly
         const splitSentences = (text) => {
           return text
@@ -61,11 +61,8 @@ const Answer = ({ comment }) => {
     fetchComments();
   }, [comment._id, comment.comment, comment.edited_comment]);
 
-
   const handleMouseEnter = () => {
-    
-      setDisplayedText(true);
-    
+    setDisplayedText(true);
   };
 
   const handleMouseLeave = () => {
@@ -75,7 +72,7 @@ const Answer = ({ comment }) => {
     <>
       <div className="answer">
         <p onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
-          {checkGrant === "setTrue" ? (
+          {checkGrant === "setTrue" || checkGrant === "true" ? (
             <div>
               {highlightedText.map((sentence, index) => (
                 <p key={index}>
