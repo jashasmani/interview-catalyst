@@ -12,7 +12,7 @@ async function likesubmit(req, res) {
     });
 
     if (like_data) {
-      // Update existing like
+      // Update existing 
       like_data.like = like;
       await like_data.save();
     } else {

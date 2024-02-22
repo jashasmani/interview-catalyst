@@ -1,4 +1,4 @@
-const bcrypt = require('bcrypt');
+const bcryptjs = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const User = require('../../models/login.model'); 
 
@@ -15,8 +15,8 @@ async function cheackConfirm(req, res) {
         }
 
         const saltRounds = 10;
-        const hashedPassword = await bcrypt.hash(password, saltRounds);
-        const hashedConfirmPassword = await bcrypt.hash(confirm_password, saltRounds);
+        const hashedPassword = await bcryptjs.hash(password, saltRounds);
+        const hashedConfirmPassword = await bcryptjs.hash(confirm_password, saltRounds);
 
 
         const user = await User.findById(userId);

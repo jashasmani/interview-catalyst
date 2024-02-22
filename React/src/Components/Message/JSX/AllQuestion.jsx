@@ -41,21 +41,21 @@ function AddQuestion({ currentValue,setShowAlert }) {
     return () => clearInterval(intervalId);
   }, []);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const res = await axios.get(
-          `http://localhost:5000/user/getprofile?cusername=${currentValue.username}`
-        );
-        const newData = res.data.profile;
-        setProfileImage(newData.image);
-      } catch (error) {
-        console.log(error);
-      }
-    };
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     try {
+  //       const res = await axios.get(
+  //         `http://localhost:5000/user/getprofile?cusername=${currentValue.username}`
+  //       );
+  //       const newData = res.data.profile;
+  //       setProfileImage(newData.image);
+  //     } catch (error) {
+  //       console.log(error);
+  //     }
+  //   };
 
-    fetchData();
-  }, [currentValue.username]);
+  //   fetchData();
+  // }, [currentValue.username]);
 
   // const calculateTimeDifference = (timestamp) => {
   //   const timeDifference = new Date() - new Date(timestamp);

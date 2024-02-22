@@ -4,7 +4,7 @@ import "../../../Message/CSS/AllQuestion.css";
 
 import axios from "axios";
 
-function Adminn_Cheack_Ans({ data,setRefereshData }) {
+function Adminn_Cheack_Ans({ data, setRefereshData }) {
   const [questionValue, setQuestionValue] = useState("");
   const [commentValue, setCommentValue] = useState("");
 
@@ -29,8 +29,12 @@ function Adminn_Cheack_Ans({ data,setRefereshData }) {
         const res = await axios.get(
           `http://localhost:5000/user/GetCommentById?comment_id=${data.comment_id}`
         );
-        const dataone=res.data.comment_data
-        setCommentValue(dataone.edited_comment==='none'?dataone.comment:dataone.edited_comment);
+        const dataone = res.data.comment_data;
+        setCommentValue(
+          dataone.edited_comment === "none"
+            ? dataone.comment
+            : dataone.edited_comment
+        );
       } catch (error) {
         console.log(error);
       }
@@ -38,27 +42,59 @@ function Adminn_Cheack_Ans({ data,setRefereshData }) {
 
     fetchComments();
   }, [data.comment_id]);
-
   const renderHighlightedText = () => {
-    const words1 = commentValue.split(/\s+/);
-    const words2 = data.edit_answer.split(/\s+/);
-
-    return words2.map((word, index) => {
-      if (!words1.includes(word)) {
-        return (
-          <span key={index} style={{ color: "green", whiteSpace: "pre-line" }}>
-            {word}{" "}
-          </span>
-        );
-      } else {
+    const sentences1 = commentValue.split(/\.|\?|!/);
+    const sentences2 = data.edit_answer.split(/\.|\?|!/);
+  
+    const highlightedSentences = sentences2.map((sentence, index) => {
+      const words1 = sentences1[index] ? sentences1[index].split(/\s+/) : [];
+      const words2 = sentence.split(/\s+/);
+  
+      const highlightedWords = words2.map((word, index) => {
+        if (words1.length === 0 || !words1.includes(word)) {
+          return (
+            <span
+              key={index}
+              style={{ color: "green", whiteSpace: "pre-line" }}
+            >
+              {word + " "}
+            </span>
+          );
+        }
         return (
           <span key={index} style={{ whiteSpace: "pre-line" }}>
-            {word}{" "}
+            {word + " "}
           </span>
         );
-      }
+      });
+      return <p key={index}>{highlightedWords}</p>;
     });
+  
+    return highlightedSentences;
   };
+  
+  
+
+  // const renderHighlightedText = () => {
+  //   const words1 = commentValue.split(/\s+/);
+  //   const words2 = data.edit_answer.split(/\s+/);
+
+  //   return words2.map((word, index) => {
+  //     if (!words1.includes(word)) {
+  //       return (
+  //         <span key={index} style={{ color: "green", whiteSpace: "pre-line" }}>
+  //           {word}{" "}
+  //         </span>
+  //       );
+  //     } else {
+  //       return (
+  //         <span key={index} style={{ whiteSpace: "pre-line" }}>
+  //           {word}{" "}
+  //         </span>
+  //       );
+  //     }
+  //   });
+  // };
 
   useEffect(() => {
     const fetchAnswer = async () => {
@@ -81,8 +117,8 @@ function Adminn_Cheack_Ans({ data,setRefereshData }) {
       await axios.post(`http://localhost:5000/admin/updategrant`, {
         _id: id,
         grant: value,
-        edited_answer:data.edit_answer,
-        comment_id:data.comment_id,
+        edited_answer: data.edit_answer,
+        comment_id: data.comment_id,
       });
       setRefereshData(true);
       // console.log("123456")
@@ -114,7 +150,7 @@ function Adminn_Cheack_Ans({ data,setRefereshData }) {
               <div className="cheack-ans-button">
                 <button
                   className="cheack-ans-button-press cancelbtn"
-                  onClick={() => cheackGrant("false",data._id)}
+                  onClick={() => cheackGrant("false", data._id)}
                 >
                   Cancel
                 </button>
@@ -122,7 +158,7 @@ function Adminn_Cheack_Ans({ data,setRefereshData }) {
               <div className="cheack-ans-button ">
                 <button
                   className="cheack-ans-button-press"
-                  onClick={() => cheackGrant("true",data._id)}
+                  onClick={() => cheackGrant("true", data._id)}
                 >
                   Done
                 </button>

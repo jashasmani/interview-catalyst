@@ -1,5 +1,5 @@
 const express = require('express');
-const bcrypt = require('bcrypt');
+const bcryptjs = require('bcryptjs');
 const User = require('../../models/login.model');
 const jwt = require('jsonwebtoken');
 
@@ -21,10 +21,10 @@ async function getUserData(req, res) {
             return res.status(401).json({ message: 'Invalid credentials' });
         }
         
-        const passwordMatch = await bcrypt.compare(password, user.password);
+        const passwordMatch = await bcryptjs.compare(password, user.password);
 
         if (passwordMatch) {
-            const token = jwt.sign({ id: user._id, email: user.email }, 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789', { expiresIn: '10h' });
+            const token = jwt.sign({ id: user._id, email: user.email }, process.env.TOKEN1, { expiresIn: '10h' });
 
             
             user.tokens = token;

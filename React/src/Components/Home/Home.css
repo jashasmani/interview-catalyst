@@ -11,8 +11,8 @@
   } */
 
 body {
-  overflow-y: scroll;
-  background-color: #333333!important;
+  overflow-y:hidden;
+  /* background-color: #333333!important; */
 }
 
 header {

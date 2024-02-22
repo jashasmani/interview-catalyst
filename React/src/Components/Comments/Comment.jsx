@@ -1,5 +1,5 @@
 import axios from "axios";
-import { React, useState, useEffect, useMemo } from "react";
+import { React, useState, useEffect } from "react";
 import SendIcon from "@mui/icons-material/Send";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
@@ -8,6 +8,10 @@ import QueryBuilderIcon from "@mui/icons-material/QueryBuilder";
 import Like from "./Like";
 import EditAnswer from "./EditAnswer";
 import Answerdata from "./Answerdata";
+// import Dropdown from "./Dropdown";
+import Default from "./one";
+// import SideAvtar from "../SideAvtar/SideAvtar";
+import { FluentProvider, webLightTheme } from "@fluentui/react-components";
 
 const Comment = ({
   questionId,
@@ -25,7 +29,6 @@ const Comment = ({
   const [restComment1, setRestComment] = useState([]);
   const [isEditAnsModalOpen, setEditAnsModalOpen] = useState(false);
   const [selectedCommentId, setSelectedCommentId] = useState(null);
-  // const [likecount, setLikeCountUpdate] = useState(false);
 
   // useEffect(() => {
   const fetchComments = async () => {
@@ -36,7 +39,7 @@ const Comment = ({
       const sortData = res.data.question_comment;
 
       const sortedComments = sortData.sort((a, b) => b.likeCount - a.likeCount);
-      console.log(sortedComments);
+      // console.log(sortedComments);
       setFirstComment(sortedComments.length > 0 ? sortedComments[0] : null);
       setRestComment(sortedComments.slice(1));
 
@@ -48,7 +51,7 @@ const Comment = ({
       console.log(error);
     }
   };
-  
+
   useEffect(() => {
     fetchComments();
   }, []);
@@ -145,68 +148,99 @@ const Comment = ({
     setEditAnsModalOpen(true);
   };
 
+  const avatarGroupStyle = {
+    display: "flex",
+    marginRight: "6rem",
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "transparent",
+  };
   return (
     <>
-      <div className="comment-comment-top">
-        <div className="comment-userimage">
-          <div className="avatar">
-            {getCommentusername[0] && getCommentusername[0].image !== null ? (
-              <img src={getCommentusername[0].image} alt="profile" />
-            ) : (
-              <AccountCircleIcon style={{ fontSize: "3rem" }} />
-            )}
-          </div>
-        </div>
-        <div className="comment-time">
-          <div className="comment-username">{firstComment1.username}</div>
+      <div className="comment-3">
+        <div className="comment-comment-2">
+          <div className="comment-comment-top">
+            <div className="manage-space">
+              <div className="contro-distance">
+                <div className="contro-distance2">
+                  <div className="comment-userimage">
+                    <div className="avatar">
+                      {getCommentusername[0] &&
+                      getCommentusername[0].image !== null ? (
+                        <img src={getCommentusername[0].image} alt="profile" />
+                      ) : (
+                        <AccountCircleIcon style={{ fontSize: "3rem" }} />
+                      )}
+                    </div>
+                  </div>
+                  <div className="comment-time">
+                    <div className="comment-username">
+                      {firstComment1.username}
+                    </div>
 
-          <div className="time-title">
-            <QueryBuilderIcon
-              style={{ fontSize: "0.7rem", marginRight: "5px" }}
-            />
-            <div className="comment-username-time">
-              {calculateTimeDifference(firstComment1.timestamp)}
+                    <div className="time-title">
+                      <QueryBuilderIcon
+                        style={{ fontSize: "0.7rem", marginRight: "5px" }}
+                      />
+                      <div className="comment-username-time">
+                        {calculateTimeDifference(firstComment1.timestamp)}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div className="contro-name">
+                  <FluentProvider
+                    theme={webLightTheme}
+                    style={avatarGroupStyle}
+                  >
+                    <Default
+                    cid={firstComment1._id}
+                    />
+                  </FluentProvider>
+                </div>
+              </div>
+
+              <div className="question-que" style={{ marginLeft: "1rem" }}>
+                <p> Ans :</p>
+                <div
+                  className="comments"
+                  onClick={() => openEditAnsModal(firstComment1._id)}
+                >
+                  <BorderColorIcon
+                    style={{ marginRight: "0rem", cursor: "pointer" }}
+                  />
+                </div>
+              </div>
+              {isEditAnsModalOpen && (
+                <EditAnswer
+                  closeModal={() => {
+                    setSelectedCommentId(null);
+                    setEditAnsModalOpen(false);
+                  }}
+                  questionData={questionData}
+                  cid={selectedCommentId}
+                  setShowAlert={setShowAlert}
+                />
+              )}
+
+              <Answerdata comment={firstComment1} />
             </div>
-          </div>
-        </div>
-      </div>
-
-      <div className="question-que" style={{ marginLeft: "1rem" }}>
-        <p> Ans :</p>
-        <div
-          className="comments"
-          onClick={() => openEditAnsModal(firstComment1._id)}
-        >
-          <BorderColorIcon style={{ marginRight: "3rem", cursor: "pointer" }} />
-        </div>
-      </div>
-      {isEditAnsModalOpen && (
-        <EditAnswer
-          closeModal={() => {
-            setSelectedCommentId(null);
-            setEditAnsModalOpen(false);
-          }}
-          questionData={questionData}
-          cid={selectedCommentId}
-          setShowAlert={setShowAlert}
-        />
-      )}
-
-      <Answerdata comment={firstComment1} />
-
-      <div className="responses">
-        <div className="icon-left">
-          <Like
-            currentValue={currentValue}
-            nextCommentData={nextCommentData}
-            cid={firstComment1._id}
-            countLikeTotal={firstComment1.likeCount}
-            updateCommentData={() => {
-              fetchComments();
-            }}
-          />
-          <div className="comments" onClick={addComment}>
-            <KeyboardArrowDownIcon style={{ cursor: "pointer" }} />
+            <div className="responses">
+              <div className="icon-left">
+                <Like
+                  currentValue={currentValue}
+                  nextCommentData={nextCommentData}
+                  cid={firstComment1._id}
+                  countLikeTotal={firstComment1.likeCount}
+                  updateCommentData={() => {
+                    fetchComments();
+                  }}
+                />
+                <div className="comments" onClick={addComment}>
+                  <KeyboardArrowDownIcon style={{ cursor: "pointer" }} />
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -220,28 +254,53 @@ const Comment = ({
                 <div className="comment-3">
                   <div className="comment-comment-2">
                     <div className="comment-comment-top">
-                      <div className="comment-userimage">
-                        <div className="avatar">
-                          {getCommentusername[index + 1] &&
-                          getCommentusername[index + 1].image !== null ? (
-                            <img
-                              src={getCommentusername[index + 1].image}
-                              alt="profile"
-                            />
-                          ) : (
-                            <AccountCircleIcon style={{ fontSize: "3rem" }} />
-                          )}
+                      <div className="contro-distance">
+                        <div className="contro-distance2">
+                          <div className="comment-userimage">
+                            <div className="avatar">
+                              {getCommentusername[index + 1] &&
+                              getCommentusername[index + 1].image !== null ? (
+                                <img
+                                  src={getCommentusername[index + 1].image}
+                                  alt="profile"
+                                />
+                              ) : (
+                                <AccountCircleIcon
+                                  style={{ fontSize: "3rem" }}
+                                />
+                              )}
+                            </div>
+                          </div>
+                          <div className="comment-time">
+                            <div className="comment-username">
+                              {comment.username}
+                            </div>
+                            <div className="time-title">
+                              <QueryBuilderIcon
+                                style={{
+                                  fontSize: "0.7rem",
+                                  marginRight: "5px",
+                                }}
+                              />
+                              <div className="comment-username-time">
+                                {calculateTimeDifference(
+                                  firstComment1.timestamp
+                                )}
+                              </div>
+                            </div>
+                          </div>
                         </div>
-                      </div>
-                      <div className="comment-time">
-                        <div className="comment-username">
-                          {comment.username}
-                        </div>
-                        <div className="comment-username-time">
-                          {calculateTimeDifference(comment.timestamp)}
+                        <div className="contro-name">
+                          <FluentProvider
+                            theme={webLightTheme}
+                            style={avatarGroupStyle}
+                          >
+                            <Default firstComment1={comment._id} />
+                          </FluentProvider>
                         </div>
                       </div>
                     </div>
+
                     <div
                       className="question-que"
                       style={{ marginLeft: "1rem" }}
@@ -252,12 +311,11 @@ const Comment = ({
                         onClick={() => openEditAnsModal(comment._id)}
                       >
                         <BorderColorIcon
-                          style={{ marginRight: "3rem", cursor: "pointer" }}
+                          style={{ marginRight: "0rem", cursor: "pointer" }}
                         />
                       </div>
                     </div>
 
-                    {/* <div className="answer">{comment.comment}</div> */}
                     <Answerdata comment={comment} />
                     {isEditAnsModalOpen && (
                       <EditAnswer
@@ -270,21 +328,20 @@ const Comment = ({
                         setShowAlert={setShowAlert}
                       />
                     )}
-                  </div>
-                </div>
 
-                <div className="responses">
-                  <div className="icon-left">
-                    <Like
-                      currentValue={currentValue}
-                      nextCommentData={nextCommentData}
-                      cid={comment._id}
-                      countLikeTotal={comment.likeCount}
-                      updateCommentData={() => {
-                        fetchComments();
-                      }}
-                    />
-                    {/* {count()} */}
+                    <div className="responses">
+                      <div className="icon-left">
+                        <Like
+                          currentValue={currentValue}
+                          nextCommentData={nextCommentData}
+                          cid={comment._id}
+                          countLikeTotal={comment.likeCount}
+                          updateCommentData={() => {
+                            fetchComments();
+                          }}
+                        />
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>

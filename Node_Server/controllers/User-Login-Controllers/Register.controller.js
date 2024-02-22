@@ -1,5 +1,5 @@
 const express = require('express');
-const bcrypt = require('bcrypt');
+const bcryptjs = require('bcryptjs');
 const User = require('../../models/login.model');
 const jwt = require('jsonwebtoken');
 
@@ -8,7 +8,7 @@ async function getRegisterData(req, res) {
     try {
         const { username, email, password } = req.body;
 
-        const hashedPassword = await bcrypt.hash(password, 10);
+        const hashedPassword = await bcryptjs.hash(password, 10);
         
         console.log(req.body)
         const user = new User({ username, email, password: hashedPassword });

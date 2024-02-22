@@ -2,7 +2,9 @@ import { React, useState, useEffect } from "react";
 import axios from "axios";
 
 const Answer = ({ comment }) => {
+  const [displayedText, setDisplayedText] = useState(comment.comment);
   const [checkGrant, setCheckGrant] = useState("");
+
   const [username, setUsername] = useState("");
   const [highlightedText, setHighlightedText] = useState([]);
 
@@ -17,8 +19,17 @@ const Answer = ({ comment }) => {
         setCheckGrant(data1.grant);
         setUsername(data1.cusername);
 
-        const sentences1 = comment.comment.split(/\.|\?|!/);
-        const sentences2 = comment.edited_comment.split(/\.|\?|!/);
+        console.log(comment.edited_comment);
+        // Function to split sentences properly
+        const splitSentences = (text) => {
+          return text
+            .replace(/([.?!])\s*(?=[A-Z])/g, "$1|")
+            .split("|")
+            .map((sentence) => sentence.trim());
+        };
+
+        const sentences1 = splitSentences(comment.comment);
+        const sentences2 = splitSentences(comment.edited_comment);
 
         const highlightedSentences = sentences2.map((sentence, index) => {
           const words1 = sentences1[index]
@@ -29,18 +40,16 @@ const Answer = ({ comment }) => {
           const highlightedWords = words2.map((word, index) => {
             if (!words1.includes(word)) {
               return (
-                <span
-                  key={index}
-                  style={{ color: "green", whiteSpace: "pre-line" }}
-                >
-                  {word + " "}
+                <span key={index} className="highlighted-word">
+                  {word}
+                  <span>{"  "}</span>
                 </span>
               );
             }
             return <span key={index}> {word} </span>;
           });
 
-          return <p key={index}>{highlightedWords}</p>;
+          return <span key={index}>{highlightedWords}</span>;
         });
 
         setHighlightedText(highlightedSentences);
@@ -50,27 +59,37 @@ const Answer = ({ comment }) => {
     };
 
     fetchComments();
-  }, [comment._id, comment.comment]);
+  }, [comment._id, comment.comment, comment.edited_comment]);
 
+
+  const handleMouseEnter = () => {
+    
+      setDisplayedText(true);
+    
+  };
+
+  const handleMouseLeave = () => {
+    setDisplayedText(false);
+  };
   return (
     <>
       <div className="answer">
-        {
-          checkGrant==='true'  ? highlightedText :
-          comment.comment
-        }
+        <p onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
+          {checkGrant === "setTrue" ? (
+            <div>
+              {highlightedText.map((sentence, index) => (
+                <p key={index}>
+                  {sentence}
+                  <span>{"  "}</span>
+                </p>
+              ))}
+              {/* {comment.edited_comment} */}
+            </div>
+          ) : (
+            <p>{comment.comment}</p>
+          )}
+        </p>
       </div>
-      {username ? (
-        <div className="edited-by">
-          <span style={{ color: "green", marginLeft: "0.5rem" }}>
-            {" "}
-            {username}
-          </span>
-          <span>Edited by</span>
-        </div>
-      ) : (
-        ""
-      )}
     </>
   );
 };

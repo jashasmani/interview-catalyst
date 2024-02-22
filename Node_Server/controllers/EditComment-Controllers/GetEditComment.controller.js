@@ -1,7 +1,7 @@
 const express = require("express");
 const Editanswer = require("../../models/editAnswer.model");
 
-async function GetEditcomment(req, res) {
+async function  GetEditcomment(req, res) {
   try {
 
     const edit_answer_id = await Editanswer.find();
