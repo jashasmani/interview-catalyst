@@ -50,7 +50,7 @@
 //           <label>Create Post</label>
 //         </div>
 //         <div className="inputfield">
-       
+
 //           <textarea
 //             type="text"
 //             rows="3"
@@ -61,8 +61,7 @@
 //             className="question-write"
 //             required
 //           />
-//           <ReactMarkdown source={question} className="markdown"  />
-        
+
 //           <textarea
 //             type="text"
 //             rows="9"
@@ -89,45 +88,20 @@
 
 // export default CustomModal;
 
-
-
-
-
-
-
-
-
-
 import axios from "axios";
 import React, { useState } from "react";
-
+import ReactMarkdown from "react-markdown";
 
 const CustomModal = ({ closeModal, username }) => {
   const [question, setQuestion] = useState("");
   const [answers, setAnswers] = useState("");
 
-  // Flags to track whether the bullet point has been added for each textarea
-  const [questionBulletAdded, setQuestionBulletAdded] = useState(false);
-  const [answerBulletAdded, setAnswerBulletAdded] = useState(false);
-
   const handleQuestion = (e) => {
-    // Check if the bullet point has been added for the question textarea
-    if (!questionBulletAdded) {
-      setQuestion((prevQuestion) => "> " + prevQuestion + e.target.value);
-      setQuestionBulletAdded(true); // Set the flag to true
-    } else {
-      setQuestion(e.target.value);
-    }
+    setQuestion(e.target.value);
   };
 
   const handleAnswers = (e) => {
-    // Check if the bullet point has been added for the answer textarea
-    if (!answerBulletAdded) {
-      setAnswers((prevAnswers) => "> " + prevAnswers + e.target.value);
-      setAnswerBulletAdded(true); // Set the flag to true
-    } else {
-      setAnswers(e.target.value);
-    }
+    setAnswers(e.target.value);
   };
 
   const callCloseModal = async (e) => {
@@ -183,6 +157,12 @@ const CustomModal = ({ closeModal, username }) => {
             name="answer"
             value={answers}
             onChange={handleAnswers}
+            onKeyDown={(e) => {
+              if (e.key === "Enter") {
+                e.preventDefault();
+                setAnswers((prevAnswers) => prevAnswers + "\n• ");
+              }
+            }}
             placeholder="Compose your answer here..."
             className="answer-write"
           />
@@ -201,36 +181,3 @@ const CustomModal = ({ closeModal, username }) => {
 };
 
 export default CustomModal;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
-
-
-
-
