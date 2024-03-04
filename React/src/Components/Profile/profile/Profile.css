@@ -69,6 +69,10 @@
   width: 100%;
 }
 
+.profile-name{
+  width: 343px;
+}
+
 .user-profile img {
   background: white;
   width: 12rem;
