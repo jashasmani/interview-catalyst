@@ -88,9 +88,12 @@
 
 // export default CustomModal;
 
+
+
+
 import axios from "axios";
 import React, { useState } from "react";
-import ReactMarkdown from "react-markdown";
+import ReactMarkdown from 'react-markdown'
 
 const CustomModal = ({ closeModal, username }) => {
   const [question, setQuestion] = useState("");
@@ -101,7 +104,11 @@ const CustomModal = ({ closeModal, username }) => {
   };
 
   const handleAnswers = (e) => {
-    setAnswers(e.target.value);
+    if (!answers) {
+      setAnswers('• ' + e.target.value);
+    } else {
+      setAnswers(e.target.value);
+    }
   };
 
   const callCloseModal = async (e) => {
@@ -158,9 +165,9 @@ const CustomModal = ({ closeModal, username }) => {
             value={answers}
             onChange={handleAnswers}
             onKeyDown={(e) => {
-              if (e.key === "Enter") {
+              if (e.key === 'Enter') {
                 e.preventDefault();
-                setAnswers((prevAnswers) => prevAnswers + "\n• ");
+                setAnswers((prevAnswers) => prevAnswers + '\n• ');
               }
             }}
             placeholder="Compose your answer here..."
@@ -181,3 +188,4 @@ const CustomModal = ({ closeModal, username }) => {
 };
 
 export default CustomModal;
+

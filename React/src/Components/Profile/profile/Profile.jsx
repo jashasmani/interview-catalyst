@@ -97,7 +97,7 @@ const Profile = () => {
               {/* <img className="profileCoverImg" src={backimg} alt="back" /> */}
               <div className="profileCoverImg">
                 <div className="profileInfo">
-                  <h4 className="profileInfoName">{profile.name}</h4>
+                 <div className="profile-name"> <h4 className="profileInfoName">{profile.name}</h4></div>
 
                   <div className="profInfoDesc">
                     <span className="profileInfoDesc">
