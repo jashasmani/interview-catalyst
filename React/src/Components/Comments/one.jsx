@@ -4,7 +4,6 @@ import {
   AvatarGroupPopover,
   partitionAvatarGroupItems,
 } from "@fluentui/react-components";
-import { render } from "@testing-library/react";
 import { Tooltip } from "antd";
 import axios from "axios";
 import { React, useEffect, useState } from "react";

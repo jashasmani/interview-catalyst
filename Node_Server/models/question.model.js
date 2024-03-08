@@ -7,6 +7,11 @@ const QuestionsSchema = new mongoose.Schema({
         require: true,
         uniqe: true
     },
+    title: {
+        type: String,
+        require: true,
+        uniqe: true
+    },
     answer: {
         type: String,
         require: true
