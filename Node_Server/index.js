@@ -5,6 +5,7 @@ const questionRouter = require("./routes/question.route");
 const profileRouter = require("./routes/profile.route");
 const commentRouter = require("./routes/comments.route");
 const likeRouter = require("./routes/like.route");
+const adminRouter = require("./routes/adminlogin.route");
 const cheackEditRoute = require("./routes/cheackEditAnswer.route");
 require('dotenv').config();
 
@@ -29,6 +30,7 @@ app.use("/user", questionRouter);
 app.use("/user", profileRouter);
 app.use("/user", commentRouter);
 app.use("/user", likeRouter);
+app.use("/admin", adminRouter);
 app.use("/admin", cheackEditRoute);
 
 connectDB();

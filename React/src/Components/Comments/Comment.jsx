@@ -104,11 +104,11 @@ const Comment = ({
     fetchData();
   }, []);
 
-  function resizeTextarea() {
-    const textarea = document.getElementById("input-comment");
-    textarea.style.height = "auto";
-    textarea.style.height = textarea.scrollHeight + "px";
-  }
+    function resizeTextarea() {
+      const textarea = document.getElementById("input-comment");
+      textarea.style.height = "1rem";
+      textarea.style.height = textarea.scrollHeight + "px";
+    }
 
   // const setProfileImage = async (usernames) => {
   //   try {
@@ -193,9 +193,7 @@ const Comment = ({
                     theme={webLightTheme}
                     style={avatarGroupStyle}
                   >
-                    <Default
-                    cid={firstComment1._id}
-                    />
+                    <Default cid={firstComment1._id} />
                   </FluentProvider>
                 </div>
               </div>
@@ -361,12 +359,9 @@ const Comment = ({
                 wrap="soft"
               />
               <div className="button-comment-div">
-                <button
-                  className="button-comment"
-                  onClick={handleSubmitComment}
-                >
+                <div className="button-comment" onClick={handleSubmitComment}>
                   <SendIcon />
-                </button>
+                </div>
               </div>
             </div>
             <hr />

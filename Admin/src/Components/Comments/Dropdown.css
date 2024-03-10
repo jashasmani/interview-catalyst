@@ -1,0 +1,12 @@
+/* .ant-avatar ant-avatar-lg ant-avatar-circle ant-popover-open css-dev-only-do-not-override-1xg9z9n */
+.ant-avatar{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+}
+
+.ant-popover-inner{
+    background-color: transparent;
+}

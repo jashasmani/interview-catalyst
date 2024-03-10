@@ -1,0 +1,40 @@
+.cheack-ans {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+
+.cheack-ans-button {
+  /* width: 5rem; */
+  margin: 1rem;
+}
+
+.cheack-ans-button-press {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 6rem;
+  height: 3rem;
+  border-radius: 3rem;
+  font-size: 1.3rem;
+  background: #ffffff;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  color: #000000;
+  border-radius: 0.5rem;
+}
+
+.cheack-ans-button-press.cancelbtn {
+  background: #ffffff;
+  color: #ff0000;
+}
+.cheack-ans-button-press.cancelbtn:hover {
+  background: #000000;
+  color: #ff0000;
+}
+.cheack-ans-button-press:hover {
+  background: #000000;
+  color: #33ff00;
+}
+

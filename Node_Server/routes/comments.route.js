@@ -5,6 +5,9 @@ const GetCommentById = require("../controllers/Comments-Controllers/GetCommentBy
 
 const router = express.Router();
 
-router.post("/commentsubmit", commentsubmit).get("/getcomment",getcomment).get("/Getcommentbyid",GetCommentById);
+router
+  .post("/commentsubmit", commentsubmit)
+  .get("/getcomment", getcomment)
+  .get("/getcommentbyid", GetCommentById);
 
 module.exports = router;

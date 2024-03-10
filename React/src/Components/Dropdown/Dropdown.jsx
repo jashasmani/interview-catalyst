@@ -47,7 +47,7 @@ const Dropdown = ({ setValue, text, addValue ,setTitle}) => {
   return (
     <div>
       <Select
-        defaultValue={options[1].value}
+        defaultValue={'Category'}
         style={{
           width: 120,
         }}

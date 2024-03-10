@@ -29,7 +29,7 @@ function Adminn_Cheack_Ans({ data, setRefereshData }) {
     const fetchComments = async () => {
       try {
         const res = await axios.get(
-          `http://localhost:5000/user/GetCommentById?comment_id=${data.comment_id}`
+          `http://localhost:5000/user/getcommentbyid?comment_id=${data.comment_id}`
         );
         const dataone = res.data.comment_data;
         setCommentValue(

@@ -5,7 +5,7 @@ const jwt = require("jsonwebtoken");
 async function getToken(req, res) {
   jwt.verify(
     req.token,
-    "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789",
+    "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
     async (err, authdata) => {
       if (err) {
         res.status(401).send({ result: "invalid token" });

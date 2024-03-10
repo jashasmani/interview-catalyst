@@ -10,7 +10,7 @@
 //     const fetchComments = async () => {
 //       try {
 //         const res = await axios.get(
-//           `http://localhost:5000/user/GetCommentById?comment_id=${cid}`
+//           `http://localhost:5000/user/getcommentbyid?comment_id=${cid}`
 //         );
 
 //         const data = res.data.comment_data;
@@ -117,7 +117,7 @@ const CustomModal = ({ setShowAlert, closeModal, cid, questionData }) => {
     const fetchComments = async () => {
       try {
         const res = await axios.get(
-          `http://localhost:5000/user/GetCommentById?comment_id=${cid}`
+          `http://localhost:5000/user/getcommentbyid?comment_id=${cid}`
         );
 
         const data = res.data.comment_data;

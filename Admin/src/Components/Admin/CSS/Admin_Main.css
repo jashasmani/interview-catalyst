@@ -1,0 +1,97 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #001524;
+}
+
+
+
+.top-main-admin {
+  padding: 0.5rem;
+  display: flex;
+  justify-content: space-between;
+  background-color: #142F43;
+  align-items: center;
+}
+
+
+
+.image-main-admin {
+  color: #3559E0;
+  margin: 0 .5rem;
+}
+
+.image-side-admin {
+  font-size: 5rem;
+}
+
+.search-main-admin {
+  display: flex;
+  align-items: center;
+  /* justify-content: center;  */
+  height: 2.5rem;
+  width: 30rem;
+  background-color: white;
+  box-shadow: 0 0 .5rem #ddd;
+  border-radius: 0.5rem;
+  
+  margin-right: 5rem;
+}
+
+#search {
+  border: none;
+  height: 2.5rem;
+  font-size: 1rem;
+  padding: 0 1rem;
+  width: 30rem;
+}
+
+#search:focus {
+  outline: none;
+}
+
+
+.btn-main-admin {
+  align-items: center;
+  display: flex;
+  gap: 5px;
+  font-family: "Montserrat", sans-serif;
+  font-size: 20px;
+}
+
+.admin-name{
+  display: flex;
+  align-items:center;
+  margin-right: 2rem;
+}
+
+
+.not-found{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.main-part-admin{
+  height: 100vh;
+  overflow-y: scroll;
+}
+
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-thumb {
+  background: gray;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #535151;
+}
+
+

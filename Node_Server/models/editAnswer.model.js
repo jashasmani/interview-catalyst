@@ -17,7 +17,6 @@ const EditAnswersSchema = new mongoose.Schema({
   comment_id: {
     type: Schema.Types.ObjectId,
     ref: Comments,
-    // required: true
   },
   edit_answer: {
     type: String,
@@ -33,7 +32,6 @@ const EditAnswersSchema = new mongoose.Schema({
   },
   outputData: {
     type: String,
-    // required: true,
   },
 });
 const EditAnswers = mongoose.model("EditAnswers", EditAnswersSchema);

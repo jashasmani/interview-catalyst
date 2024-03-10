@@ -12,7 +12,7 @@ async function GetCommentById(req, res) {
     res.status(201).json({ message: "EditComment Get successful", comment_data });
   } catch (e) {
     res.status(500).json({ message: "Internal Server Error" });
-    console.error("EditComment Get Error:", e);
+    // console.error("EditComment Get Error:", e);
   }
 }
 
