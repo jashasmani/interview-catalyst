@@ -1,9 +1,14 @@
 import axios from "axios";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Dropdown from "../Dropdown/Dropdown";
 import AddCircleIcon from "@mui/icons-material/AddCircle";
 
-const CustomModal = ({ closeModal, username }) => {
+const CustomModal = ({
+  closeModal,
+  username,
+  setShowAlert1,
+  setShowAlertCategory,
+}) => {
   const [question, setQuestion] = useState("");
   const [answers, setAnswers] = useState("");
   const [value, setValue] = useState(false);
@@ -26,31 +31,52 @@ const CustomModal = ({ closeModal, username }) => {
   const callCloseModal = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post("http://localhost:5000/user/question", {
-        question,
-        username,
-        title,
-        grant:'false'
-      });
+      console.log("title", title);
+      if (!title) {
+        setShowAlertCategory(true);
+      }
+      if (title) {
+        const response = await axios.post(
+          "http://localhost:5000/user/question",
+          {
+            question,
+            username,
+            title,
+            grant: "false",
+          }
+        );
 
-      if (response.data.question_main._id !== "" && answers !== "") {
-        try {
-          await axios.post("http://localhost:5000/user/commentsubmit", {
-            cusername: username,
-            commentData: answers,
-            question_id: response.data.question_main._id,
-            edited_comment: "none",
-            grant:false
-          });
-        } catch (error) {
-          console.log(error);
+        if (response.data.question_main._id !== "" && answers !== "") {
+          try {
+            await axios.post("http://localhost:5000/user/commentsubmit", {
+              cusername: username,
+              commentData: answers,
+              question_id: response.data.question_main._id,
+              edited_comment: "none",
+              grant: false,
+            });
+            setShowAlert1(true);
+            fetchData();
+            closeModal();
+          } catch (error) {
+            console.log(error);
+          }
         }
       }
     } catch (error) {
       console.log(error);
     }
+  };
 
-    closeModal();
+  const fetchData = async () => {
+    try {
+      const res = await axios.post(`http://localhost:5000/user/addcategory`, {
+        title,
+      });
+      console.log(res.data);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
@@ -91,7 +117,12 @@ const CustomModal = ({ closeModal, username }) => {
         </div>
         <div className="last-row">
           <div className="combo">
-            <Dropdown setValue={setValue} text={text} addValue={addValue}setTitle={setTitle} />
+            <Dropdown
+              setValue={setValue}
+              text={text}
+              addValue={addValue}
+              setTitle={setTitle}
+            />
             {value && (
               <div className="input-button">
                 <input
