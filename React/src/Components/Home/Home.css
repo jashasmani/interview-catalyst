@@ -17,7 +17,6 @@ body {
 }
 
 header {
-  background-color: #00264d;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -44,13 +43,9 @@ nav {
 }
 
 .container {
-  /* background-color: #00264d; */
-  background-color: black;
-  background-color: #4682B4;
   padding-left: 40px;
   display: flex;
   flex-direction: column;
-  /* justify-content: center; */
   align-items: center;
 }
 
