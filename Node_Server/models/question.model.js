@@ -31,6 +31,12 @@ const QuestionsSchema = new mongoose.Schema({
     ref: "Admin",
     required: true,
   },
+  embedding: [{
+    type:Number
+  }],
+  similar_questions:  [{
+    type: String
+  }]
 });
 
 const Questions = mongoose.model("Questions", QuestionsSchema);

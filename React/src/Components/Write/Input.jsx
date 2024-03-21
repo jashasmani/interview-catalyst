@@ -84,8 +84,8 @@ const CustomModal = ({
       <div className="modal-wrapper" onClick={closeModal}></div>
 
       <div className="modal-container">
-        <div>{username}</div>
         <div className="title-write">
+          <div>{username}</div>
           <label>Create Post</label>
         </div>
         <div className="inputfield">

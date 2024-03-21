@@ -151,9 +151,6 @@ function WritePage() {
             )}
           </div>
 
-          <div className="notification-main">
-            <NotificationsActiveIcon style={{ fontSize: "2rem" }} />
-          </div>
           <div className="account-main">
             <Link to="/profile">
               <Person2Icon style={{ fontSize: "2rem" }} />

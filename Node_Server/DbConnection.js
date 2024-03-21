@@ -13,4 +13,15 @@ const connectDB = async () => {
   }
 };
 
+
+let questionsCollection = null;
+connectDB()
+  .then(() => {
+    let db = mongoose.connection;
+    questionsCollection = db.collection("questions");
+  })
+  .catch((err) => {
+    console.error("Error:", err);
+  });
+
 module.exports = connectDB;

@@ -1,27 +1,31 @@
-
-import React from 'react';
-import './Home.css';
-import  NavBar from '../Navbar/NavBar';
-import  Footer from '../Footer/JSX/Footer'
-
+import React from "react";
+import "./Home.css";
+import NavBar from "../Navbar/NavBar";
+import Footer from "../Footer/JSX/Footer";
+import { useNavigate } from "react-router-dom";
 
 const Home = () => {
-     return (
-       <>
-        <NavBar/>
-        <div className='container'>
-          <div className='wrapper'><h1>Ask , Chat ,<br/>Answer , Repeat.</h1></div>
-          <div className='wrapper1'><h4> Ask questions and get real answers from real people.</h4></div>
-          <button className='btn'>Get Started</button>
+  const nav = useNavigate();
+  return (
+    <>
+      <NavBar />
+      <div className="container">
+        <div className="wrapper">
+          <h1>
+            Ask , Chat ,<br />
+            Answer , Repeat.
+          </h1>
         </div>
-        <Footer/>
-        
-       </>
-     );
-}; 
+        <div className="wrapper1">
+          <h4> Ask questions and get real answers from real people.</h4>
+        </div>
+        <button className="btn" onClick={() => nav("/signin")}>
+          Get Started
+        </button>
+      </div>
+      <Footer />
+    </>
+  );
+};
 
 export default Home;
-
-
-
-
