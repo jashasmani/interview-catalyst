@@ -50,7 +50,7 @@ nav {
 }
 
 .wrapper {
-  font-size: 44px;
+  font-size: 44px !important;
   color: #FFC700;
   display: flex;
   justify-content: left;
@@ -58,14 +58,16 @@ nav {
   font-family: "Glory";
 }
 
+
+
 .wrapper1 {
   color: #66fcf1;
-  font-size: 26px;
+  font-size: 26px !important;
   margin-top: 10px;
 }
 
 .wrapper1 h2 {
-  font-size: 27px;
+  font-size: 27px !important;
   margin-top: 20px;
 }
 
