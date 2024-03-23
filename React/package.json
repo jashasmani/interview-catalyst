@@ -6,6 +6,9 @@
     "@emotion/react": "^11.11.3",
     "@emotion/styled": "^11.11.0",
     "@fluentui/react-components": "^9.46.5",
+    "@fortawesome/fontawesome-svg-core": "^6.5.1",
+    "@fortawesome/free-solid-svg-icons": "^6.5.1",
+    "@fortawesome/react-fontawesome": "^0.2.0",
     "@mui/icons-material": "^5.15.5",
     "@mui/material": "^5.15.5",
     "@testing-library/jest-dom": "^5.17.0",
@@ -15,13 +18,8 @@
     "antd": "^5.14.1",
     "axios": "^1.6.5",
     "diff": "^5.2.0",
-<<<<<<< HEAD
-    "draft-js": "^0.11.7",
-    "jodit-react": "^4.0.15",
-=======
     "font-awesome": "^4.7.0",
     "mapbox-gl": "^3.2.0",
->>>>>>> 0228ffe20187fa7a203b7b7bf989790a5dc5620c
     "mongoose": "^8.0.4",
     "primereact": "^10.5.3",
     "quill": "^1.3.7",
