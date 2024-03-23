@@ -70,13 +70,17 @@ function AddQuestion({ currentValue, setShowAlert }) {
 
   return (
     <>
-      {currentValue.grant === 'true' ? (
+      {currentValue.grant === "true" ? (
         <section style={{ margin: "0 2rem" }}>
           <div className="top-title">
             <div className="left-side">
               <div className="question-que">Que :</div>
 
-              <div className="question"> {currentValue.question}</div>
+              {/* <div className="question"> {currentValue.question}</div> */}
+              <div
+                className="question"
+                dangerouslySetInnerHTML={{ __html: currentValue.question }}
+              ></div>
             </div>
 
             <div className="right-side">

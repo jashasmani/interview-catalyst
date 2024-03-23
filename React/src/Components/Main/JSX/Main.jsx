@@ -1,11 +1,8 @@
 import React, { useEffect, useState } from "react";
 import SearchIcon from "@mui/icons-material/Search";
 import "../CSS/Main.css";
-import NotificationsActiveIcon from "@mui/icons-material/NotificationsActive";
-import EditNoteIcon from "@mui/icons-material/EditNote";
 import Person2Icon from "@mui/icons-material/Person2";
 import AllQuestion from "../../Message/JSX/AllQuestion";
-import CustomModal from "../../Write/Input";
 import "../../Write/Write.css";
 import { Link } from "react-router-dom";
 import axios from "axios";
@@ -18,13 +15,13 @@ import {
   DATA_EDIT,
   STYLEDATACATEGORY,
 } from "../../../Toast/Tost.js";
+import Input from "../../Write/Input";
 
-function WritePage() {
+function Main() {
   const [questionData, setQuestionData] = useState([]);
   const [showAlert, setShowAlert] = useState(false);
   const [showAlert1, setShowAlert1] = useState(false);
   const [showAlertCategory, setShowAlertCategory] = useState(false);
-
   const [dropdownStates, setDropdownStates] = useState({
     item1: false,
     item2: false,
@@ -136,19 +133,16 @@ function WritePage() {
         </div>
 
         <div className="side-main">
-          {/* <Hamburger/> */}
           <div className="btn-main">
             <Link className="btn-write" onClick={() => setmodel(true)}>
-              <EditNoteIcon style={{ fontSize: "2.2rem" }} />
-            </Link>
-            {model && (
-              <CustomModal
+              <Input
                 closeModal={changeModal}
                 username={cusename}
                 setShowAlert1={setShowAlert1}
                 setShowAlertCategory={setShowAlertCategory}
+                showModal
               />
-            )}
+            </Link>
           </div>
 
           <div className="account-main">
@@ -320,4 +314,4 @@ function WritePage() {
   );
 }
 
-export default WritePage;
+export default Main;
