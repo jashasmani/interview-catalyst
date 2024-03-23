@@ -206,10 +206,10 @@ a:hover {
     font-size: 1em !important;
   }
   .wrapper{
-    font-size: 1.9em;
+    font-size: 1.9em !important;
   }
   .wrapper1{
-    font-size: 1.3em;
+    font-size: 1.3em !important;
   }
   .btn{
     font-size: 20px;

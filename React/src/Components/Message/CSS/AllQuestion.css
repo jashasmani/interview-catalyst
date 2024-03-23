@@ -198,7 +198,7 @@
   /* padding: 1rem; */
   padding-top: 0rem;
   padding-left: 2rem;
-  border-bottom: 2px solid white ;
+  border-bottom: 2px solid white;
   color: white;
   resize: none;
   background-color: transparent;
@@ -358,4 +358,85 @@
 .highlighted-word:hover {
   color: green;
   background-color: #aaffaa;
+}
+
+@media screen and (min-width: 621px) and (max-width: 768px) {
+  .search-main {
+    width: 14rem !important;
+  }
+}
+
+@media screen and (min-width: 480px) and (max-width: 621px) {
+  .search-main {
+    display: none !important;
+  }
+  .right-side {
+    margin-top: 0rem !important;
+    margin-right: 0rem !important;
+  }
+  .question {
+    margin-left: 1rem !important;
+  }
+  .answer {
+    margin: 0rem !important;
+    margin-top: 2rem !important;
+    margin-right: 1rem !important;
+    margin-left: 1rem !important;
+  }
+}
+
+@media screen and (min-width: 320px) and (max-width: 480px) {
+  .sidebar {
+    display: none !important;
+  }
+  .search-main {
+    display: none !important;
+  }
+
+  .side-main {
+    padding-right: 0rem !important;
+  }
+  .top-title {
+    margin: 0rem !important;
+    margin-top: 5rem !important;
+  }
+  .main-addQuestion {
+    margin: 0rem !important;
+  }
+
+  .answer {
+    margin: 0.7rem 0rem !important;
+    font-size: 1.2rem !important;
+    margin-left: 1rem !important;
+  }
+  .question {
+    margin-left: 0rem !important;
+    font-size: 20px !important;
+    padding: 0.5rem !important;
+  }
+  .question-que {
+    font-size: 20px !important;
+    margin-top: 0.5rem !important;
+    padding-left: 0rem !important;
+    margin-left: 0rem !important;
+  }
+  .right-side {
+    margin-right: 0rem !important;
+    margin-top: 0rem !important;
+  }
+  .responses{
+    margin: 0.5rem !important;
+  }
+  .comment-userimage{
+    min-width: 1rem !important;
+    margin: 0.5rem !important;
+  }
+  .comment-username-time{
+    font-size: 0.6rem !important;
+    height: 0.5rem !important;
+  }
+  .logo-text{
+    margin-left: 1rem !important;
+    font-size: 1.6rem !important;
+  }
 }

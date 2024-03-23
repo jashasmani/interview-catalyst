@@ -82,7 +82,7 @@ footer {
   font-family: cursive;
 }
 .footer-bottom p {
-  float: left;
+  /* float: left; */
   font-size: 13px;
   word-spacing: 2px;
   text-transform: capitalize;
