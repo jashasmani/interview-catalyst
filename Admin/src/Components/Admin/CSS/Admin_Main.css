@@ -93,5 +93,143 @@ body {
 ::-webkit-scrollbar-thumb:hover {
   background: #535151;
 }
+/* .logo-text{
+  font-family: 'Poppins';
+} */
 
 
+@media screen and (min-width:700px) and (max-width:874px) {
+  .search-main-admin{
+    width: 16rem;
+  }
+  #search{
+    width: 13rem;
+  }
+}
+
+@media screen and (min-width:480px) and (max-width:700px) {
+  .search-main-admin{
+    width: 14rem;
+  }
+  #search{
+    width: 10.5rem;
+  }
+  .cheack-ans{
+    justify-content: center !important;
+  }
+  .cheack-ans-button{
+    margin: 0.5rem;
+  }
+}
+
+@media screen and (min-width:400px) and (max-width:480px) {
+  .search-main-admin{
+    width: 10rem;
+    /* margin-right: 2rem; */
+  }
+  #search{
+    width: 5.5rem;
+  }
+  .cheack-ans{
+    justify-content: center !important;
+  }
+  .cheack-ans-button{
+    margin: 0.5rem;
+  }
+  .cheack-ans-button-press{
+    width: 5rem !important;
+    height: 2rem !important;
+  }
+  .comment-username-time{
+    font-size: 0.6rem !important;
+    height: 0.5rem !important;
+  }
+  .answer{
+    margin: 1rem 0rem !important;
+    font-size: 1.3rem !important;
+    margin-left: 1rem !important;
+
+  }
+  .question{
+    margin-left: 1rem !important;
+    font-size: 20px !important;
+    padding: 0.5rem !important;
+  }
+  .question-que{
+    font-size: 20px !important;
+    margin-top: 0.5rem !important;
+    padding-left: 0rem !important;
+    margin-left: 0rem !important;
+  }
+  .right-side{
+    margin-right: 0rem !important;
+    margin-top: 0rem !important;
+  }
+  .comment-userimage{
+    min-width: 2rem !important;
+    margin: 0.8rem !important;
+  }
+}
+
+@media screen and (min-width:320px) and (max-width:400px) {
+  .search-main-admin{
+    width: 10rem;
+    /* margin-right: 2rem; */
+  }
+  #search{
+    width: 5.5rem;
+  }
+  .cheack-ans{
+    justify-content: center !important;
+    margin-top: 0.5rem;
+  }
+  .cheack-ans-button{
+    margin: 0.5rem !important;
+  }
+  .cheack-ans-button-press{
+    width: 5rem !important;
+    height: 2rem !important;
+  }
+  .comment-username-time{
+    font-size: 0.6rem !important;
+    height: 0.5rem !important;
+  }
+  .answer{
+    margin: 0.7rem 0rem !important;
+    font-size: 1.2rem !important;
+    margin-left: 1rem !important;
+
+  }
+  .question{
+    margin-left: 1rem !important;
+    font-size: 20px !important;
+    padding: 0.5rem !important;
+  }
+  .question-que{
+    font-size: 20px !important;
+    margin-top: 0.5rem !important;
+    padding-left: 0rem !important;
+    margin-left: 0rem !important;
+  }
+  .right-side{
+    margin-right: 0rem !important;
+    margin-top: 0rem !important;
+  }
+  .comment-userimage{
+    min-width: 2rem !important;
+    margin: 0.8rem !important;
+  }
+  .top-title{
+    margin: 0rem !important;
+    margin-top: 5rem !important;
+  }
+  .main-addQuestion{
+    margin: 0rem !important;
+  }
+  .search-main-admin{
+    display: none;
+  }
+  .admin-name{
+    margin-right: 0rem;
+  }
+}

@@ -329,6 +329,6 @@ input:-webkit-autofill:active {
     margin: 0;
     margin-top: 2rem;
     gap:1rem;
-    flex-direction: column;
+    /* flex-direction: column; */
   }
 }
