@@ -6,15 +6,15 @@ import "./editorstyles.css";
 const QuestionEditorText = ({ placeholder, setValueState }) => {
   const [value, setValue] = useState("");
 
-  // const handleTextChange = (content) => {
-  //   setValueState(content);
-  //   setValue(content);
-  // };
+  const handleTextChange = (content) => {
+    setValueState(content);
+    setValue(content);
+  };
 
-  var toolbarOptions = [
+  const toolbarOptions = [
     ["bold", "italic", "underline", "strike"],
     ["blockquote", "code-block"],
-    ["link", "image", "video", "formula"],
+    ["link", "image", "video"],
 
     [{ header: 1 }, { header: 2 }],
     [{ list: "ordered" }, { list: "bullet" }, { list: "check" }],
@@ -31,7 +31,6 @@ const QuestionEditorText = ({ placeholder, setValueState }) => {
 
     ["clean"],
   ];
-
   const module = {
     toolbar: toolbarOptions,
   };
@@ -41,7 +40,7 @@ const QuestionEditorText = ({ placeholder, setValueState }) => {
       modules={module}
       theme="snow"
       value={value}
-      onChange={setValue}
+      onChange={handleTextChange}
       style={{ height: "18rem" }}
       placeholder={placeholder || "Type here..."}
     />
