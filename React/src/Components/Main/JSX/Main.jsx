@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import SearchIcon from "@mui/icons-material/Search";
 import "../CSS/Main.css";
-import Person2Icon from "@mui/icons-material/Person2";
 import AllQuestion from "../../Message/JSX/AllQuestion";
 import "../../Write/Write.css";
 import { Link } from "react-router-dom";
@@ -16,6 +15,7 @@ import {
   STYLEDATACATEGORY,
 } from "../../../Toast/Tost.js";
 import Input from "../../Write/Input";
+import ProfileDropDown from "../../Dropdown/ProfileDropDown.jsx";
 
 function Main() {
   const [questionData, setQuestionData] = useState([]);
@@ -146,9 +146,9 @@ function Main() {
           </div>
 
           <div className="account-main">
-            <Link to="/profile">
-              <Person2Icon style={{ fontSize: "2rem" }} />
-            </Link>
+            {/* <Link to="/profile">
+            </Link> */}
+            <ProfileDropDown cusename={cusename}/>
           </div>
         </div>
       </nav>

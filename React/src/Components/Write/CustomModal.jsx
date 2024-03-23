@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { Avatar } from "antd";
 import QuestionEditorText from "../EditorText/QuestionEditorText";
 import AnswerEditorText from "../EditorText/AnswerEditorText";
+import getUsernameColor from "../../Components/Functions/Avtar";
 
 const CustomModal = ({
   closeModal,
@@ -32,7 +33,7 @@ const CustomModal = ({
             {
               question,
               username,
-              title: "C++", 
+              title: "C++",
               grant: "false",
             }
           );
@@ -71,17 +72,6 @@ const CustomModal = ({
     } catch (error) {
       console.log(error);
     }
-  };
-  const getUsernameColor = (name) => {
-    let hash = 0;
-    for (let i = 0; i < name.length; i++) {
-      hash = name.charCodeAt(i) + ((hash << 5) - hash);
-    }
-    const hue = Math.abs(hash % 360);
-    const saturation = 70;
-    const lightness = 60;
-    const color = `hsl(${hue}, ${saturation}%, ${lightness}%)`;
-    return color;
   };
 
   const backgroundColor = getUsernameColor(username);
