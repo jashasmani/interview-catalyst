@@ -134,7 +134,8 @@ function Main() {
 
         <div className="side-main">
           <div className="btn-main">
-            <Link className="btn-write" onClick={() => setmodel(true)}>
+            {/* <Link className="btn-write" onClick={() => setmodel(true)}>
+            </Link> */}
               <Input
                 closeModal={changeModal}
                 username={cusename}
@@ -142,7 +143,6 @@ function Main() {
                 setShowAlertCategory={setShowAlertCategory}
                 showModal
               />
-            </Link>
           </div>
 
           <div className="account-main" style={{ cursor: "pointer" }}>

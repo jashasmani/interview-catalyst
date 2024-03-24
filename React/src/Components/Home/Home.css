@@ -11,8 +11,8 @@
   } */
 
 body {
-  overflow-y:hidden;
-  overflow-y: auto;
+  /* overflow-y:hidden;
+  overflow-y: auto; */
   /* background-color: #333333!important; */
 }
 

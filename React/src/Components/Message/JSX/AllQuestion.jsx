@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import "../../Message/CSS/AllQuestion.css";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import Comment from "../../Comments/Comment";
+
 import axios from "axios";
 
 function AddQuestion({ currentValue, setShowAlert,cusename }) {
@@ -42,7 +43,6 @@ function AddQuestion({ currentValue, setShowAlert,cusename }) {
             <div className="left-side">
               <div className="question-que">Que :</div>
 
-              {/* <div className="question"> {currentValue.question}</div> */}
               <div
                 className="question"
                 dangerouslySetInnerHTML={{ __html: currentValue.question }}

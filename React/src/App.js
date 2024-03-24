@@ -13,6 +13,7 @@ import AdminCheackMain from "./Components/Admin/JSX/Admin-Cheack-Ans/Admin_Cheac
 import Confirm from "./Components/Forgot/Confirm";
 import Profile from "./Components/Profile/profile/Profile";
 import EditProfile from "./Components/Profile/EditProfile/EditProfile";
+import ABC from "./Components/EditorText/abc";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
 function App() {
@@ -33,6 +34,7 @@ function App() {
           <Route path="/admin" element={<AdminMain />} />
           <Route path="/admin_check_ans" element={<AdminCheackAns />} />
           <Route path="/admin_check_main" element={<AdminCheackMain />} />
+          <Route path="/abc" element={<ABC />} />
 
           {/* <Route path="/log1" element={<Log1 />} /> 
           <Route path="/home1" element={<Home1 />} /> */}

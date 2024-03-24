@@ -2,10 +2,15 @@ import React, { useState } from "react";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import "./editorstyles.css";
+import { useSelector } from "react-redux";
 
-const AnswerEditorText = ({ placeholder, setAnswer }) => {
-  const [value, setValue] = useState("");
 
+const AnswerEditorText = ({ placeholder, setAnswer,editAnswers }) => {
+  const dataAnswer = useSelector((state) => state.dataAnswer);
+
+  // const [value, setValue] = useState('');
+  const [value, setValue] = useState(dataAnswer.answer);
+  
   const handleTextChange = (content) => {
     setValue(content);
     setAnswer(content);

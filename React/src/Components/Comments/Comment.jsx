@@ -1,17 +1,16 @@
 import axios from "axios";
 import { React, useState, useEffect } from "react";
-import SendIcon from "@mui/icons-material/Send";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
-import BorderColorIcon from "@mui/icons-material/BorderColor";
 import QueryBuilderIcon from "@mui/icons-material/QueryBuilder";
+import BorderColorIcon from "@mui/icons-material/BorderColor";
+
 import Like from "./Like";
 import EditAnswer from "./EditAnswer";
 import Answerdata from "./Answerdata";
-// import Dropdown from "./Dropdown";
 import Default from "./one";
-// import SideAvtar from "../SideAvtar/SideAvtar";
 import { FluentProvider, webLightTheme } from "@fluentui/react-components";
+import Input from "../Write/Input";
 
 const Comment = ({
   questionId,
@@ -20,7 +19,8 @@ const Comment = ({
   questionData,
   setShowAlert,
 }) => {
-  const [commentData, setCommentData] = useState("");
+  const [commentData, setCommentData] = useState(true);
+  const [editAns, setEditAns] = useState(true);
   const [nextCommentData, setNextCommentData] = useState([]);
   const [addcommentData, setAddCommentData] = useState(false);
   const [cusername, setCUsername] = useState(false);
@@ -43,9 +43,9 @@ const Comment = ({
       setFirstComment(sortedComments.length > 0 ? sortedComments[0] : null);
       setRestComment(sortedComments.slice(1));
 
-      const usernames = res.data.question_comment.map(
-        (comment) => comment.username
-      );
+      // const usernames = res.data.question_comment.map(
+      //   (comment) => comment.username
+      // );
       // setProfileImage(usernames);
     } catch (error) {
       console.log(error);
@@ -60,11 +60,10 @@ const Comment = ({
     setAddCommentData(!addcommentData);
   };
 
-  const handleCommentData = (e) => {
-    e.preventDefault();
-    setCommentData(e.target.value);
-    resizeTextarea();
-  };
+  // const handleCommentData = (e) => {
+  //   e.preventDefault();
+  //   setCommentData(e.target.value);
+  // };
 
   const change = async () => {
     try {
@@ -83,7 +82,7 @@ const Comment = ({
   };
 
   const handleSubmitComment = async (e) => {
-    change();
+    setCommentData(true);
   };
 
   useEffect(() => {
@@ -103,12 +102,6 @@ const Comment = ({
     };
     fetchData();
   }, []);
-
-  function resizeTextarea() {
-    const textarea = document.getElementById("input-comment");
-    textarea.style.height = "1rem";
-    textarea.style.height = textarea.scrollHeight + "px";
-  }
 
   // const setProfileImage = async (usernames) => {
   //   try {
@@ -200,26 +193,21 @@ const Comment = ({
 
               <div className="question-que" style={{ marginLeft: "1rem" }}>
                 <p> Ans :</p>
-                <div
-                  className="comments"
-                  onClick={() => openEditAnsModal(firstComment1._id)}
-                >
-                  <BorderColorIcon
-                    style={{ marginRight: "0rem", cursor: "pointer" }}
+                <div className="comments" onClick={() => setEditAns(true)}>
+                  <Input
+                    // closeModal={() => {
+                    //   // setSelectedCommentId(null);
+                    //   console.log(selectedCommentId)
+                    //   // setEditAnsModalOpen(false);
+                    // }}
+                    username={currentValue.username}
+                    questionData={questionData}
+                    cid={firstComment1._id}
+                    // setShowAlert={setShowAlert}
+                    editAns={editAns}
                   />
                 </div>
               </div>
-              {isEditAnsModalOpen && (
-                <EditAnswer
-                  closeModal={() => {
-                    setSelectedCommentId(null);
-                    setEditAnsModalOpen(false);
-                  }}
-                  questionData={questionData}
-                  cid={selectedCommentId}
-                  setShowAlert={setShowAlert}
-                />
-              )}
 
               <Answerdata comment={firstComment1} setShowAlert={setShowAlert} />
             </div>
@@ -244,7 +232,7 @@ const Comment = ({
       </div>
 
       {addcommentData ? (
-        <div className="main-comment">
+        <>
           <div className="comment-botttom-list">
             {restComment1.map((comment, index) => (
               <div key={index}>
@@ -345,28 +333,29 @@ const Comment = ({
               </div>
             ))}
           </div>
-          <hr style={{ height: "1px", margin: "0 1rem" }} />
-          <label className="comment-title">Add Yours</label>
-          <div className="main-comment-in">
-            <div className="comments-send">
-              <textarea
-                className="input-comment"
-                id="input-comment"
-                type="text"
-                value={commentData}
-                onChange={handleCommentData}
-                placeholder="Add here.."
-                wrap="soft"
-              />
+
+          <div className="comments-send">
+            <div
+              className="input-comment"
+              // onChange={handleCommentData}
+            >
+              <label className="comment-title">Add Yours Comment</label>
               <div className="button-comment-div">
                 <div className="button-comment" onClick={handleSubmitComment}>
-                  <SendIcon />
+                  <Input
+                    username={currentValue.username}
+                    comment={commentData}
+                    questionId={questionId}
+                    questionData={questionData}
+                    cid={selectedCommentId}
+                    // setShowAlert={setShowAlert}
+                    // setShowAlert1 setShowAlertCategory
+                  />
                 </div>
               </div>
             </div>
-            <hr />
           </div>
-        </div>
+        </>
       ) : (
         ""
       )}

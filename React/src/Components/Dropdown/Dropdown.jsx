@@ -38,7 +38,7 @@ const Dropdown = ({ setValue, text, addValue, setTitle }) => {
   ]);
 
   const handleClick = (value, option) => {
-    console.log(`Clicked ${option.label}, value: ${value}`);
+    // console.log(`Clicked ${option.label}, value: ${value}`);
     setTitle(value);
     fetchData();
 
@@ -62,7 +62,6 @@ const Dropdown = ({ setValue, text, addValue, setTitle }) => {
 
   useEffect(() => {
     fetchData();
-    console.log("hii");
   });
 
   return (

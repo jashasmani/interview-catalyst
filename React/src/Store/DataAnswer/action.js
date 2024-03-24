@@ -1,5 +1,4 @@
-import {  ANSWER } from "./actionType";
-
+import { ANSWER } from "./actionType";
 
 export const sendAnswer = (answer) => ({
   type: ANSWER,
