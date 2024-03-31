@@ -15,7 +15,7 @@ function AddQuestion({ currentValue, setShowAlert, cusename }) {
   //   const fetchAnswer = async () => {
   //     try {
   //       await axios.get(
-  //         `http://localhost:5000/user/getcomment?question_id=${currentValue._id}`
+  //         `https://interview-catalyst.onrender.com/user/getcomment?question_id=${currentValue._id}`
   //       );
   //     } catch (error) {
   //       console.log(error);

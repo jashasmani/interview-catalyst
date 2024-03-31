@@ -16,7 +16,7 @@ const Answer = ({ comment }) => {
       console.log(data);
       try {
         const res = await axios.get(
-          `http://localhost:5000/admin/getname/${data}`
+          `https://interview-catalyst.onrender.com/admin/getname/${data}`
         );
 
         setEditedName(res.data.name);
@@ -32,7 +32,7 @@ const Answer = ({ comment }) => {
     const fetchComments = async () => {
       try {
         const res = await axios.get(
-          `http://localhost:5000/admin/geteditedanswerbyid?comment_id=${comment._id}`
+          `https://interview-catalyst.onrender.com/admin/geteditedanswerbyid?comment_id=${comment._id}`
         );
 
         const data1 = res.data.editcomment_data;

@@ -10,7 +10,7 @@ const Search = ({ setResults }) => {
     try {
       if (value) {
         const res = await axios.get(
-          `http://localhost:5000/user/searchprofile/${value}`
+          `https://interview-catalyst.onrender.com/user/searchprofile/${value}`
         );
         const newData = res.data.search_profile;
         // console.log(newData);

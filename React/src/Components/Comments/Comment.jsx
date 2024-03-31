@@ -36,7 +36,7 @@ const Comment = ({
   const fetchComments = async () => {
     try {
       const res = await axios.get(
-        `http://localhost:5000/user/getcomment?question_id=${questionId}`
+        `https://interview-catalyst.onrender.com/user/getcomment?question_id=${questionId}`
       );
       const sortData = res.data.question_comment;
 
@@ -69,7 +69,7 @@ const Comment = ({
 
   // const change = async () => {
   //   try {
-  //     const res = await axios.post("http://localhost:5000/user/commentsubmit", {
+  //     const res = await axios.post("https://interview-catalyst.onrender.com/user/commentsubmit", {
   //       cusername: cusername,
   //       question_id: currentValue._id,
   //       commentData,
@@ -90,7 +90,7 @@ const Comment = ({
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await axios.get("http://localhost:5000/user/login", {
+        const res = await axios.get("https://interview-catalyst.onrender.com/user/login", {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
           },
@@ -109,7 +109,7 @@ const Comment = ({
   //     const profiles = [];
   //     for (const username of usernames) {
   //       const res = await axios.get(
-  //         `http://localhost:5000/user/getprofile?cusername=${username}`
+  //         `https://interview-catalyst.onrender.com/user/getprofile?cusername=${username}`
   //       );
   //       const newData = res.data.profile;
   //       profiles.push(newData);

@@ -10,7 +10,7 @@ const CustomModal = ({ setShowAlert, closeModal, cid, questionData }) => {
     const fetchComments = async () => {
       try {
         const res = await axios.get(
-          `http://localhost:5000/user/getcommentbyid?comment_id=${cid}`
+          `https://interview-catalyst.onrender.com/user/getcommentbyid?comment_id=${cid}`
         );
 
         const data = res.data.comment_data;
@@ -37,7 +37,7 @@ const CustomModal = ({ setShowAlert, closeModal, cid, questionData }) => {
   const callCloseModal = async (e) => {
     e.preventDefault();
     try {
-      await axios.post(`http://localhost:5000/admin/cheackeditanswer`, {
+      await axios.post(`https://interview-catalyst.onrender.com/admin/cheackeditanswer`, {
         cusername,
         editAnswers,
         comment_id: commentOBJ._id,
@@ -54,7 +54,7 @@ const CustomModal = ({ setShowAlert, closeModal, cid, questionData }) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await axios.get("http://localhost:5000/user/login", {
+        const res = await axios.get("https://interview-catalyst.onrender.com/user/login", {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
           },
