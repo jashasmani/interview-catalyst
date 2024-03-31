@@ -122,10 +122,15 @@ a:hover {
 }
 
  .buttons-container.show{ 
-  width: 20%;
-  /* position: absolute; */
-  /* top:3.5rem; */
-  /* left: 38rem; */
+  /* width: 20%; */
+  /* position: absolute;
+  top:3.5rem;
+  left: 0rem; */
+
+  display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    margin-top: 14px ;
 
 } 
 

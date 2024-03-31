@@ -157,19 +157,19 @@ function Main() {
         <div className="sidebar">
           <div className="sidebar-item" onClick={() => toggleDropdown("item1")}>
             <span>Java</span>
-            {dropdownStates.item1 && (
+            {/* {dropdownStates.item1 && (
               <div className="dropdown-content">
                 <span>Java Fundamentals</span>
                 <span>OOP with Java</span>
                 <span>Collection Frameworks</span>
                 <span>Generics</span>
-                <span>Design Patterns</span>
-              </div>
-            )}
+                <span>Design Patterns</span> 
+              </div> 
+            )} */}
           </div>
           <div className="sidebar-item" onClick={() => toggleDropdown("item2")}>
             <span>React JS</span>
-            {dropdownStates.item2 && (
+            {/* {dropdownStates.item2 && (
               <div className="dropdown-content">
                 <span>React Components</span>
                 <span>Lifecycle Methods</span>
@@ -177,11 +177,11 @@ function Main() {
                 <span>React Hooks</span>
                 <span>React Router</span>
               </div>
-            )}
+            )} */}
           </div>
           <div className="sidebar-item" onClick={() => toggleDropdown("item3")}>
             <span>DSA</span>
-            {dropdownStates.item3 && (
+            {/* {dropdownStates.item3 && (
               <div className="dropdown-content">
                 <span>Searching</span>
                 <span>Sorting</span>
@@ -190,11 +190,11 @@ function Main() {
                 <span>Tree & Graph</span>
                 <span>Hashing & Indexing</span>
               </div>
-            )}
+            )} */}
           </div>
           <div className="sidebar-item" onClick={() => toggleDropdown("item4")}>
             <span>DBMS</span>
-            {dropdownStates.item4 && (
+            {/* {dropdownStates.item4 && (
               <div className="dropdown-content">
                 <span>RDBMS</span>
                 <span>Normalisation</span>
@@ -202,11 +202,11 @@ function Main() {
                 <span>ACID Properties</span>
                 <span>SQL Queries</span>
               </div>
-            )}
+            )} */}
           </div>
           <div className="sidebar-item" onClick={() => toggleDropdown("item5")}>
             <span>OOP concepts</span>
-            {dropdownStates.item5 && (
+            {/* {dropdownStates.item5 && (
               <div className="dropdown-content">
                 <span>Classes/Objects</span>
                 <span>Inheritance</span>
@@ -215,11 +215,11 @@ function Main() {
                 <span>Abstraction</span>
                 <span>Aggregation/Composition</span>
               </div>
-            )}
+            )} */}
           </div>
           <div className="sidebar-item" onClick={() => toggleDropdown("item6")}>
             <span>Operating System</span>
-            {dropdownStates.item6 && (
+            {/* {dropdownStates.item6 && (
               <div className="dropdown-content">
                 <span>Scheduling algorithms</span>
                 <span>Process Synchronization</span>
@@ -227,53 +227,53 @@ function Main() {
                 <span>Semaphores</span>
                 <span>Deadlocks</span>
               </div>
-            )}
+            )} */}
           </div>
           <div className="sidebar-item" onClick={() => toggleDropdown("item7")}>
             <span>JavaScript</span>
-            {dropdownStates.item7 && (
+            {/* {dropdownStates.item7 && (
               <div className="dropdown-content">
                 <span>Arrow Functions</span>
                 <span>Destructuring</span>
                 <span>Hoisting</span>
                 <span>Closures</span>
               </div>
-            )}
+            )} */}
           </div>
           <div className="sidebar-item" onClick={() => toggleDropdown("item8")}>
             <span>Python</span>
-            {dropdownStates.item8 && (
+            {/* {dropdownStates.item8 && (
               <div className="dropdown-content">
                 <span>NumPy</span>
                 <span>Pandas</span>
                 <span>Regex</span>
                 <span>OOP with Python</span>
               </div>
-            )}
+            )} */}
           </div>
           <div className="sidebar-item" onClick={() => toggleDropdown("item9")}>
             <span>Computer Network</span>
-            {dropdownStates.item9 && (
+            {/* {dropdownStates.item9 && (
               <div className="dropdown-content">
                 <span>OSI Model</span>
                 <span>IP Routing</span>
                 <span>Different Protocols</span>
               </div>
-            )}
+            )} */}
           </div>
           <div
             className="sidebar-item"
             onClick={() => toggleDropdown("item10")}
           >
             <span>DevOps</span>
-            {dropdownStates.item10 && (
+            {/* {dropdownStates.item10 && (
               <div className="dropdown-content">
                 <span>Kubernetes</span>
                 <span>Docker</span>
                 <span>CI/CD</span>
                 <span>Jenkins</span>
               </div>
-            )}
+            )} */}
           </div>
         </div>
 
