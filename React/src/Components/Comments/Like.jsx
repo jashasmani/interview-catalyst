@@ -42,7 +42,7 @@ const Like = ({ currentValue, cid, countLikeTotal, updateCommentData }) => {
     };
 
     fetchLikes();
-  }, [currentValue._id, cusername, cid, likeCount,calculateLike]);
+  }, [currentValue._id, cusername, cid, likeCount, calculateLike]);
 
   // ---------------------------------------------------------------------------------------------------
   const change = async (e) => {
@@ -78,6 +78,7 @@ const Like = ({ currentValue, cid, countLikeTotal, updateCommentData }) => {
         question_id: cid,
         likeCount: newLikeCount,
       });
+      updateCommentData();
       // console.log("12", res.data);
     } catch (error) {
       console.log(error);

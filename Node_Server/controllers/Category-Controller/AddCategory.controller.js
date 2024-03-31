@@ -4,6 +4,7 @@ const Category = require("../../models/category.model");
 async function AddCategory(req, res) {
   try {
     const { title } = req.body;
+    console.log("title", req.body);
     const category = new Category({ value: title, label: title });
     category.save();
 

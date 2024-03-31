@@ -12,6 +12,7 @@ const Dropdown = ({ setValue, text, addValue, setTitle }) => {
         value,
         label: value,
       }));
+
       const allOptions = [
         { value: "Add", label: "Add", style: { color: "green" } },
         ...fetchedCategories,
@@ -44,9 +45,8 @@ const Dropdown = ({ setValue, text, addValue, setTitle }) => {
               title: text.charAt(0).toUpperCase() + text.slice(1),
             }
           );
-          if(res)
-          {
-            message.success('Category is add')
+          if (res) {
+            message.success("Category is add");
           }
           fetchData();
         } catch (error) {

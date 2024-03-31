@@ -125,7 +125,6 @@
 .profile-name {
   margin-top: 0.5rem;
   text-align: center;
-  
 }
 .profile-icon {
   margin-top: 0.2rem;
@@ -256,10 +255,9 @@
   flex-direction: column;
   display: flex;
   align-items: flex-start;
-  width: 343px;
-  padding-left: 2rem;
-  /* background: rgba(0, 0, 0, 0.5);
-  backdrop-filter: blur(10px); */
+  padding-bottom: 2rem;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
   border-bottom-left-radius: 0.5rem;
   border-bottom-right-radius: 0.5rem;
 }

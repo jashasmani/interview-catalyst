@@ -31,9 +31,8 @@ const Comment = ({
   const [selectedCommentId, setSelectedCommentId] = useState(null);
   const [open, setOpen] = useState(false);
 
-  // const dispatch = useDispatch();
+ 
 
-  // useEffect(() => {
   const fetchComments = async () => {
     try {
       const res = await axios.get(
@@ -57,7 +56,7 @@ const Comment = ({
 
   useEffect(() => {
     fetchComments();
-  }, []);
+  }, [open]);
 
   const addComment = () => {
     setAddCommentData(!addcommentData);
@@ -101,6 +100,7 @@ const Comment = ({
         console.log(error);
       }
     };
+
     fetchData();
   }, []);
 
@@ -152,6 +152,7 @@ const Comment = ({
     alignItems: "center",
     backgroundColor: "transparent",
   };
+
   return (
     <>
       <div className="comment-3">
@@ -364,14 +365,14 @@ const Comment = ({
             ))}
           </div>
 
-          <div className="comments-send">
+          <div className="comments-send" onClick={handleSubmitComment}>
             <div
               className="input-comment"
               // onChange={handleCommentData}
             >
               <label className="comment-title">Add Yours Comment</label>
               <div className="button-comment-div">
-                <div className="button-comment" onClick={handleSubmitComment}>
+                <div className="button-comment">
                   <Input
                     username={cusername}
                     comment={commentData}

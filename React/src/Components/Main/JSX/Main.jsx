@@ -150,7 +150,7 @@ function Main() {
 
   return (
     <>
-      {profile.name === null ? (
+      {!profile.name  ? (
         isEditModalOpen ? (
           <EditProfile
             closeModal={() => setEditModalOpen(false)}

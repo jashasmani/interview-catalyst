@@ -90,8 +90,9 @@ const Input = ({
           <Button
             type="primary"
             onClick={(e) => {
+              callCloseEditModal();
               message.success("Edit Request Sent Successfuly!!");
-              setDone(true);
+              // setDone(true);
               handleCancel();
             }}
           >

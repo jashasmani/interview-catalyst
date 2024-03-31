@@ -153,7 +153,21 @@
   margin: 1rem 3rem;
   margin-top: 2rem;
   margin-right: 1rem;
-  color: #cfc0c0;
+  /* color: #cfc0c0; */
+}
+
+.answer p img {
+  /* display: flex;
+  justify-content: center; */
+  width: 50rem;
+  height: 20rem;
+  /* max-height: 200px;
+  max-width: 200px;  */
+}
+.answer pre {
+  background-color: #0C0C0C;
+  border-radius: 0.5rem;
+  width: 50rem;
 }
 
 .responses {
