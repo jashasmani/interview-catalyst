@@ -1,7 +1,7 @@
 const express = require("express");
 const Category = require("../../models/category.model");
 
-async function GetCategory(req, res) {
+async function AddCategory(req, res) {
   try {
     const { title } = req.body;
     const category = new Category({ value: title, label: title });
@@ -14,4 +14,4 @@ async function GetCategory(req, res) {
   }
 }
 
-module.exports = GetCategory;
+module.exports = AddCategory;

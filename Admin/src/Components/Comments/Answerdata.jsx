@@ -71,10 +71,12 @@ const Answer = ({ comment }) => {
       <div className="answer" style={{ whiteSpace: "pre-line" }}>
         <p>
           {comment.edited_comment === "none" ? (
-            <div>{comment.comment}</div>
+            <div>
+              <div dangerouslySetInnerHTML={{ __html: comment.comment }} />
+            </div>
           ) : checkGrant !== "true" ? (
             <>
-              <div>{highlightedText}</div>
+              <div dangerouslySetInnerHTML={{ __html: highlightedText }} />
             </>
           ) : (
             ""

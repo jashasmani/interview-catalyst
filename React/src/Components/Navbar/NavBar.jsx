@@ -1,9 +1,6 @@
-// Navbar.js
-
 import React, { useState } from "react";
-// import search from "../images/search.png";
-import {  NavLink } from "react-router-dom"; // Import Link and NavLink from react-router-dom
-import "./NavBar.css"; // Import the CSS file for styling
+import { NavLink } from "react-router-dom";
+import "./NavBar.css";
 
 const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -26,7 +23,6 @@ const Navbar = () => {
         <NavLink to="/signin" className="button" activeClassName="active">
           Login
         </NavLink>
-        
       </div>
       <div className="mobile-menu-icon" onClick={toggleMobileMenu}>
         &#9776;

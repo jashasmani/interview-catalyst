@@ -4,6 +4,12 @@ const Admin = require("../../models/admin.model");
 let connectDB = require("../../DbConnection");
 const mongoose = require("mongoose");
 const dotenv = require("dotenv");
+const cheerio = require("cheerio");
+
+const { GoogleGenerativeAIEmbeddings } = require("@langchain/google-genai");
+const { TaskType } = require("@google/generative-ai");
+require("dotenv").config();
+dotenv.config();
 
 var questionsCollection = null;
 var db = null;
@@ -13,17 +19,12 @@ async function help() {
     .then(() => {
       db = mongoose.connection;
       questionsCollection = db.collection("questions");
-      console.log("inside");
+      // console.log("inside");
     })
     .catch((err) => {
       console.error("Error:", err);
     });
 }
-
-const { GoogleGenerativeAIEmbeddings } = require("@langchain/google-genai");
-const { TaskType } = require("@google/generative-ai");
-require("dotenv").config();
-dotenv.config();
 
 const embeddings = new GoogleGenerativeAIEmbeddings({
   modelName: "embedding-001", // 768 dimensions
@@ -34,7 +35,7 @@ const embeddings = new GoogleGenerativeAIEmbeddings({
 async function insertQuestion(req, res) {
   await help().then(async () => {
     // console.log("**********************************************");
-    console.log("questionsCollection", questionsCollection);
+    // console.log("questionsCollection", questionsCollection);
     // console.log("*******************************************");
 
     try {
@@ -58,28 +59,49 @@ async function insertQuestion(req, res) {
           currentAdmin.status = "unavailable";
           await currentAdmin.save();
 
-          const res_embed = await embeddings.embedQuery(question);
+          const textData = await extractTextFromHTML(question);
+
+          async function extractTextFromHTML(html) {
+            const $ = cheerio.load(html);
+            const text = $("body").text();
+            return text;
+          }
+          console.log(textData);
+          const res_embed = await embeddings.embedQuery(textData);
 
           const sim_que = await questionsCollection
             .aggregate([
               {
                 $vectorSearch: {
                   index: "que_vec_index",
-                  queryVector: res_embed,
                   path: "embedding",
+                  queryVector: res_embed,
                   numCandidates: 200,
-                  limit: 5,
+                  limit: 3,
                 },
               },
             ])
             .toArray();
 
+          // db.embedded_movies.aggregate([
+          //   {
+          //     "$vectorSearch": {
+          //       "index": "vector-search-tutorial",
+          //       "path": "plot_embedding",
+          //       "queryVector": [<array-of-numbers>],
+          //       "numCandidates": <number-of-candidates>,
+          //       "limit": <number-of-results>
+          //     }
+          //   }
+          // ])
+
           // console.log("***************************************************");
-          console.log("sim_que", sim_que);
+          // console.log("sim_que", sim_que);
           // console.log("***********************************************");
           const question_main = new Question({
             username: username,
-            question: question,
+            question: textData,
+            question_html: question,
             title: title,
             timestamp: currentTimeInIndia,
             admin: currentAdmin._id,

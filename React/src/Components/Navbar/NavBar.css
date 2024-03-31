@@ -20,7 +20,7 @@
 
 .site-name {
   font-size: 1.2em;
-  font-family: "Playfair Display";
+  font-family: "Roboto";
 }
 
 .buttons-container {
@@ -40,7 +40,7 @@
   text-decoration: none;
   color: #fff;
   gap: 20px;
-  font-family: "Playfair Display";
+  font-family: "Roboto";
   /* background-color: #007BFF; */
   /* padding: 10px 15px; */
   margin-left: 10px;

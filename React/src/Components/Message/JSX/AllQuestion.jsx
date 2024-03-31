@@ -4,25 +4,25 @@ import MoreVertIcon from "@mui/icons-material/MoreVert";
 import Comment from "../../Comments/Comment";
 import axios from "axios";
 
-function AddQuestion({ currentValue, setShowAlert,cusename }) {
+function AddQuestion({ currentValue, setShowAlert, cusename }) {
   const [profileImage, setProfileImage] = useState("");
 
   const [, setCurrentTime] = useState(
     new Date().toLocaleString("en-US", { timeZone: "Asia/Kolkata" })
   );
 
-  useEffect(() => {
-    const fetchAnswer = async () => {
-      try {
-        await axios.get(
-          `http://localhost:5000/user/getcomment?question_id=${currentValue._id}`
-        );
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    fetchAnswer();
-  }, [currentValue._id]);
+  // useEffect(() => {
+  //   const fetchAnswer = async () => {
+  //     try {
+  //       await axios.get(
+  //         `http://localhost:5000/user/getcomment?question_id=${currentValue._id}`
+  //       );
+  //     } catch (error) {
+  //       console.log(error);
+  //     }
+  //   };
+  //   fetchAnswer();
+  // }, [currentValue._id]);
 
   useEffect(() => {
     const intervalId = setInterval(() => {
@@ -42,7 +42,6 @@ function AddQuestion({ currentValue, setShowAlert,cusename }) {
             <div className="left-side">
               <div className="question-que">Que :</div>
 
-              {/* <div className="question"> {currentValue.question}</div> */}
               <div
                 className="question"
                 dangerouslySetInnerHTML={{ __html: currentValue.question }}
@@ -51,10 +50,7 @@ function AddQuestion({ currentValue, setShowAlert,cusename }) {
 
             <div className="right-side">
               {currentValue.username === cusename ? (
-                <div
-                  className="favourite-count"
-                  // onClick=''
-                >
+                <div className="favourite-count">
                   <MoreVertIcon style={{ fontSize: "2rem" }} />
                 </div>
               ) : (
@@ -64,9 +60,6 @@ function AddQuestion({ currentValue, setShowAlert,cusename }) {
           </div>
 
           <div className="main-addQuestion">
-            {/* <hr className="question-hr" /> */}
-            {/* <div className="answer">{currentValue.answer}</div> */}
-
             <Comment
               questionId={currentValue._id}
               currentValue={currentValue}

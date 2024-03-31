@@ -1,7 +1,20 @@
 const mongoose = require("mongoose");
 
+// Define a subdocument schema for similar questions
+const SimilarQuestionSchema = new mongoose.Schema({
+  text: {
+    type: String,
+    // required: true
+  }
+});
+
 const QuestionsSchema = new mongoose.Schema({
   question: {
+    type: String,
+    // required: true,
+    // unique: true,
+  },
+  question_html: {
     type: String,
     // required: true,
     // unique: true,
@@ -34,9 +47,7 @@ const QuestionsSchema = new mongoose.Schema({
   embedding: [{
     type:Number
   }],
-  similar_questions:  [{
-    type: String
-  }]
+  similar_questions:  [SimilarQuestionSchema] // Use the subdocument schema here
 });
 
 const Questions = mongoose.model("Questions", QuestionsSchema);

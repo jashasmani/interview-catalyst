@@ -23,7 +23,7 @@ body {
   justify-content: center;
 }
 .logo-text {
-  font-family: "Roboto";
+  font-family: Roboto;
   font-size: 2rem;
   color: white;
   margin-left: 2rem;

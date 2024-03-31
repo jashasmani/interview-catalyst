@@ -1,17 +1,18 @@
-import React, { useState } from "react";
+import React from "react";
 import { Avatar } from "antd";
 import AnswerEditorText from "../EditorText/AnswerEditorText";
 import getUsernameColor from "../Functions/Avtar";
 
 const CustomModalAnswer = ({
-  closeModal,
   username,
   setShowAlert1,
   setShowAlertCategory,
-  setAnswer
+  setAnswer,
+  questionData,
+  comment,
+  editAns,
+  editAnswers
 }) => {
-  const [title, setTitle] = useState("C++");
-
   const backgroundColor = getUsernameColor(username);
 
   return (
@@ -29,7 +30,27 @@ const CustomModalAnswer = ({
           </Avatar>
         </div>
         <div className="inputfield">
-          <AnswerEditorText placeholder={"Write your answer..."} setAnswer={setAnswer}/>
+          {comment || editAns ? (
+            <div
+              className="ql-toolbar ql-snow"
+              style={{
+                borderRadius: "0.5rem",
+                display: "flex",
+                marginBottom: "1rem",
+                paddingLeft: "1rem",
+              }}
+            >
+              <div dangerouslySetInnerHTML={{ __html: questionData }}></div>
+            </div>
+          ) : (
+            ""
+          )}
+          <AnswerEditorText
+            placeholder={"Write your answer..."}
+            setAnswer={setAnswer}
+            editAnswers={editAnswers}
+            editAns={editAns}
+          />
         </div>
       </div>
     </>

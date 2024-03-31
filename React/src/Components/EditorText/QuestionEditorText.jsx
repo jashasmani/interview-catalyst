@@ -6,8 +6,7 @@ import { useSelector } from "react-redux";
 
 const QuestionEditorText = ({ placeholder, setQuestion }) => {
   const dataQuestion = useSelector((state) => state.dataQuestion);
-  const [value, setValue] = useState('');
-  // const [value, setValue] = useState(dataQuestion[0].question);
+  const [value, setValue] = useState(dataQuestion.question);
 
   const handleTextChange = (content) => {
     setValue(content);
@@ -34,6 +33,7 @@ const QuestionEditorText = ({ placeholder, setQuestion }) => {
 
     ["clean"],
   ];
+
   const module = {
     toolbar: toolbarOptions,
   };

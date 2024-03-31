@@ -6,27 +6,37 @@ import axios from "axios";
 
 function AddQuestion({ currentValue, setShowAlert }) {
   const [profileImage, setProfileImage] = useState("");
-  const [grant,setGrant] = useState("false");
-
+  const [grant, setGrant] = useState("false");
 
   const [, setCurrentTime] = useState(
     new Date().toLocaleString("en-US", { timeZone: "Asia/Kolkata" })
   );
+  const [similarQuestions, setSimilarQuestions] = useState([]);
 
   useEffect(() => {
-    const fetchAnswer = async () => {
+    const fetchSimilarQuestions = async () => {
       try {
-        await axios.get(
-          `http://localhost:5000/user/getcomment?question_id=${currentValue._id}`
+        // Iterate over each similar question ID
+        const similarQuestionDetails = await Promise.all(
+          currentValue.similar_questions.map(async (similarQuestion) => {
+            const response = await axios.get(
+              `http://localhost:5000/user/questionbyid?question_id=${similarQuestion._id}`
+            );
+            console.log(response.data);
+            return response.data.question_value.question_html; // Assuming response.data contains question details
+          })
         );
+
+        setSimilarQuestions(similarQuestionDetails);
       } catch (error) {
         console.log(error);
       }
     };
-    fetchAnswer();
-  }, [currentValue._id, grant]);
 
-  
+    fetchSimilarQuestions();
+  }, [currentValue._id, currentValue.similar_questions, grant]);
+
+  // console.log(currentValue.similar_questions);
 
   useEffect(() => {
     const intervalId = setInterval(() => {
@@ -71,23 +81,55 @@ function AddQuestion({ currentValue, setShowAlert }) {
   // useEffect(() => {
   //   calculateTimeDifference(currentValue.timestamp);
   // }, [currentValue.timestamp]);
-
+  // console.log(similarQuestions);
   return (
     <>
       {currentValue.grant === "false" ? (
         <section style={{ margin: "0 2rem" }}>
           <div className="top-title">
             <div className="left-side">
-              <div className="question-que">Que :</div>
+              <div className="question-que">Question :</div>
 
-              <div className="question"> {currentValue.question}</div>
+              <div
+                className="question"
+                dangerouslySetInnerHTML={{ __html: currentValue.question_html }}
+              />
+              <div className="question">
+                {similarQuestions.length > 0 ? (
+                  <>
+                    <strong style={{ color: "#FF1E1E" }}>
+                      Similar Questions
+                      <br />
+                    </strong>
+                    <br />
+                    <hr />
+                    <br />
+                  </>
+                ) : (
+                  ""
+                )}
+
+                {similarQuestions.map((value, index) => (
+                  <div key={index}>
+                    <div style={{ display: "flex", color: "#38E54D" }}>
+                      <span>
+                        {"Q"}
+                        {index + 1}
+                        {"."}
+                      </span>
+                      <div dangerouslySetInnerHTML={{ __html: value }} />
+                    </div>
+                    <br />
+                  </div>
+                ))}
+              </div>
             </div>
 
-            <div className="right-side">
+            {/* <div className="right-side">
               <div className="favourite-count">
                 <MoreVertIcon style={{ fontSize: "2rem" }} />
               </div>
-            </div>
+            </div> */}
           </div>
 
           <div className="main-addQuestion">

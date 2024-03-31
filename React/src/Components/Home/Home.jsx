@@ -9,21 +9,23 @@ const Home = () => {
   return (
     <>
       <NavBar />
-      <div className="container">
-        <div className="wrapper">
-          <h1>
-            Ask , Chat ,<br />
-            Answer , Repeat.
-          </h1>
+      <div className="home-maindiv">
+        <div className="container">
+          <div className="wrapper">
+            <h1>
+              Ask , Chat ,<br />
+              Answer , Repeat.
+            </h1>
+          </div>
+          <div className="wrapper1">
+            <h4> Ask questions and get real answers from real people.</h4>
+          </div>
+          <button className="btn" onClick={() => nav("/signin")}>
+            Get Started
+          </button>
         </div>
-        <div className="wrapper1">
-          <h4> Ask questions and get real answers from real people.</h4>
-        </div>
-        <button className="btn" onClick={() => nav("/signin")}>
-          Get Started
-        </button>
+        <Footer />
       </div>
-      <Footer />
     </>
   );
 };

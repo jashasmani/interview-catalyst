@@ -53,3 +53,10 @@
   flex-direction: row;
   justify-content: center;
 }
+
+
+.question-write{
+  display: flex;
+  width: 100%;
+  border: #ccc 1px solid;
+}

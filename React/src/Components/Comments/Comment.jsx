@@ -1,17 +1,16 @@
 import axios from "axios";
 import { React, useState, useEffect } from "react";
-import SendIcon from "@mui/icons-material/Send";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
-import BorderColorIcon from "@mui/icons-material/BorderColor";
 import QueryBuilderIcon from "@mui/icons-material/QueryBuilder";
+import BorderColorIcon from "@mui/icons-material/BorderColor";
+
 import Like from "./Like";
-import EditAnswer from "./EditAnswer";
 import Answerdata from "./Answerdata";
-// import Dropdown from "./Dropdown";
-import Default from "./one";
-// import SideAvtar from "../SideAvtar/SideAvtar";
+import Default from "./Contribution";
 import { FluentProvider, webLightTheme } from "@fluentui/react-components";
+import Input from "../Write/Input";
+import InputEdit from "../Write/InputEdit";
 
 const Comment = ({
   questionId,
@@ -20,7 +19,8 @@ const Comment = ({
   questionData,
   setShowAlert,
 }) => {
-  const [commentData, setCommentData] = useState("");
+  const [commentData, setCommentData] = useState(true);
+  const [editAns, setEditAns] = useState(true);
   const [nextCommentData, setNextCommentData] = useState([]);
   const [addcommentData, setAddCommentData] = useState(false);
   const [cusername, setCUsername] = useState(false);
@@ -29,6 +29,9 @@ const Comment = ({
   const [restComment1, setRestComment] = useState([]);
   const [isEditAnsModalOpen, setEditAnsModalOpen] = useState(false);
   const [selectedCommentId, setSelectedCommentId] = useState(null);
+  const [open, setOpen] = useState(false);
+
+  // const dispatch = useDispatch();
 
   // useEffect(() => {
   const fetchComments = async () => {
@@ -43,9 +46,9 @@ const Comment = ({
       setFirstComment(sortedComments.length > 0 ? sortedComments[0] : null);
       setRestComment(sortedComments.slice(1));
 
-      const usernames = res.data.question_comment.map(
-        (comment) => comment.username
-      );
+      // const usernames = res.data.question_comment.map(
+      //   (comment) => comment.username
+      // );
       // setProfileImage(usernames);
     } catch (error) {
       console.log(error);
@@ -60,36 +63,33 @@ const Comment = ({
     setAddCommentData(!addcommentData);
   };
 
-  const handleCommentData = (e) => {
-    e.preventDefault();
-    setCommentData(e.target.value);
-    resizeTextarea();
-  };
+  // const handleCommentData = (e) => {
+  //   e.preventDefault();
+  //   setCommentData(e.target.value);
+  // };
 
-  const change = async () => {
-    try {
-      const res = await axios.post("http://localhost:5000/user/commentsubmit", {
-        cusername: cusername,
-        question_id: currentValue._id,
-        commentData,
-        edited_comment: "none",
-      });
-      console.log(res.data);
-      setNextCommentData(res.data.question_comment);
-      setCommentData("");
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  // const change = async () => {
+  //   try {
+  //     const res = await axios.post("http://localhost:5000/user/commentsubmit", {
+  //       cusername: cusername,
+  //       question_id: currentValue._id,
+  //       commentData,
+  //       edited_comment: "none",
+  //     });
+  //     console.log(res.data);
+  //     setNextCommentData(res.data.question_comment);
+  //     setCommentData("");
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
 
   const handleSubmitComment = async (e) => {
-    change();
+    setCommentData(true);
   };
 
   useEffect(() => {
     const fetchData = async () => {
-      // console.log("Fetching login...");
-
       try {
         const res = await axios.get("http://localhost:5000/user/login", {
           headers: {
@@ -103,12 +103,6 @@ const Comment = ({
     };
     fetchData();
   }, []);
-
-  function resizeTextarea() {
-    const textarea = document.getElementById("input-comment");
-    textarea.style.height = "1rem";
-    textarea.style.height = textarea.scrollHeight + "px";
-  }
 
   // const setProfileImage = async (usernames) => {
   //   try {
@@ -141,11 +135,14 @@ const Comment = ({
     return "Just now";
   };
 
-  const openEditAnsModal = (commentId) => {
-    // console.log("BorderColorIcon. :", commentId);
-    // console.log("First comment:", firstComment1._id);
-    setSelectedCommentId(commentId);
-    setEditAnsModalOpen(true);
+  const showModal = (comment) => {
+    setSelectedCommentId(comment);
+    setOpen(true);
+  };
+
+  const handleCancel = () => {
+    setSelectedCommentId(null);
+    setOpen(false);
   };
 
   const avatarGroupStyle = {
@@ -202,24 +199,29 @@ const Comment = ({
                 <p> Ans :</p>
                 <div
                   className="comments"
-                  onClick={() => openEditAnsModal(firstComment1._id)}
+                  onClick={() => {
+                    setEditAns(true);
+                    // openEditAnsModal(firstComment1._id);
+                  }}
                 >
-                  <BorderColorIcon
-                    style={{ marginRight: "0rem", cursor: "pointer" }}
-                  />
+                  <span onClick={() => showModal(firstComment1._id)}>
+                    <BorderColorIcon
+                      style={{ marginRight: "0rem", cursor: "pointer" }}
+                    />
+                  </span>
+                  {open && (
+                    <InputEdit
+                      open={true}
+                      handleCancel={() => setOpen(false)}
+                      username={cusername}
+                      questionData={questionData}
+                      cid={firstComment1._id}
+                      editAns={editAns}
+                      questionId={questionId}
+                    />
+                  )}
                 </div>
               </div>
-              {isEditAnsModalOpen && (
-                <EditAnswer
-                  closeModal={() => {
-                    setSelectedCommentId(null);
-                    setEditAnsModalOpen(false);
-                  }}
-                  questionData={questionData}
-                  cid={selectedCommentId}
-                  setShowAlert={setShowAlert}
-                />
-              )}
 
               <Answerdata comment={firstComment1} setShowAlert={setShowAlert} />
             </div>
@@ -244,7 +246,7 @@ const Comment = ({
       </div>
 
       {addcommentData ? (
-        <div className="main-comment">
+        <>
           <div className="comment-botttom-list">
             {restComment1.map((comment, index) => (
               <div key={index}>
@@ -306,16 +308,32 @@ const Comment = ({
                       <p> Ans :</p>
                       <div
                         className="comments"
-                        onClick={() => openEditAnsModal(comment._id)}
+                        onClick={() => {
+                          setEditAns(true);
+                          // openEditAnsModal(firstComment1._id);
+                        }}
                       >
-                        <BorderColorIcon
-                          style={{ marginRight: "0rem", cursor: "pointer" }}
-                        />
+                        <span onClick={() => showModal(firstComment1._id)}>
+                          <BorderColorIcon
+                            style={{ marginRight: "0rem", cursor: "pointer" }}
+                          />
+                        </span>
+                        {open && (
+                          <InputEdit
+                            open={true}
+                            handleCancel={() => setOpen(false)}
+                            username={cusername}
+                            questionData={questionData}
+                            cid={firstComment1._id}
+                            editAns={editAns}
+                            questionId={questionId}
+                          />
+                        )}
                       </div>
                     </div>
 
                     <Answerdata comment={comment} />
-                    {isEditAnsModalOpen && (
+                    {/* {isEditAnsModalOpen && (
                       <EditAnswer
                         closeModal={() => {
                           setSelectedCommentId(null);
@@ -325,7 +343,7 @@ const Comment = ({
                         cid={selectedCommentId}
                         setShowAlert={setShowAlert}
                       />
-                    )}
+                    )} */}
 
                     <div className="responses">
                       <div className="icon-left">
@@ -345,28 +363,29 @@ const Comment = ({
               </div>
             ))}
           </div>
-          <hr style={{ height: "1px", margin: "0 1rem" }} />
-          <label className="comment-title">Add Yours</label>
-          <div className="main-comment-in">
-            <div className="comments-send">
-              <textarea
-                className="input-comment"
-                id="input-comment"
-                type="text"
-                value={commentData}
-                onChange={handleCommentData}
-                placeholder="Add here.."
-                wrap="soft"
-              />
+
+          <div className="comments-send">
+            <div
+              className="input-comment"
+              // onChange={handleCommentData}
+            >
+              <label className="comment-title">Add Yours Comment</label>
               <div className="button-comment-div">
                 <div className="button-comment" onClick={handleSubmitComment}>
-                  <SendIcon />
+                  <Input
+                    username={cusername}
+                    comment={commentData}
+                    questionId={questionId}
+                    questionData={questionData}
+                    cid={selectedCommentId}
+                    // setShowAlert={setShowAlert}
+                    // setShowAlert1 setShowAlertCategory
+                  />
                 </div>
               </div>
             </div>
-            <hr />
           </div>
-        </div>
+        </>
       ) : (
         ""
       )}

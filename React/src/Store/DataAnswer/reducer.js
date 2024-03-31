@@ -1,9 +1,9 @@
 import { ANSWER } from "./actionType";
 
-const dataReducer = (state = [{ question: "", answer: "" }], action) => {
+const dataReducer = (state = '', action) => {
   switch (action.type) {
     case ANSWER:
-      return [...state, { answer: action.payload }];
+      return action.payload;
     default:
       return state;
   }

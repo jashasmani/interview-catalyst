@@ -8,7 +8,8 @@
 }
 
 .edit-container {
-  background: rgb(19, 76, 181);
+  background: #001524;
+  border-radius: 0.5rem;
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -21,7 +22,6 @@
   transform: translate(-50%, -50%);
   z-index: 999;
   justify-content: center;
-  box-shadow: inset 5px 5px 10px 2px rgba(0, 0, 0, 0.5);
 }
 
 .edit-top {
@@ -177,7 +177,7 @@
   padding-bottom: 30px;
 }
 
-.cancel {
+/* .cancel {
   background-color: #ffffff;
   color: #04aa6d;
   border: 0.1rem solid #04aa6d;
@@ -187,8 +187,8 @@
   font-size: 1rem;
   cursor: pointer;
   border-radius: 0.5rem;
-}
-.save {
+} */
+/* .save {
   background-color: #04aa6d;
   color: white;
   width: 5rem;
@@ -197,4 +197,4 @@
   font-size: 1rem;
   cursor: pointer;
   border-radius: 0.5rem;
-}
+} */

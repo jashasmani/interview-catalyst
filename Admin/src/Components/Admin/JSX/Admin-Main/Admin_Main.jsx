@@ -103,7 +103,7 @@ function WritePage() {
       </nav>
 
       <div className="main-part-admin">
-      <ToastContainer style={{marginTop:'4.2rem'}} />
+      {/* <ToastContainer style={{marginTop:'4.2rem'}} /> */}
         <div style={{ whiteSpace: "pre-line" }}>
           {questionData.length > 0 ? (
             <div>

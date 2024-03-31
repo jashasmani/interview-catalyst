@@ -75,7 +75,6 @@ const Answer = ({ comment }) => {
       <div className="answer" style={{ whiteSpace: "pre-line" }}>
         <p>
           {comment.edited_comment === "none" ? (
-            // <div></div>
             <div dangerouslySetInnerHTML={{ __html: comment.comment }}></div>
           ) : checkGrant !== "true" ? (
             <>

@@ -3,11 +3,14 @@ import { Link, useNavigate } from "react-router-dom";
 import "../CSS/Signin.css";
 import axios from "axios";
 import img from "./img.jpg";
+import { useDispatch } from "react-redux";
+import { sendCID } from "../../../Store/CID/action";
 
 function Signin() {
   const [home, setHome] = useState("Sign In");
   const [response, setResponse] = useState("");
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   // -------------------************************---------------------********************-------------------*****************-----------------************
 
@@ -43,11 +46,12 @@ function Signin() {
         "http://localhost:5000/user/login",
         signinData
       );
-      console.log(res.data.message);
-      console.log(res.data.token);
+      // console.log(res.data.message);
+      // console.log(res.data.token);
       console.log(res.data.username);
       setResponse(res.data.message);
       localStorage.setItem("token", res.data.token);
+      dispatch(sendCID(res.data.username))
 
       navigate("/main");
     } catch (error) {

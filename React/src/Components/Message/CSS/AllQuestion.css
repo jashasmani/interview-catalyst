@@ -123,6 +123,15 @@
   margin-left: 3rem;
 }
 
+.question p img {
+  /* display: flex;
+  justify-content: center; */
+  width: 30rem;
+  height: 20rem;
+  /* max-height: 200px;
+  max-width: 200px;  */
+}
+
 .question-que {
   font-family: "Manrope", sans-serif;
   font-size: 22px;
@@ -183,52 +192,40 @@
 .comment-title {
   color: white;
   font-size: 2rem;
-  margin: 1.5rem 2rem;
-  margin-bottom: 0.5rem;
   font-weight: 600;
 }
 
 .input-comment {
   display: flex;
-  justify-content: center;
-  margin: 0.5rem 2rem;
-  /* height: 3rem; */
+  align-items: center;
+  justify-content: space-between;
   font-size: 1.5rem;
-  border: none;
-  /* padding: 1rem; */
-  padding-top: 0rem;
+  border-radius: 0.5rem;
+  margin: 1rem;
+  margin-top: 0rem;
+  border: 1px white solid;
   padding-left: 2rem;
-  border-bottom: 2px solid white;
   color: white;
-  resize: none;
-  background-color: transparent;
   width: 100%;
-  box-sizing: border-box;
-  overflow-y: hidden;
 }
 
-.input-comment:focus {
-  /* border: none; */
-  outline: none;
-  /* border-bottom: 2px solid white ; */
-}
 .main-comment-in {
   background-color: #001c30;
   display: flex;
   flex-direction: column;
   border-radius: 1rem;
-  /* margin-bottom: 1rem; */
 }
 
 .button-comment-div {
   display: flex;
-  /* justify-content: end; */
 }
 
 .button-comment {
   margin: 1rem;
   margin-right: 2rem;
-  /* background-color: #009578; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 5rem;
   height: 2rem;
 }
@@ -424,18 +421,18 @@
     margin-right: 0rem !important;
     margin-top: 0rem !important;
   }
-  .responses{
+  .responses {
     margin: 0.5rem !important;
   }
-  .comment-userimage{
+  .comment-userimage {
     min-width: 1rem !important;
     margin: 0.5rem !important;
   }
-  .comment-username-time{
+  .comment-username-time {
     font-size: 0.6rem !important;
     height: 0.5rem !important;
   }
-  .logo-text{
+  .logo-text {
     margin-left: 1rem !important;
     font-size: 1.6rem !important;
   }

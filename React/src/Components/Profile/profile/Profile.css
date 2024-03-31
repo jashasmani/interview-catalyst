@@ -1,6 +1,6 @@
 .profile-all {
   height: 100vh;
-  /* overflow-y: scroll; */
+  overflow-y: scroll;
   padding-bottom: 10rem;
   width: 100%;
 }
@@ -25,9 +25,8 @@
   display: flex;
   flex-direction: column;
   /* align-items: center; */
-  
 }
-.list-data{
+.list-data {
   display: flex;
   align-items: center;
   height: 2.5rem;
@@ -42,7 +41,6 @@
   background-color: white;
   box-shadow: 0 0 0.5rem #ddd;
   border-radius: 0.5rem;
-
 }
 
 #searchprofile {
@@ -91,7 +89,7 @@
   width: 100%;
 }
 
-.profile-name{
+.profile-name {
   width: 343px;
 }
 
@@ -119,8 +117,15 @@
   font-family: "Poppins";
 }
 
+.profile-name1 {
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(10px);
+  border-radius: 0.5rem;
+}
 .profile-name {
   margin-top: 0.5rem;
+  text-align: center;
+  
 }
 .profile-icon {
   margin-top: 0.2rem;
@@ -196,7 +201,7 @@
   }
 }
 
-.question-bar-profile{
+.question-bar-profile {
   margin: 0 1.5rem !important;
 }
 
@@ -216,7 +221,7 @@
   max-width: 100%;
   background-repeat: no-repeat;
   background-size: cover;
-  background-image: url("./plainimage.jpg");
+  background-image: url("./1.png");
   height: 440px;
   box-shadow: 0px 6px 4px rgba(255, 255, 255, 0.2);
 }
@@ -240,6 +245,7 @@
   align-items: center;
   padding-top: 8rem;
   top: 6rem;
+  color: #f3f8ff;
 
   /* position: absolute; */
   /* top: 6rem;
@@ -248,9 +254,14 @@
 
 .profInfoDesc {
   flex-direction: column;
-  align-items: flex-start;
   display: flex;
+  align-items: flex-start;
   width: 343px;
+  padding-left: 2rem;
+  /* background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(10px); */
+  border-bottom-left-radius: 0.5rem;
+  border-bottom-right-radius: 0.5rem;
 }
 
 .profileInfoName {
@@ -265,6 +276,7 @@
   font-size: 1.5rem;
   margin: 0.1rem 0;
   display: flex;
+  flex-direction: row;
   align-items: center;
   justify-content: flex-start;
 }
@@ -279,7 +291,7 @@
   .search-write {
     width: 8rem;
   }
-  .question-bar-profile{
+  .question-bar-profile {
     margin: 0 3rem !important;
   }
   .top-title {
@@ -305,28 +317,28 @@
   .main-addQuestion {
     margin: 0rem !important;
   }
-  section{
+  section {
     margin: 0rem !important;
   }
-  .question-bar-profile{
+  .question-bar-profile {
     margin: 0 3rem !important;
   }
-  .search-bar-container{
+  .search-bar-container {
     display: none;
   }
 }
 
 @media screen and (min-width: 320px) and (max-width: 480px) {
-  .search-bar-container{
+  .search-bar-container {
     display: none;
   }
-  .name-profile{
+  .name-profile {
     font-size: 1.5rem;
   }
-  section{
+  section {
     margin: 0rem !important;
   }
-  .comment-username{
+  .comment-username {
     font-size: 1rem;
   }
 }

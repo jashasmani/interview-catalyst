@@ -5,13 +5,15 @@ import AssessmentIcon from "@mui/icons-material/Assessment";
 import EditProfile from "../EditProfile/EditProfile";
 import axios from "axios";
 import AddQuestion from "../../Message/JSX/AllQuestion";
-import AccountCircleIcon from "@mui/icons-material/AccountCircle";
+import { AntDesignOutlined, UserOutlined } from "@ant-design/icons";
 import Search from "../../Search/Search";
 import { SearchResultsList } from "../../Search/SearchResultList";
+import { Avatar } from "antd";
+
+import getUsernameColor from "../../Functions/Avtar";
 
 const Profile = () => {
   const [isEditModalOpen, setEditModalOpen] = useState(false);
-  const [cusername, setCUsername] = useState("");
   const [profile, setProfile] = useState({});
   const [questionData, setQuestionData] = useState([]);
   const [results, setResults] = useState([]);
@@ -20,6 +22,7 @@ const Profile = () => {
     setEditModalOpen(true);
   };
 
+  const [cusername, setCUsername] = useState("");
   useEffect(() => {
     const fetchData = async () => {
       console.log("Fetching login...");
@@ -76,6 +79,7 @@ const Profile = () => {
     fetchData();
   }, []);
 
+  const backgroundColor = getUsernameColor(cusername);
   return (
     <>
       <nav className="nav-profile">
@@ -97,37 +101,36 @@ const Profile = () => {
               {/* <img className="profileCoverImg" src={backimg} alt="back" /> */}
               <div className="profileCoverImg">
                 <div className="profileInfo">
-                 <div className="profile-name"> <h4 className="profileInfoName">{profile.name}</h4></div>
+                  <div className="profile-name1">
+                    <div className="profile-name">
+                      {" "}
+                      <h4 className="profileInfoName">{profile.name}</h4>
+                    </div>
 
-                  <div className="profInfoDesc">
-                    <span className="profileInfoDesc">
-                      {/* {profile.college_name !== "" ? ( */}
-                      <div>
+                    <div className="profInfoDesc">
+                      <span className="profileInfoDesc">
                         {profile.college_name ? (
                           <SchoolIcon className="profile-icon" />
                         ) : (
                           ""
                         )}
-                        {profile.college_name}
-                      </div>
-                      {/*  ) : (
+                        <div>{profile.college_name}</div>
+                        {/*  ) : (
                        ""
                        )} */}
-                    </span>
-                    <span className="profileInfoDesc">
-                      {/* {profile.bio !== "" ? ( */}
-                      <div>
+                      </span>
+                      <span className="profileInfoDesc">
                         {profile.bio ? (
                           <AssessmentIcon className="profile-icon" />
                         ) : (
                           ""
                         )}
-                        {profile.bio}
-                      </div>
-                      {/* ) : (
+                        <div>{profile.bio}</div>
+                        {/* ) : (
                         ""
                       )} */}
-                    </span>
+                      </span>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -139,10 +142,10 @@ const Profile = () => {
                   alt="profile"
                 />
               ) : (
-                <AccountCircleIcon
-                  className="profileUserImg"
-                  style={{ fontSize: "14rem", border: "none" }}
-                />
+                // <AccountCircleIcon
+                //   style={{ fontSize: "14rem", border: "none" }}
+                // />
+                ""
               )}
             </div>
           </div>
