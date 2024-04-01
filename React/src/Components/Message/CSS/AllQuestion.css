@@ -31,7 +31,7 @@
   width: 2em;
   height: 2em;
   border-radius: 50%;
-  background: #009578;
+  /* background: #009578; */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -161,7 +161,7 @@
   height: 20rem;
 }
 .answer pre {
-  background-color: #0C0C0C;
+  background-color: #0c0c0c;
   border-radius: 0.5rem;
   width: 50rem;
 }
@@ -170,11 +170,13 @@
   height: 20rem;
 }
 .answer pre {
-  background-color: #0C0C0C;
+  background-color: #0c0c0c;
   border-radius: 0.5rem;
   width: 50rem;
 }
-
+.ql-syntax {
+  width: 40rem;
+}
 .responses {
   display: flex;
   flex-direction: row;

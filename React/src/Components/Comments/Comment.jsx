@@ -4,6 +4,7 @@ import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import QueryBuilderIcon from "@mui/icons-material/QueryBuilder";
 import BorderColorIcon from "@mui/icons-material/BorderColor";
+import { Avatar } from "antd";
 
 import Like from "./Like";
 import Answerdata from "./Answerdata";
@@ -11,6 +12,7 @@ import Default from "./Contribution";
 import { FluentProvider, webLightTheme } from "@fluentui/react-components";
 import Input from "../Write/Input";
 import InputEdit from "../Write/InputEdit";
+import getUsernameColor from "../Functions/Avtar";
 
 const Comment = ({
   questionId,
@@ -31,12 +33,10 @@ const Comment = ({
   const [selectedCommentId, setSelectedCommentId] = useState(null);
   const [open, setOpen] = useState(false);
 
- 
-
   const fetchComments = async () => {
     try {
       const res = await axios.get(
-        `https://interview-catalyst.onrender.com/user/getcomment?question_id=${questionId}`
+        `http://localhost:5000/user/getcomment?question_id=${questionId}`
       );
       const sortData = res.data.question_comment;
 
@@ -69,7 +69,7 @@ const Comment = ({
 
   // const change = async () => {
   //   try {
-  //     const res = await axios.post("https://interview-catalyst.onrender.com/user/commentsubmit", {
+  //     const res = await axios.post("http://localhost:5000/user/commentsubmit", {
   //       cusername: cusername,
   //       question_id: currentValue._id,
   //       commentData,
@@ -90,7 +90,7 @@ const Comment = ({
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await axios.get("https://interview-catalyst.onrender.com/user/login", {
+        const res = await axios.get("http://localhost:5000/user/login", {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
           },
@@ -109,7 +109,7 @@ const Comment = ({
   //     const profiles = [];
   //     for (const username of usernames) {
   //       const res = await axios.get(
-  //         `https://interview-catalyst.onrender.com/user/getprofile?cusername=${username}`
+  //         `http://localhost:5000/user/getprofile?cusername=${username}`
   //       );
   //       const newData = res.data.profile;
   //       profiles.push(newData);
@@ -153,6 +153,8 @@ const Comment = ({
     backgroundColor: "transparent",
   };
 
+  // const backgroundColor = getUsernameColor(firstComment1.username);
+
   return (
     <>
       <div className="comment-3">
@@ -168,6 +170,17 @@ const Comment = ({
                         <img src={getCommentusername[0].image} alt="profile" />
                       ) : (
                         <AccountCircleIcon style={{ fontSize: "3rem" }} />
+                        // <Avatar
+                        //   style={{
+                        //     backgroundColor: backgroundColor,
+                        //     color: "#ffffff",
+                        //     fontSize: "1.3rem",
+                        //   }}
+                        // >
+                        //   {typeof cusername === "string" && cusername.length > 0
+                        //     ? firstComment1.username.charAt(0).toUpperCase()
+                        //     : ""}
+                        // </Avatar>
                       )}
                     </div>
                   </div>
@@ -325,7 +338,7 @@ const Comment = ({
                             handleCancel={() => setOpen(false)}
                             username={cusername}
                             questionData={questionData}
-                            cid={firstComment1._id}
+                            cid={comment._id}
                             editAns={editAns}
                             questionId={questionId}
                           />

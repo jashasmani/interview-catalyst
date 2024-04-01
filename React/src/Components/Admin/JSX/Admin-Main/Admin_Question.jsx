@@ -16,7 +16,7 @@ function AddQuestion({ currentValue,setShowAlert }) {
     const fetchAnswer = async () => {
       try {
         await axios.get(
-          `https://interview-catalyst.onrender.com/user/getcomment?question_id=${currentValue._id}`
+          `http://localhost:5000/user/getcomment?question_id=${currentValue._id}`
         );
       } catch (error) {
         console.log(error);
@@ -39,7 +39,7 @@ function AddQuestion({ currentValue,setShowAlert }) {
     const fetchData = async () => {
       try {
         const res = await axios.get(
-          `https://interview-catalyst.onrender.com/user/getprofile?cusername=${currentValue.username}`
+          `http://localhost:5000/user/getprofile?cusername=${currentValue.username}`
         );
         const newData = res.data.profile;
         setProfileImage(newData.image);

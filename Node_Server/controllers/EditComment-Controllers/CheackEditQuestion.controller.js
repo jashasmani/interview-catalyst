@@ -15,7 +15,7 @@ async function insertAnswerQuestion(req, res) {
           cusername: cusername,
           edit_answer: editAnswers,
           question_id: question_id,
-          comment_id: comment_id,
+          comment_id: comment_id, 
           timestamp: currentTimeInIndia,
           grant: grant,
           outputData:outputData
