@@ -61,7 +61,7 @@ function Main() {
 
   const fetchQuestion = async () => {
     try {
-      const res = await axios.get("http://localhost:5000/user/question", {
+      const res = await axios.get("https://interview-catalyst.onrender.com/user/question", {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}`,
         },
@@ -93,7 +93,7 @@ function Main() {
     const searchData = e.target.value;
     if (searchData) {
       const res = await axios.get(
-        `http://localhost:5000/user/search/${searchData}`
+        `https://interview-catalyst.onrender.com/user/search/${searchData}`
       );
       const newData = res.data;
 
@@ -102,7 +102,7 @@ function Main() {
       }
     } else {
       try {
-        const res = await axios.get("http://localhost:5000/user/question", {
+        const res = await axios.get("https://interview-catalyst.onrender.com/user/question", {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
           },
@@ -119,7 +119,7 @@ function Main() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await axios.get("http://localhost:5000/user/login", {
+        const res = await axios.get("https://interview-catalyst.onrender.com/user/login", {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
           },
@@ -138,7 +138,7 @@ function Main() {
 
     try {
       const res = await axios.get(
-        `http://localhost:5000/user/getprofile?cusername=${up}`
+        `https://interview-catalyst.onrender.com/user/getprofile?cusername=${up}`
       );
       const newData = res.data.profile;
       console.log(newData);
