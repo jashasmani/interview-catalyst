@@ -51,7 +51,7 @@ function Signin() {
       console.log(res.data.username);
       setResponse(res.data.message);
       localStorage.setItem("token", res.data.token);
-      navigate(`/main/user=${res.data.username}`);
+      navigate(`/main?user=${res.data.username}`);
 
     } catch (error) {
       setResponse("Sign In failed. ");
