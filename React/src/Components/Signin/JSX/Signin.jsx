@@ -43,7 +43,7 @@ function Signin() {
 
     try {
       const res = await axios.post(
-        "http://localhost:5000/user/login",
+        "https://interview-catalyst.onrender.com/user/login",
         signinData
       );
       // console.log(res.data.message);
@@ -88,7 +88,7 @@ function Signin() {
 
     try {
       const res = await axios.post(
-        "http://localhost:5000/user/register",
+        "https://interview-catalyst.onrender.com/user/register",
         registrationData
       );
       console.log(res.data.message);

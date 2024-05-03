@@ -15,7 +15,7 @@ const Contribution = ({ cid }) => {
     const fetchAnswer = async () => {
       try {
         const res = await axios.get(
-          `http://localhost:5000/admin/geteditedanswerbyid?comment_id=${cid}`
+          `https://interview-catalyst.onrender.com/admin/geteditedanswerbyid?comment_id=${cid}`
         );
 
         const data1 = res.data.editcomment_data;

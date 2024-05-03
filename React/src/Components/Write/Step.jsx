@@ -49,7 +49,7 @@ const StepsDesign = ({
       }
       if (title && dataQuestion.question) {
         const response = await axios.post(
-          "http://localhost:5000/user/question",
+          "https://interview-catalyst.onrender.com/user/question",
           {
             question: dataQuestion.question,
             username,
@@ -60,7 +60,7 @@ const StepsDesign = ({
 
         if (response.data.question_main._id !== "" && answer !== "") {
           try {
-            await axios.post("http://localhost:5000/user/commentsubmit", {
+            await axios.post("https://interview-catalyst.onrender.com/user/commentsubmit", {
               cusername: username,
               commentData: answer,
               question_id: response.data.question_main._id,
@@ -89,7 +89,7 @@ const StepsDesign = ({
     const change = async () => {
       try {
         const res = await axios.post(
-          "http://localhost:5000/user/commentsubmit",
+          "https://interview-catalyst.onrender.com/user/commentsubmit",
           {
             cusername: username,
             question_id: questionId,
