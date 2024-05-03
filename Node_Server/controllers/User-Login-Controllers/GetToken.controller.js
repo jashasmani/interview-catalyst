@@ -1,11 +1,12 @@
 const express = require("express");
 const User = require("../../models/login.model");
 const jwt = require("jsonwebtoken");
+const dotenv = require("dotenv");
 
 async function getToken(req, res) {
   jwt.verify(
     req.token,
-    "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
+    process.env.TOKEN1,
     async (err, authdata) => {
       if (err) {
         res.status(401).send({ result: "invalid token" });

@@ -4,7 +4,7 @@ const Admin = require("../../models/admin.model");
 const jwt = require("jsonwebtoken");
 
 async function findQuestion(req, res) {
-  jwt.verify(req.token, "ABCDEFGHIJKLMNOPQRSTUVWXYZ", async (err, authdata) => {
+  jwt.verify(req.token, process.env.TOKEN1, async (err, authdata) => {
     if (err) {
       res.status(401).send({ result: "invalid token" });
     } else {

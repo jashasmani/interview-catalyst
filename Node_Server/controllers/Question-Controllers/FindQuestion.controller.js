@@ -3,10 +3,11 @@ const Question = require("../../models/question.model");
 const User = require("../../models/login.model");
 const jwt = require("jsonwebtoken");
 
+
 async function findQuestion(req, res) {
   jwt.verify(
     req.token,
-    "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
+    process.env.TOKEN1,
     async (err, authdata) => {
       if (err) {
         res.status(401).send({ result: "invalid token" });

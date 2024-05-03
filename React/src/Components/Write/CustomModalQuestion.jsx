@@ -12,7 +12,7 @@ const CustomModalQuestion = ({
 }) => {
   // const fetchData = async () => {
   //   try {
-  //     const res = await axios.post(`https://interview-catalyst.onrender.com/user/addcategory`, {
+  //     const res = await axios.post(`http://localhost:5000/user/addcategory`, {
   //       title,
   //     });
   //     console.log(res.data);

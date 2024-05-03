@@ -24,7 +24,7 @@ const Input = ({
     const fetchComment = async () => {
       try {
         const res = await axios.get(
-          `https://interview-catalyst.onrender.com/user/getcommentbyid?comment_id=${cid}`
+          `http://localhost:5000/user/getcommentbyid?comment_id=${cid}`
         );
 
         const data = res.data.comment_data;
@@ -42,7 +42,7 @@ const Input = ({
 
   const callCloseEditModal = async () => {
     try {
-      await axios.post(`https://interview-catalyst.onrender.com/admin/cheackeditanswer`, {
+      await axios.post(`http://localhost:5000/admin/cheackeditanswer`, {
         cusername: username,
         editAnswers: answer,
         comment_id: commentOBJ._id,

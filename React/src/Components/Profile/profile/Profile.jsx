@@ -10,7 +10,6 @@ import Search from "../../Search/Search";
 import { SearchResultsList } from "../../Search/SearchResultList";
 import { Avatar } from "antd";
 
-
 const Profile = () => {
   const [isEditModalOpen, setEditModalOpen] = useState(false);
   const [profile, setProfile] = useState({});
@@ -27,7 +26,7 @@ const Profile = () => {
       console.log("Fetching login...");
 
       try {
-        const res = await axios.get("https://interview-catalyst.onrender.com/user/login", {
+        const res = await axios.get("http://localhost:5000/user/login", {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
           },
@@ -46,7 +45,7 @@ const Profile = () => {
 
       try {
         const res = await axios.get(
-          `https://interview-catalyst.onrender.com/user/getprofile?cusername=${cusername}`
+          `http://localhost:5000/user/getprofile?cusername=${cusername}`
         );
         const newData = res.data.profile;
         console.log(newData);
@@ -64,7 +63,7 @@ const Profile = () => {
       // console.log("Fetching question...");
 
       try {
-        const res = await axios.get("https://interview-catalyst.onrender.com/user/question", {
+        const res = await axios.get("http://localhost:5000/user/question", {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
           },
@@ -99,7 +98,7 @@ const Profile = () => {
               {/* <img className="profileCoverImg" src={backimg} alt="back" /> */}
               <div className="profileCoverImg">
                 <div className="profileInfo">
-                  <div className="profile-name1">
+                  <div className={profile.name ? "profile-name1" : ""}>
                     <div className="profile-name">
                       {" "}
                       <h4 className="profileInfoName">{profile.name}</h4>

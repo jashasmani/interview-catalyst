@@ -62,7 +62,7 @@ function Main() {
   const fetchQuestion = async () => {
     try {
       const res = await axios.get(
-        "https://interview-catalyst.onrender.com/user/question",
+        "http://localhost:5000/user/question",
         {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -97,7 +97,7 @@ function Main() {
     const searchData = e.target.value;
     if (searchData) {
       const res = await axios.get(
-        ` https://interview-catalyst.onrender.com/user/search/${searchData}
+        ` http://localhost:5000/user/search/${searchData}
       `
       );
       const newData = res.data;
@@ -108,7 +108,7 @@ function Main() {
     } else {
       try {
         const res = await axios.get(
-          "https://interview-catalyst.onrender.com/user/question",
+          "http://localhost:5000/user/question",
           {
             headers: {
               Authorization: ` Bearer${localStorage.getItem("token")}`,
@@ -128,7 +128,7 @@ function Main() {
     const fetchData = async () => {
       try {
         const res = await axios.get(
-          "https://interview-catalyst.onrender.com/user/login",
+          "http://localhost:5000/user/login",
           {
             headers: {
               Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -149,7 +149,7 @@ function Main() {
 
     try {
       const res = await axios.get(
-        `https://interview-catalyst.onrender.com/user/getprofile?cusername=${up}
+        `http://localhost:5000/user/getprofile?cusername=${up}
       `
       );
       const newData = res.data.profile;
