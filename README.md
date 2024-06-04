@@ -1,128 +1,113 @@
 # Interview Catalyst using Crowdsourcing
 
-## Project Overview
-
-This project report documents the development of "Interview Catalyst using Crowdsourcing", undertaken by Jash Asmani and Dhairya Bhatt as part of their BTech-IT, Semester VI curriculum. The project was guided by Prof. (Dr.) Vipul Dabhi and Prof. (Dr.) H. B. Prajapati from the Department of Information Technology, Faculty of Technology, Dharmsinh Desai University.
-
-### Candidate's Declaration
-
-Jash Asmani and Dhairya Bhatt declared that the project report titled "Interview Catalyst Using CrowdSourcing" is their own work conducted under the supervision of Prof. (Dr.) Vipul Dabhi.
-
-### Certificate
-
-The project report is certified as a bonafide report of the work conducted by Jash Asmani and Dhairya Bhatt for their B.Tech. VI semester during the academic year 2023-2024.
-
-### Acknowledgement
-
-The authors extend their gratitude to Prof. (Dr.) V. K. Dabhi and Prof. (Dr.) H. B. Prajapati for their unwavering support, invaluable guidance, and mentorship throughout the development of this project. They also acknowledge the support of the Information Technology Department at Dharmsinh Desai University.
+This repository contains the project report for "Interview Catalyst using Crowdsourcing," submitted by Jash Asmani and Dhairya Bhatt as part of their BTech-IT Sem VI curriculum at Dharmsinh Desai University.
 
 ## Table of Contents
 
-### Tables
+- [Introduction](#introduction)
+- [Project Management](#project-management)
+- [System Requirements Study](#system-requirements-study)
+- [System Analysis](#system-analysis)
+- [System Design](#system-design)
+- [Implementation Planning](#implementation-planning)
+- [Testing](#testing)
+- [User Manual](#user-manual)
+- [Limitations and Future Enhancements](#limitations-and-future-enhancements)
+- [Conclusion and Discussion](#conclusion-and-discussion)
+- [References](#references)
+- [List of Figures](#list-of-figures)
+- [List of Tables](#list-of-tables)
 
-- List of Figures
-- List of Tables
+## Introduction
 
-### 1. Introduction
+### Project Details
+The "Interview Catalyst using Crowdsourcing Method" project is a comprehensive exploration into leveraging the power of crowdsourcing for enhancing the interview process. The aim of this project was to develop a platform that harnesses the collective intelligence and diverse perspectives of a crowd to optimize the interview experience for both interviewers and candidates. It helps candidates in smoothing their interview process.
 
-#### 1.1 Project Details
+### Purpose
+The primary purpose of the "Interview Catalyst using Crowdsourcing Method" project is to revolutionize and optimize the interview process by harnessing the collective intelligence and diverse perspectives of a crowd. By tapping into the collective knowledge and experience of a crowd, the project aims to unlock new insights and innovative approaches to candidate assessment. This collective intelligence has the potential to uncover qualities and skills that may be overlooked in traditional interview settings. In summary, the purpose of the "Interview Catalyst using Crowdsourcing Method" project is to create a transformative platform that redefines and improves the interview process, contributing to more effective hiring decisions and fostering a more inclusive and objective recruitment environment.
 
-The "Interview Catalyst using Crowdsourcing Method" project aims to optimize the interview process by leveraging crowdsourcing. It helps candidates smoothen their interview process.
+### Scope
+The "Interview Catalyst using Crowdsourcing Method" project encompasses a wide range of functionalities and features, aiming to revolutionize the traditional interview process. Key aspects that fall within the project's scope include the development of a User-Friendly UI, Integration of Crowdsourcing Algorithms, Comprehensive Candidate Assessment, Scalability and Adaptability, Feedback Mechanism for Continuous Improvement, and Potential for AI Integration.
 
-#### 1.2 Purpose
+### Objective
+The objective of the "Interview Catalyst Using Crowdsourcing" project is to develop a web application where there is only one best and single answer available for every question. Each answer includes the names of all the contributors who have contributed to the solution of a particular question. Additionally, a round-robin algorithm is implemented, allowing users to send requests to a moderator, and changes to answers are made only after moderator approval.
 
-The primary purpose is to revolutionize and optimize the interview process by harnessing the collective intelligence and diverse perspectives of a crowd.
+## Project Management
 
-#### 1.3 Scope
+### Feasibility Study
+- **Technical Feasibility:** Assessing technology, communication protocols, technical skills, integration, security, and scalability.
+- **Time Schedule Feasibility:** Planning project phases, milestones, and deliverables.
+- **Operational Feasibility:** Assessing operability and management.
+- **Implementation Feasibility:** Learning and implementing React JS and Node JS for project development.
 
-The project encompasses functionalities like User-Friendly UI, Crowdsourcing Algorithms Integration, Comprehensive Candidate Assessment, Scalability, and Adaptability, among others.
+### Project Planning
+- **Project Development Approach:** Agile Development Methodology.
+- **Project Plan:** Detailed plan with tasks, timelines, and resource allocation.
+- **Milestones and Deliverables:** Defining project milestones and deliverables.
+- **Roles and Responsibilities:** Allocation of roles and responsibilities.
+- **Group Dependencies:** Ensuring operational dependencies are met.
 
-#### 1.4 Objective
+## System Requirements Study
 
-The objective is to provide accurate and to-the-point answers to questions, with the names of all contributors listed, implementing a round-robin algorithm for content moderation.
+- **Study of Current System:** Analyzing existing systems.
+- **Problems and Weaknesses:** Identifying issues in the current system.
+- **User Characteristics:** Understanding user needs and characteristics.
+- **Hardware and Software Requirements:** Specifying hardware and software requirements.
+- **Constraints:** Highlighting project constraints.
+- **Assumptions and Dependencies:** Documenting assumptions and dependencies.
 
-#### 1.5 Technology and Literature Review
+## System Analysis
 
-The project utilizes the MERN Stack (MongoDB, ExpressJS, ReactJS, NodeJS) for development.
+- **Requirements of New System:** User and system requirements.
+- **Features of New System:** Highlighting features.
+- **Class Diagram:** Representing system classes.
+- **System Activity:** Describing system activities.
+- **Sequence Diagram:** Illustrating system sequences.
+- **Data Modeling:** Modeling system data.
 
-### 2. Project Management
+## System Design
 
-#### 2.1 Feasibility Study
+- **System Architecture Design:** Designing system architecture.
+- **Database Design:** Designing system database.
+- **Input/Output and Interface Design:** Designing input/output and interfaces.
 
-##### 2.1.1 Technical Feasibility
+## Implementation Planning
 
-Assessment of technology, communication protocols, technical skills, integration, security, scalability, user interface, and technological trends.
+- **Implementation Environment:** Specifying implementation environment.
+- **Modules Specification:** Specifying module functionalities.
+- **Coding Standards:** Defining coding standards.
 
-##### 2.1.2 Time Schedule Feasibility
+## Testing
 
-Detailed breakdown of project phases, milestones, and deliverables.
+- **Testing Plan:** Outlining testing plan.
+- **Testing Strategy:** Defining testing strategy.
+- **Testing Methods:** Describing testing methods.
+- **Test Cases:** Listing test cases.
 
-##### 2.1.3 Operational Feasibility
+## User Manual
 
-Operability and management assessment.
+- Providing user manual for platform usage.
 
-##### 2.1.4 Implementation Feasibility
+## Limitations and Future Enhancements
 
-Challenges and learning experiences during implementation.
+- Documenting limitations and suggesting future enhancements.
 
-#### 2.2 Project Planning
+## Conclusion and Discussion
 
-##### 2.2.1 Project Development Approach and Justification
+- Concluding remarks and discussions on project viability, encountered problems, and summary.
 
-Adoption of Agile Development Methodology justified for iterative and collaborative nature.
+## References
 
-##### 2.2.2 Project Plan
-
-Sequential steps from project initiation to documentation and reporting.
-
-##### 2.2.3 Project Milestones and Deliverables
-
-Key milestones and deliverables throughout the project lifecycle.
-
-##### 2.2.4 Roles and Responsibilities
-
-Roles and responsibilities of team members.
-
-##### 2.2.5 Group Dependencies
-
-Key dependencies for project execution.
-
-### 3. System Requirements Study
-
-### 4. System Analysis
-
-### 5. System Design
-
-### 6. Implementation Planning
-
-### 7. Testing
-
-### 8. User Manual
-
-### 9. Limitations and Future Enhancements
-
-### 10. Conclusion and Discussion
-
-### References
+- Listing project references.
 
 ## List of Figures
 
-- MERN Stack
-- Class Diagram
-- Use Case Diagram
-- Sequence Diagram
-- ER Diagram
-- Component Diagram
-- Deployment Diagram
-- State Transition Diagram
-- Screenshots of UI elements (Login Page, Home Page, Q/A Page, Profile Page, etc.)
+- Listing figures used in the report.
 
 ## List of Tables
 
-- Roles & Responsibilities
-- Tables in Interview Catalyst
-- Test Cases for User
-- Test Cases for System
+- Listing tables used in the report.
 
 ---
 
+This project report was prepared by Jash Asmani and Dhairya Bhatt under the guidance of Prof. (Dr.) Vipul Dabhi and Prof. (Dr.) H. B. Prajapati from the Department of Information Technology, Dharmsinh Desai University, Nadiad, Gujarat, in April 2024.
